@@ -1,0 +1,507 @@
+@font-face {
+    font-family: 'MittelalterlicheSchrift';
+    src: url('../../../Fonts/GreatVibes-Regular.ttf') format('TrueType');
+}
+
+body {
+    overflow: hidden;
+    position: fixed;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center 37.5%;
+    margin: 0;
+    background-color: #000;
+    height: 100%; /* Füge dies hinzu, um die volle Höhe des Viewports zu verwenden */
+}
+
+#bewegendesTextfeld {
+    overflow: hidden;
+    position: fixed;
+    font-size: 1.6vw;
+    bottom: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    left: 0.1%;
+    top: 68%;
+    border: 1px solid #fff;
+    border-radius: 10px; /* Feste Pixel für abgerundete Ecken */
+    padding: 10px 20px; /* Feste Pixel für Innenabstände */
+    right: 7%;
+    min-height: 31.5%;
+    max-height: 31.5%;
+    z-index: 1;
+    pointer-events: none; 
+}
+
+#Gegenstände {
+    position: relative; /* Position relativ für die Kinder-Elemente */
+}
+
+
+h3 {
+    position: fixed;
+    color: #fff;
+    right: 2.5%;
+    top: 69%;
+}
+
+#inhaltBox1{
+    overflow: hidden;
+    position: fixed;
+    right: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    bottom: 19%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    height:7.5%;
+    width: 4.2%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    color: #fff;
+    border: 1px solid #fff;
+    max-width: 4.2%; 
+    z-index: 100;
+}
+
+#inhaltBox2{
+    overflow: hidden;
+    position: fixed;
+    right: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    bottom: 10%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    height:7.5%;
+    width: 4.2%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    color: #fff;
+    border: 1px solid #fff;
+    max-width: 4.2%; 
+    z-index: 100;
+}
+#inhaltBox3 {
+    overflow: hidden;
+    position: fixed;
+    right: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    bottom: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    height:7.5%;
+    width: 4.2%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    color: #fff;
+    border: 1px solid #fff;
+    max-width: 4.2%; 
+    z-index: 100;
+}
+
+#Wertebutton {
+    overflow: hidden;
+    position: fixed;
+    right: 2%;
+    left: 94%;
+    top: 1%;
+    height: 5%;
+    width: 5.5%;
+    padding: 0.5%;
+    border: 1px solid #fff;
+    border-radius: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    border-radius: 15px; /* Feste Pixel für abgerundete Ecken */
+    max-width: 5.5%; 
+    font-size: 0.8vw;
+}
+
+#WerteMenu {
+    overflow: hidden;
+    position: fixed;
+    border: 2px solid #fff;
+    border-radius: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    top: 8%;
+    right: 0.5%;
+    bottom: 49%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    padding-bottom: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    padding-left: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    padding-right: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    padding-top: 1%;
+    color: #fff;
+    background-color: #000;
+    width: 14%;
+    border: 1px solid #fff;
+    border-radius: 15px; /* Feste Pixel für abgerundete Ecken */
+    max-width: 14%; 
+    z-index: 100;
+}
+
+#Menübutton{
+    overflow: hidden;
+    position: fixed;
+    right: 99%;
+    top: 1%;
+    left: 1%;
+    height: 5%;
+    width: 5.5%;
+    padding: 0.5%;
+    border: 1px solid #fff;
+    border-radius: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    border-radius: 15px; /* Feste Pixel für abgerundete Ecken */
+    max-width: 5.5%; 
+    font-size: 0.8vw;
+}
+
+#Menü{
+    overflow: hidden;
+    position: fixed;
+    right: 90%;
+    top: 1%;
+    bottom: 90%;
+    left: 2%;
+    height: 5%;
+    width: 5.5%;
+    padding: 0.5%;
+    border: 1px solid #fff;
+    border-radius: 15px; /* Feste Pixel für abgerundete Ecken */
+    max-width: 5.5%; 
+    font-size: 0.8vw;
+}
+
+#Menüausgeklappt{
+    overflow: hidden;
+    position: fixed;
+    left: 2%;
+    top: 8%;
+    width: 12%;
+    max-width: 12%;
+    min-width: 12%;
+    background-color: grey;
+    padding-bottom: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    padding-left: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    padding-right: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    padding-top: 1%;
+    color: #fff;
+    background-color: #000;
+    width: 12%;
+    border: 1px solid #fff;
+    border-radius: 15px; /* Feste Pixel für abgerundete Ecken */
+    max-width: 12%; 
+    z-index: 100;
+}
+
+#AdminCollapse{
+    overflow: hidden;
+    position: fixed;
+    left: 15%;
+    top: 20%;
+    width: 12%;
+    max-width: 12%;
+    min-width: 12%;
+    background-color: grey;
+    padding-bottom: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    padding-left: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    padding-right: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    padding-top: 1%;
+    color: #fff;
+    background-color: #000;
+    width: 12%;
+    border: 1px solid #fff;
+    border-radius: 15px; /* Feste Pixel für abgerundete Ecken */
+    max-width: 12%; 
+    z-index: 100;
+}
+
+#AdminToolsausgeklappt{
+    overflow: hidden;
+    position: fixed;
+    left: 15%;
+    top: 20%;
+    width: 12%;
+    max-width: 12%;
+    min-width: 12%;
+    background-color: grey;
+    padding-bottom: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    padding-left: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    padding-right: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    padding-top: 1%;
+    color: #fff;
+    background-color: #000;
+    width: 12%;
+    border: 1px solid #fff;
+    border-radius: 15px; /* Feste Pixel für abgerundete Ecken */
+    max-width: 12%; 
+    z-index: 100;
+}
+
+#Questsausgeklappt{
+    overflow: hidden;
+    position: fixed;
+    left: 15%;
+    top: 8%;
+    width: 17%;
+    max-width: 17%;
+    min-width: 17%;
+    background-color: grey;
+    padding-bottom: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    padding-left: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    padding-right: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    padding-top: 1%;
+    color: #fff;
+    background-color: #000;
+    width: 12%;
+    border: 1px solid #fff;
+    border-radius: 15px; /* Feste Pixel für abgerundete Ecken */
+    max-height: 30%;
+    z-index: 100;
+}
+
+.annehmbutton {
+    overflow: hidden;
+    position: fixed;
+    height: 5%;
+    width: 5.5%;
+    padding: 0.5%;
+    border: 1px solid #fff;
+    border-radius: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    border-radius: 15px; /* Feste Pixel für abgerundete Ecken */
+    max-width: 5.5%; 
+    font-size: 0.9em;
+}
+
+.title {
+    overflow: hidden;
+    font-family: 'MittelalterlicheSchrift', serif;
+    font-size: 1.5vw;
+    padding-left: 7%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    padding-right: 3%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    padding-bottom: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    border-bottom: 1px solid #fff;
+    text-align: center;
+}
+
+.value {
+    overflow: hidden;
+    position: fixed;
+    text-align: left;
+    left: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    padding-left: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
+}
+
+.NameWert,
+.CharismaWert,
+.StandortWert {
+    overflow: hidden;
+    position: absolute;
+    text-align: right;
+    right: 9%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    padding-left: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
+}
+
+.art1Button {
+    overflow: hidden;
+    position: fixed;
+    left: 3%;
+    top: 80%;
+    bottom: 20%;
+    height: 5%;
+    font-size: 0.9em;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    z-index: 2;
+}
+  
+.art1Button:hover {
+    font-size: bold;
+  }
+.art1Button:hover::before{
+    content: "↳"; /* Fügt das ↳-Zeichen vor dem Text ein */
+    margin-right: 5px; /* Platz zwischen dem Zeichen und dem Text */
+    font-weight: bold; /* Fettgedruckt */   
+}
+.art1Button:focus{
+    content: "↳"; /* Fügt das ↳-Zeichen vor dem Text ein */
+    margin-right: 5px; /* Platz zwischen dem Zeichen und dem Text */
+    font-weight: bold; /* Fettgedruckt */  
+}
+
+.art2Button {
+    overflow: hidden;
+    position: fixed;
+    left: 3%;
+    top: 87%;
+    bottom: 10%;
+    height: 5%;
+    font-size: 0.9em;
+    background-color: #000;
+
+    color: #fff;
+    border: none;
+    z-index: 2;
+  }
+  .art2Button:hover {
+    font-size: bold;
+  }
+  .art2Button:hover::before {
+    content: "↳"; /* Fügt das ↳-Zeichen vor dem Text ein */
+    margin-right: 5px; /* Platz zwischen dem Zeichen und dem Text */
+    font-weight: bold; /* Fettgedruckt */
+  }
+
+  #Q1 {
+    position: fixed;
+    top: 25%;
+    left: 10%;
+    min-height: 5%;
+    max-height: 5%;
+    min-width: 2.5%;
+    max-width: 2.5%;
+    border-radius: 30px; /* Feste Pixel für abgerundete Ecken */
+}
+
+
+
+#buttonT{
+    position: fixed;
+    top: 40%;
+    left: 58.5%;
+    height: 5%;
+    width: 2.5%;
+    border-radius: 30px; /* Feste Pixel für abgerundete Ecken */
+}
+
+#TavSchild{
+    position: fixed;
+    top: 36.2%;
+    left: 57.3%;
+    font-weight: bold;
+    font-size: 1.3vw;
+}
+
+#buttonW{
+    position: fixed;
+    top: 50%;
+    left: 20%;
+    height: 5%;
+    width: 2.5%;
+    border-radius: 30px; /* Feste Pixel für abgerundete Ecken */
+}
+
+#TextTSW{
+    position: fixed;
+    top: 55%;
+    left: 15%;
+    font-weight: bold;
+    font-size: 1.3vw;
+}
+
+#buttonO{
+    position: fixed;
+    top: 50%;
+    left: 78%;
+    height: 5%;
+    width: 2.5%;
+    border-radius: 30px; /* Feste Pixel für abgerundete Ecken */
+}
+
+#TextTSO{
+    position: fixed;
+    top: 55%;
+    left: 73.5%;
+    font-weight: bold;
+    font-size: 1.3vw;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes noneblink {
+}
+
+.blink {
+    animation: blink 1s infinite;
+}
+
+.noneblink {
+    animation: noneblink 1s infinite;
+}
+
+#QuestMenü{
+    overflow: hidden;
+    position: fixed;
+    border: 2px solid #fff;
+    border-radius: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    top: 33%;
+    left: 5%;
+    padding-bottom: 2%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    padding-left: 4%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    padding-right: 4%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    padding-top: 2%;
+    color: #fff;
+    background-color: #000;
+    width: 12%;
+    border: 1px solid #fff;
+    border-radius: 15px; /* Feste Pixel für abgerundete Ecken */
+    max-width: 12%; 
+    z-index: 2;
+}
+
+.QuestMenü{
+    overflow: hidden;
+    position: fixed;
+    border: 2px solid #fff;
+    border-radius: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    top: 8%;
+    left: 33%;
+    padding-bottom: 2%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    padding-left: 4%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    padding-right: 4%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    padding-top: 2%;
+    color: #fff;
+    background-color: #000;
+    width: 12%;
+    border: 1px solid #fff;
+    border-radius: 15px; /* Feste Pixel für abgerundete Ecken */
+    max-width: 12%; 
+    max-height: 50%;
+    z-index: 2;
+}
+.QuestText {
+    white-space: pre-line;
+  }
+
+.QuestInfoLocation {
+    overflow: hidden;
+    position: fixed;
+    border: 2px solid #fff;
+    border-radius: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    top: 36.1%;
+    left: 5%;
+    padding-bottom: 2%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    padding-left: 4%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    padding-right: 4%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    padding-top: 2%;
+    color: #fff;
+    background-color: #000;
+    border: 1px solid #fff;
+    border-radius: 15px; /* Feste Pixel für abgerundete Ecken */
+    min-height: 31.9%;
+    max-width: 15%; 
+    z-index: 2;
+}
+
+.headerQuest{
+    overflow: hidden;
+    font-family: 'MittelalterlicheSchrift', serif;
+    font-size: 1.5vw;
+    padding-left: 7%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    padding-right: 7%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    padding-bottom: 6%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    border-bottom: 1px solid #fff;
+    text-align: center;
+}
+#QuestInfo{
+    overflow: hidden;
+    position: fixed;
+    border: 2px solid #fff;
+    border-radius: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    top: 36.2%;
+    left: 8%;
+    padding-bottom: 2%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    padding-left: 4%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    padding-right: 4%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    padding-top: 2%;
+    color: #fff;
+    background-color: #000;
+    width: 12%;
+    border: 1px solid #fff;
+    border-radius: 15px; /* Feste Pixel für abgerundete Ecken */
+    max-width: 12%; 
+    z-index: 100;
+}

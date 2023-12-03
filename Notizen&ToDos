@@ -1,0 +1,6 @@
+Stadtname: Kyralion
+
+bei der InsertText Funktion in der Taverne muss eine Abfrage stattfinden, ob der Code gerade ausgeführt wird. Wenn Ja, dann darf nichts passieren, da sich sonst alles überschreibt.
+Das if muss bereits in dem Aufruf der Funktion bei Knopfdruck passieren
+
+Bei Quest muss die Quest erst noch angezeigt werden

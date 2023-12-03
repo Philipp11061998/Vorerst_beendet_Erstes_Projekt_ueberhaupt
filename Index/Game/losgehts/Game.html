@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="StylesLG/Game.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="shortcut icon" href="./StylesLG/Icon/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="./StylesLG/Icon/favicon.ico" type="image/x-icon">
+  <title>Dein Abenteuer</title>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <script type="module" src="./Game.js"></script>
+  <script type="module" src="../Werte.js"></script>
+  <script type="module" src="./ScriptsLG/Startpunkt/Startpunkt.js"></script>
+  <script type="module" src="./ScriptsLG/Stadt/Taverne.js"></script>
+  <script type="module" src="./ScriptsLG/Stadt/TorbogenWest.js"></script>
+</head>
+<body class="p-3 mb-2 bg-black text-white">
+  <div id="bewegendesTextfeld" class="p-3 mb-2 bg-black text-white overflow-auto"></div>
+  <p class="d-inline-flex gap-1"> <!-- Das Menü -->
+    <a id="Menü" class="btn btn-dark" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" aria-pressed="true">
+      Menü
+    </a>
+  </p>
+  <!-- Das Menü ausgeklappt -->
+  <div class="collapse" id="collapseExample">
+    <div class="card card-body" id="Menüausgeklappt">
+      <b id="Quests" class="btn btn-light mb-2" style="display: none;" data-bs-toggle="collapse" href="#Questscollapse" role="button" aria-expanded="false" aria-controls="Questscollapse" aria-pressed="true">
+        Quests
+      </b>
+      <!-- Quests -->
+      <div class="collapse" id="Questscollapse">
+        <div class="card card-body overflow-auto" id="Questsausgeklappt">
+          <h4 class="title">Quests</h4>
+          <!-- hier per .js die Quests als Button einfügen -->
+        </div>
+      </div>
+      <button id="Startmenü" class="btn btn-light mb-2">Startmenü</button>
+      <button id="dev" class="btn btn-light mb-2">Devs Insta</button>
+      <b id="AdminTools" class="btn btn-light mb-2" style="display: none;" data-bs-toggle="collapse" href="#AdminCollapse" role="button" aria-expanded="false" aria-controls="AdminCollapse" aria-pressed="true">
+        Admin Tools
+      </b>
+      <!-- Admin Tools -->
+      <div class="collapse" id="AdminCollapse">
+        <div class="card card-body" id="AdminToolsausgeklappt">
+          <button id="LocationSP" class="btn btn-light mb-2">Gehe zu Start Wald</button>
+          <button id="LocationSO" class="btn btn-light mb-2">Gehe zu Stadt</button>
+          <button id="LocationT" class="btn btn-light mb-2">Gehe zu Taverne</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<button class="art1Button" id="ButtonSp1" style="display: none;"></button>
+<button class="art2Button" id="ButtonSp2" style="display: none;"></button>
+<button class="art1Button" id="ButtonSOW1" style="display: none;"></button>
+<button class="art2Button" id="ButtonSOW2" style="display: none;"></button>
+<button class="art1Button" id="ButtonT1" style="display: none;"></button>
+<button class="art2Button" id="ButtonT2" style="display: none;"></button>
+<button type="button" id="Q1" class="btn btn-danger blink" style="display: none;" ></button>
+<h3 id="?" class="fs-5">???</h3>
+<div id="Gegenstände" class="container">
+      <div id="inhaltBox1" class="p-3 mb-2 bg-black text-white">
+      <div id="inhaltBox2" class="p-3 mb-2 bg-black text-white">
+      <div id="inhaltBox3" class="p-3 mb-2 bg-black text-white">
+    </div>
+</div>
+<button id="Wertebutton" class="btn btn-dark" data-bs-toggle="button" aria-pressed="true" >Deine Werte</button>
+<div id="WerteMenu" style="display: none" class="list-group-item list-group-item-dark">
+  <h1 class="title">Deine Werte:</h1>
+  <e></e>
+  <span class="label">Standort:</span> <span class="StandortWert"></span>
+  <br><span class="label">Charisma:</span> <span class="CharismaWert"></span>
+  <br><span class="label">Name:</span> <span class="NameWert"></span>
+</div>
+</body>
+</html>

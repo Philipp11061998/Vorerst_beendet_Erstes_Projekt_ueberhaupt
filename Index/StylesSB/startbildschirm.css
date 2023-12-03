@@ -1,0 +1,154 @@
+@font-face {
+  font-family: 'MittelalterlicheSchrift';
+  src: url('../Fonts/GreatVibes-Regular.ttf') format('TrueType');
+}
+
+body {
+  font-family: "Garamond", "Palatino", serif; /* Mittelalterliche Schriftart */
+  background-image: url('background.png'); /* Hintergrundbild */
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #cab999 ;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.startbildschirm {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+h1 {
+  font-size: 2em;
+  color: #fff;
+  margin: 0;
+  font-family: 'MittelalterlicheSchrift';
+}
+h2 {
+  font-size: 2em;
+  color: #fff;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #fff;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1.2em;
+  background-color: #8B4513; /* Farbe für mittelalterliches Flair */
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #CD853F; /* Helle Variante der Farbe */
+}
+
+#Startmenü {
+  overflow: hidden;
+  display: none;
+  position: fixed;
+  bottom: 20%;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  background-color: rgba(0, 0, 0, 0.747); /* 50 Prozent transparenter schwarzer Hintergrund */
+  border-radius: 10px; /* Abgerundete Ecken */
+  padding: 10px; /* Innenabstand */
+  text-align: center;
+}
+
+#NewGame {
+  color: #fff; /* Weiße Schriftfarbe */
+  top: 400px;
+  width: 270px;
+  border: none; /* Kein Rahmen */
+  padding: 5px 10px; /* Innenabstand für den Button */
+  border-radius: 5px; /* Abgerundete Ecken für den Button */
+  cursor: pointer;
+}
+
+#NewGame:hover {
+  background-color: #333; /* Dunklerer Hintergrund bei Hover */
+}
+
+#Spielexp:hover {
+  background-color: #333; /* Dunklerer Hintergrund bei Hover */
+}
+
+#Spielimp:hover {
+  background-color: #333; /* Dunklerer Hintergrund bei Hover */
+}
+
+#NewGame:hover {
+  background-color: #333; /* Dunklerer Hintergrund bei Hover */
+}
+
+#Spielen,
+#Spielexp,
+#Spielimp,
+#Admin {
+  color: #fff; /* Weiße Schriftfarbe */
+  width: 270px;
+  border: none; /* Kein Rahmen */
+  padding: 5px 10px; /* Innenabstand für den Button */
+  border-radius: 5px; /* Abgerundete Ecken für den Button */
+  cursor: pointer;
+}
+
+.SpielimpLabel {
+  display: inline-block; /* Damit das Label die gleiche Höhe wie die Buttons hat */
+  margin-bottom: 10px; /* Abstand zum nächsten Element (z.B., zum nächsten Button) */
+  color: #fff; /* Weiße Schriftfarbe */
+  width: 270px;
+  border: none; /* Kein Rahmen */
+  padding: 5px 10px; /* Innenabstand für den Button */
+  border-radius: 5px; /* Abgerundete Ecken für den Button */
+  cursor: pointer;
+}
+
+
+#Spielen:hover{
+  background-color: #333; /* Dunklerer Hintergrund bei Hover */
+}
+
+.disabled-hover {
+  pointer-events: none; /* Verhindert das Klicken und Hovern */
+  opacity: 0.6; /* Reduziert die Transparenz für deaktivierte Optik */
+  cursor: not-allowed; /* Zeigt den nicht-erlaubten Cursor an */
+}
+
+#LocalStorage {
+  color: #fff; /* Weiße Schriftfarbe */
+  top: 400px;
+  width: 270px;
+  border: none; /* Kein Rahmen */
+  padding: 5px 10px; /* Innenabstand für den Button */
+  border-radius: 5px; /* Abgerundete Ecken für den Button */
+  cursor: pointer;
+}
+
+#LocalStorage:hover {
+  background-color: #333; /* Dunklerer Hintergrund bei Hover */
+}
+#LocalStorageShow {
+  color: #fff; /* Weiße Schriftfarbe */
+  top: 400px;
+  width: 270px;
+  border: none; /* Kein Rahmen */
+  padding: 5px 10px; /* Innenabstand für den Button */
+  border-radius: 5px; /* Abgerundete Ecken für den Button */
+  cursor: pointer;
+}
+
+#LocalStorageShow:hover {
+  background-color: #333; /* Dunklerer Hintergrund bei Hover */
+}

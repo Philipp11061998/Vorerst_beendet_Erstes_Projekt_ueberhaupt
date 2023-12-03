@@ -1,0 +1,94 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000; /* Schwarzer Hintergrund */
+  color: #fff; /* Textfarbe auf Weiß */
+  font-family: "Garamond", "Palatino", serif; /* Mittelalterliche Schriftart */
+  overflow: hidden; /* Scrollen deaktivieren */
+}
+
+.text-feld {
+  position: absolute;
+  bottom: 1px;
+  left: 1px;
+  height: 400px;
+  background-color: transparent;
+  font-size: 30px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: left;
+}
+
+
+#Name {
+  position: absolute;
+  bottom: 300px;
+  left: 40px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: center;
+  color: #fff;
+  display: none;
+  border: none;
+  background-color: transparent;
+  font-size: 1.1em;
+}
+
+#Name:hover {
+  font-size: bold;
+}
+
+#Name:hover::before {
+  content: "↳"; /* Fügt das ↳-Zeichen vor dem Text ein */
+  margin-right: 5px; /* Platz zwischen dem Zeichen und dem Text */
+  font-weight: bold; /* Fettgedruckt */
+
+}
+
+#Schweigen {
+  position: absolute;
+  bottom: 250px;
+  left: 40px; /* Adjust the left position as needed */
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: center;
+  color: #fff;
+  border: none;
+  display: none;
+  background-color: transparent;
+  font-size: 1.1em;
+
+}
+#Schweigen:hover {
+  font-size: bold;
+}
+#Schweigen:hover::before {
+  content: "↳"; /* Fügt das ↳-Zeichen vor dem Text ein */
+  margin-right: 5px; /* Platz zwischen dem Zeichen und dem Text */
+  font-weight: bold; /* Fettgedruckt */
+
+}
+
+.Name {
+  text-align: center;
+  color: white;
+  background-color: transparent;
+  border: 1px solid #000;
+  padding: 10px; /* Abstand um den Text und das Eingabefeld */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  font-family: 'MittelalterlicheSchrift', serif;
+}
+
+
+#inputName {
+  display: block;
+  margin: 10px auto; /* Zentriert das Eingabefeld horizontal und fügt einen Abstand oben und unten hinzu */
+  width: 200px; /* Breite des Eingabefelds */
+  background-color: white; /* Weißer Hintergrund */
+  border: 1px solid #000; /* 1px schwarzer Rand */
+  color: #000; /* Schwarze Schriftfarbe */
+}
