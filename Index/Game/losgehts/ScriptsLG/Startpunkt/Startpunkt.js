@@ -124,7 +124,7 @@ export function Startpunkt() {
         FragezeichenKästchen.style.display = "none";
         Wertebuttonstyle.style.display = "none";
         document.body.style.backgroundImage = "none"; 
-        document.getElementById("?").style.display="none";
+        document.getElementById("unbekannt").style.display="none";
         insertCenteredTextWithDelayAndSlowText("Langsam gehst du durch den Wald. Beunruhigt von den Geräuschen schaust du dich um. Du begegnest 3 manngroßen Obelisken mit jeweils einer Öffnung. Ansonsten ist es einfach ein normaler Waldweg. Bald schon erreichst du die Stadt..", function () {
         textFeld.style.display = "block";
         textFeld.textContent = ''; // Text zunächst leeren
