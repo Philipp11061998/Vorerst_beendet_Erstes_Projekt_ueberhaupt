@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 })
                 }
-            }else{
+            }else if (Quest1FromLocalStorage === "3"){
                 document.getElementById("Der Start in dein neues Abenteuer").style.display = "none";
             }
         }) 

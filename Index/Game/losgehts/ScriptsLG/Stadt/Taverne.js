@@ -285,18 +285,45 @@ if (Quests.StartAdventure === 3){
             ButtonQ1.style.display = "none";
             ButtonT1style.textContent = "";
             ButtonT2style.textContent = "";
-            insertText("Bitte komm erst wieder, wenn du alles erledigt hast.", true, "Zurück in die Stadt gehen", "", ButtonT1style, ButtonT2style, ...buttonArrayQSA1 )
-          
+
+            //NPC erstellen
+            NPCtoSlide("Johann", "Johann", "/Stadt/Taverne/Johann.png");
+            
+            NPCSlideLeft("Johann");
+
+            setTimeout(function () {
+              insertText("Bitte komm erst wieder, wenn du alles erledigt hast.", true, "Zurück in die Stadt gehen", "", ButtonT1style, ButtonT2style, ...buttonArrayQSA1 )
+            },1200);
           }
           else if (Quests.StartAdventure === 2 && Quests.Questblock1 === 1){
-
-            insertText("Vielen Dank mein Freund. Es werden jetzt sicher noch mehr Bürger auf dich zukommen. Komm jederzeit wieder und schaue ob Aufgaben für dich da sind.", true, "Zurück in die Stadt gehen", "", ButtonT1style, ButtonT2style )
+            textFeld.textContent = '';
             ButtonT1style.style.display = "none";
             ButtonT2style.style.display = "none";
             ButtonQ1.style.display = "none";
-            changeQuest("StartAdventure", 3);
-            changeQuest("Questblock1", 3);
-            Taverne();
+            ButtonT1style.textContent = "";
+            ButtonT2style.textContent = "";
+
+            //NPC erstellen
+            NPCtoSlide("Johann", "Johann", "/Stadt/Taverne/Johann.png");
+            
+            NPCSlideLeft("Johann");
+
+            setTimeout(function () {
+              insertText("Vielen Dank mein Freund. Es werden jetzt sicher noch mehr Bürger auf dich zukommen. Komm jederzeit wieder und schaue ob Aufgaben für dich da sind.", true, "Zurück in die Stadt gehen", "", ButtonT1style, ButtonT2style )
+              ButtonT1style.style.display = "none";
+              ButtonT2style.style.display = "none";
+              ButtonQ1.style.display = "none";
+              changeQuest("StartAdventure", 3);
+              changeQuest("Questblock1", 3);
+              
+              setTimeout(function(){
+                document.getElementById("NPCNames").style.display = "none";
+                Johann.remove();
+                textFeld.textContent = "";
+                changeStandort("Stadt");
+                StadtOW();
+              }, 4000);
+            }, 1200);
           }
         });
       } else if (Questblock1 === 3) {
