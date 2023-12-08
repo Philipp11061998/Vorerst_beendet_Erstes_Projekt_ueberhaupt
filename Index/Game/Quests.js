@@ -11,6 +11,7 @@ export let Quests = {
     Quest5: parseInt(localStorage.getItem('Quest5')) || 0,
     Quest6: parseInt(localStorage.getItem('Quest6')) || 0,
     Quest7: parseInt(localStorage.getItem('Quest7')) || 0,
+    Questblock2: parseInt(localStorage.getItem('Questblock2')) || 0
 }
 
 export function changeQuest(welche, Wert){
@@ -18,8 +19,7 @@ export function changeQuest(welche, Wert){
         Quests.StartAdventure = Wert;
     } else if (welche === "StartAdventure" && Wert === 2){
       Quests.StartAdventure = Wert;
-    }
-    else if (welche === "Questblock1" && Wert === 1){
+    }else if (welche === "Questblock1" && Wert === 1){
         Quests.Questblock1 = 1;
     } else if (welche === "Questblock1" && Wert === 3){
         Quests.Questblock1 = 3;
@@ -27,6 +27,7 @@ export function changeQuest(welche, Wert){
     }
     localStorage.setItem('StartAdventure', Quests.StartAdventure);
     localStorage.setItem('Questblock1', Quests.Questblock1);
+    localStorage.setItem('Questblock2', Quests.Questblock2);
 } 
 
 export function Questexe(Quest, Position){

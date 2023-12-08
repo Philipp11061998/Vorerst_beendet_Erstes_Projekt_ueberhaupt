@@ -14,10 +14,25 @@ body {
     height: 100%; /* Füge dies hinzu, um die volle Höhe des Viewports zu verwenden */
 }
 
+#untererBody{
+    position: fixed;
+    left: 0%;
+    bottom: 0%;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    height: 32%;
+    min-height: 32%;
+    max-height: 32%;
+    background-color: #000;
+    z-index: 1;
+}
+
 #bewegendesTextfeld {
     overflow: hidden;
     position: fixed;
-    font-size: 1.6vw;
+    font-size: 1.4vw !important;
+    background-color: #000;
     bottom: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
     left: 0.1%;
     top: 68%;
@@ -27,7 +42,7 @@ body {
     right: 7%;
     min-height: 31.5%;
     max-height: 31.5%;
-    z-index: 1;
+    z-index: 2;
     pointer-events: none; 
 }
 
@@ -321,17 +336,19 @@ h3 {
     color: #fff;
     border: none;
     z-index: 2;
-  }
-  .art2Button:hover {
+}
+
+.art2Button:hover {
     font-size: bold;
-  }
-  .art2Button:hover::before {
+}
+
+.art2Button:hover::before {
     content: "↳"; /* Fügt das ↳-Zeichen vor dem Text ein */
     margin-right: 5px; /* Platz zwischen dem Zeichen und dem Text */
     font-weight: bold; /* Fettgedruckt */
-  }
+}
 
-  #Q1 {
+#Q1 {
     position: fixed;
     top: 25%;
     left: 10%;
@@ -342,7 +359,16 @@ h3 {
     border-radius: 30px; /* Feste Pixel für abgerundete Ecken */
 }
 
-
+.QuestKreis {
+    position: fixed;
+    min-height: 5%;
+    max-height: 5%;
+    min-width: 2.5%;
+    max-width: 2.5%;
+    border-color: red;
+    border-radius: 30px; /* Feste Pixel für abgerundete Ecken */
+    background-color: red;
+}
 
 #buttonT{
     position: fixed;
@@ -452,9 +478,10 @@ h3 {
     max-height: 50%;
     z-index: 2;
 }
+
 .QuestText {
     white-space: pre-line;
-  }
+}
 
 .QuestInfoLocation {
     overflow: hidden;
@@ -462,7 +489,7 @@ h3 {
     border: 2px solid #fff;
     border-radius: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
     top: 36.1%;
-    left: 5%;
+    left: 24%;
     padding-bottom: 2%; /* Nutzt relative Einheit statt fester Pixelwerte */
     padding-left: 4%; /* Nutzt relative Einheit statt fester Pixelwerte */
     padding-right: 4%; /* Nutzt relative Einheit statt fester Pixelwerte */
@@ -486,6 +513,19 @@ h3 {
     border-bottom: 1px solid #fff;
     text-align: center;
 }
+
+.erledigteQuests{
+    font-size: 0.6vw !important;
+    width: 70% !important;
+    margin: auto !important;
+}
+
+.erledigteQuestsChecked::before {
+    content: "✅"; /* Fügt das ✅-Zeichen vor dem Text ein */
+    margin-right: 5px;
+    width: 70% !important;
+}
+
 #QuestInfo{
     overflow: hidden;
     position: fixed;
@@ -504,4 +544,30 @@ h3 {
     border-radius: 15px; /* Feste Pixel für abgerundete Ecken */
     max-width: 12%; 
     z-index: 100;
+}
+
+#NPCNames{
+    position: fixed;
+    bottom: 31.94%;
+    left: 1%;
+    font-size: 1.2vw;
+    background-color: #000;
+    padding-left: 0.7%;
+    padding-right: 0.7%;
+    border: 1px solid #fff;
+}
+
+.NPCLeft{
+    position: fixed;
+    background-position: center;
+    background-size: cover;
+    left: -20%;
+    bottom: 32%;
+    height: 40%;
+    min-height: 40%;
+    max-height: 40%;
+    width: 25%;
+    min-width: 25%;
+    max-width: 25%;
+    z-index: 2;
 }

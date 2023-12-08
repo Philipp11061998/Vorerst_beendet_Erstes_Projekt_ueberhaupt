@@ -3,6 +3,7 @@ import { Startpunkt } from './ScriptsLG/Startpunkt/Startpunkt.js';
 import { StadtOW } from './ScriptsLG/Stadt/Overworld.js';
 import { Taverne } from './ScriptsLG/Stadt/Taverne.js';
 import { Quests, Questexe } from '../Quests.js';
+import { TorbogenWest } from './ScriptsLG/Stadt/TorbogenWest.js';
 
 document.addEventListener("DOMContentLoaded", function () {
     const Werte = document.getElementById("WerteMenu");
@@ -32,6 +33,8 @@ document.addEventListener("DOMContentLoaded", function () {
         Button1Funktionen("Stadt");
     } else if (maxStandort === "Taverne") {
         Button1Funktionen("Taverne");
+    } else if (maxStandort === "TorbogenWest"){
+        Button1Funktionen("TorbogenWest");
     }
 
     // Funktion zum Aktualisieren der Werte basierend auf dem LocalStorage
@@ -80,9 +83,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById("Quests").addEventListener("click", function(){
         const Quest1FromLocalStorage = localStorage.getItem('StartAdventure');
+        document.getElementById("QueckedQuests").style.display = "block";
 
         if (Object.values(Quests).some(value => value > 0)) {
-            if (Quest1FromLocalStorage === "1"){ // Achte darauf, dass der Wert aus dem Local Storage als Zeichenkette verglichen wird
+            if (Quest1FromLocalStorage === "1" || Quest1FromLocalStorage === "2"){ // Achte darauf, dass der Wert aus dem Local Storage als Zeichenkette verglichen wird
                 if (!document.getElementById("Der Start in dein neues Abenteuer")) {
                     createQuestButton("Der Start in dein neues Abenteuer");
 
@@ -96,11 +100,39 @@ document.addEventListener("DOMContentLoaded", function () {
                             document.getElementById("QuestInfoText").remove();
                         }
                     })
+                } else if (Quest1FromLocalStorage === "3") {
+                    if (!document.getElementById("Der Start in dein neues Abenteuer")) {
+                        createQuestButton("Der Start in dein neues Abenteuer");
+                
+                        // Zeige den Button an (du musst den Button nach seiner Erstellung anzeigen)
+                        document.getElementById("Der Start in dein neues Abenteuer").style.display = "none";
+                    }
                 }
             }
-        } else {
-            
         }
+        document.getElementById("QueckedQuests").addEventListener("click", function(){
+            if (document.getElementById("QueckedQuests").classList.contains("erledigteQuestsChecked")){
+                if (Quest1FromLocalStorage === "3"){
+                    if (!document.getElementById("Der Start in dein neues Abenteuer")) {
+                        createQuestButton("Der Start in dein neues Abenteuer");
+                
+                        // Zeige den Button an (du musst den Button nach seiner Erstellung anzeigen)
+                        document.getElementById("Der Start in dein neues Abenteuer").style.display = "none";
+                    }
+                document.getElementById("Der Start in dein neues Abenteuer").style.display = "block";
+                
+                document.getElementById("Der Start in dein neues Abenteuer").addEventListener("click", function(){
+                    if (!document.getElementById("QuestInfoText")){
+                        Questexe("QuestInfoText", "QuestMenü");
+                    } else {
+                        document.getElementById("QuestInfoText").remove();
+                    }
+                })
+                }
+            }else{
+                document.getElementById("Der Start in dein neues Abenteuer").style.display = "none";
+            }
+        }) 
     });
 
     document.getElementById("Wertebutton").addEventListener("click", function () {
@@ -187,6 +219,11 @@ document.addEventListener("DOMContentLoaded", function () {
     
         QuestContainer.appendChild(button);
     }
+
+    document.getElementById("QueckedQuests").addEventListener("click", function() {
+        let button = document.getElementById("QueckedQuests");
+        button.classList.toggle("erledigteQuestsChecked");
+    });
 });
 
 export function Button1Funktionen(Event){
@@ -197,15 +234,8 @@ export function Button1Funktionen(Event){
         StadtOW();
     } else if (Event === "Taverne"){
         Taverne();
-    }
-}
-export function Button2Funktionen(Event){
-    if (Event === "Startpunkt"){
-        Startpunkt();
-    } else if (Event === "Stadt"){
-        StadtOW();
-    } else if (Event === "Taverne"){
-        Taverne();
+    } else if (Event === "TorbogenWest"){
+        TorbogenWest();
     }
 }
 

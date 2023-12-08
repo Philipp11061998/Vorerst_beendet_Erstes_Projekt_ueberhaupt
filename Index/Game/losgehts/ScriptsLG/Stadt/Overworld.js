@@ -111,7 +111,7 @@ export function StadtOW(){
       // Schriftfarbe auf Weiß setzen
       textFeld.style.color = 'white';
 
-      insertText("Endlich bist du in der Stadt angekommen. Was möchtest du tun?", true, ButtonSOW1style , ButtonSOW2style, "", "Zurück in den Wald laufen");
+      insertText("Du bist am Stadteingang angekommen. Was möchtest du tun?", true, ButtonSOW1style , ButtonSOW2style, "", "Zurück in den Wald laufen");
 
       document.getElementById("buttonT").addEventListener("click", function () {
           changeStandort("Taverne");

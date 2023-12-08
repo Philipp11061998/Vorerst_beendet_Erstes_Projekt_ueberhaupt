@@ -41,6 +41,8 @@ export function resetvalues(){
   Standorte.Taverne = 0;
   Standorte.TorbogenWest = 0;
   Quests.StartAdventure = 0,
+  Quests.Questblock1 = 0;
+  Quests.Questblock2 = 0;
   Admin = 0;
 
   localStorage.setItem('Name_abgefragt', values.Name_abgefragt);
@@ -51,6 +53,8 @@ export function resetvalues(){
   localStorage.setItem('Taverne', Standorte.Taverne);
   localStorage.setItem('TorbogenWest', Standorte.TorbogenWest);
   localStorage.setItem('StartAdventure', Quests.StartAdventure);
+  localStorage.setItem('Questblock1', Quests.Questblock1);
+  localStorage.setItem('Questblock2', Quests.Questblock2);
   localStorage.setItem('Admin', AdminMode.Admin)
 
 }
@@ -136,7 +140,9 @@ export function expLS() {
       TorbogenWest: Standorte.TorbogenWest.toString()
     },
     Quests: {
-      StartAdventure: Quests.StartAdventure.toString()
+      StartAdventure: Quests.StartAdventure.toString(),
+      Questblock1: Quests.Questblock1.toString(),
+      Questblock2: Quests.Questblock2.toString()
     }
     // ... füge hier alle anderen zu exportierenden Werte hinzu ...
   });
@@ -171,6 +177,8 @@ export function impLS(file) {
       localStorage.setItem('Taverne', importedData.Standorte.Taverne);
       localStorage.setItem('TorbogenWest', importedData.Standorte.TorbogenWest);
       localStorage.setItem('StartAdventure', importedData.Quests.StartAdventure);
+      localStorage.setItem('Questblock1', importedData.Quests.Questblock1);
+      localStorage.setItem('Questblock2', importedData.Quests.Questblock2);
 
       // ... setze hier alle anderen importierten Werte ...
 

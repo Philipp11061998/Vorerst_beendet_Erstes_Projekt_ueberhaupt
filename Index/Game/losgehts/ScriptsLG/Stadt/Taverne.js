@@ -6,6 +6,42 @@ import { StadtOW } from "./Overworld.js";
 import { insertText } from "../Startpunkt/Startpunkt.js";
 import { changeQuest, Quests, Questexe } from "../../../Quests.js";
 
+//NPC erstellen
+export function NPCtoSlide(Name, ID, Location){ //Location Format Beispiel: "/Stadt/Taverne/Johann.png"
+  var Name = document.createElement('div');
+  var NPCName = document.getElementById("NPCNames");
+  Name.style.backgroundImage = `url("StylesLG/Orte${Location}")`;
+  Name.classList.add("NPCLeft");
+  Name.style.display = "block";
+  Name.id = ID; // Eindeutige ID zuweisen
+  document.body.appendChild(Name);
+
+  };
+
+  //NPC reinsliden
+  export function NPCSlideLeft(Element) {
+    var NPC = document.getElementById(Element);
+    var NPCName = Element;
+
+    var currentPosition = parseFloat(NPC.style.left) || -20; // Aktuelle Position oder 0, falls nicht festgelegt
+    var targetPosition = 5; // Zielposition in Prozent
+    var increment = 0.6; // Schrittweite
+  
+    var slideInterval = setInterval(function () {
+        currentPosition += increment;
+        NPC.style.left = currentPosition + '%';
+  
+        if (currentPosition >= targetPosition) {
+            clearInterval(slideInterval); // Schleife beenden, wenn die Zielposition erreicht ist
+        }
+    }, 1); // Intervall in Millisekunden zwischen den Schritten
+
+    setTimeout(function () {
+      document.getElementById("NPCNames").textContent = NPCName;
+      document.getElementById("NPCNames").style.display = "block";
+    }, 1200);
+  }
+
 export function Taverne(){
 
       // Event-Listener für Klick-Ereignisse auf dem gesamten Dokument, um alles zu löschen, was nicht da sein sollte
@@ -92,16 +128,19 @@ if (Quests.StartAdventure === 3){
 
 
   insertText("Du bist in der Taverne angekommen. Schaue dich in Ruhe um, vielleicht möchte jemand etwas von dir.", true, "Zurück in die Stadt gehen", "", ButtonT1style, ButtonT2style, ...buttonArray);
-
-
-  ButtonQ1.addEventListener("click", function() {
+  
+  setTimeout(function(){
     AllQuests();
-    });
+  }, 2600)
 
 
     function AllQuests(){
-      if (Quests.StartAdventure === 0){
-          if (aktiv === 0){
+      
+      if (Quests.Questblock1 === 0 || Quests.Questblock1 === 1 || Questblock1 === 2){
+        ButtonQ1.style.display = "block";
+        
+        document.getElementById("Q1").addEventListener("click", function(){
+          if (Quests.StartAdventure === 0 && Quests.Questblock1 === 0){
             textFeld.textContent = '';
             ButtonQ1.classList.remove("blink");
             ButtonQ1.style.display = "none";
@@ -127,8 +166,14 @@ if (Quests.StartAdventure === 3){
               Spielername = usernameFromLocalStorage;
             }
 
-        
-            insertText('Quest: Der Start in dein neues Abenteuer <br>Hallo, du musst ' + Spielername + ' sein. Man spricht bereits in der ganzen Stadt von dir. Was hältst du davon, du erledigst eine Kleinigkeit für mich und ich lege ein gutes Wort für dich ein?<br><br>Belohnung:<br>+5 auf Charisma', false);
+            //NPC erstellen
+            NPCtoSlide("Johann", "Johann", "/Stadt/Taverne/Johann.png");
+            
+            NPCSlideLeft("Johann");
+
+            setTimeout(function () {
+              insertText('Quest: Der Start in dein neues Abenteuer <br>Hallo, du musst ' + Spielername + ' sein. Man spricht bereits in der ganzen Stadt von dir. Was hältst du davon, du erledigst eine Kleinigkeit für mich und ich lege ein gutes Wort für dich ein?<br><br>Belohnung:<br>+5 auf Charisma', false); 
+            }, 1200);
 
             
             setTimeout(function () {
@@ -193,11 +238,14 @@ if (Quests.StartAdventure === 3){
                     questInfoText.style.display = "none";
                 }
                 
+                document.getElementById("NPCNames").style.display = "none";
+                Johann.remove();
                 annehmen.remove();
                 ablehnen.remove();
                 Info.remove();
 
                 changeQuest("StartAdventure", 1);
+                changeQuest("Questblock1", 1);
                 changeStandort("Stadt");
                 StadtOW();
               });
@@ -208,6 +256,8 @@ if (Quests.StartAdventure === 3){
                     questInfoText.style.display = "none";
                 }
 
+                document.getElementById("NPCNames").style.display = "none";
+                Johann.remove();
                 annehmen.remove();
                 ablehnen.remove();
                 Info.remove();
@@ -226,22 +276,35 @@ if (Quests.StartAdventure === 3){
                 Questexe("QuestInfoText", "QuestInfoLocation");
               });              
             }, 4500);
-
+            }
+          else if (Quests.StartAdventure === 1 && Quests.Questblock1 === 1){
+            let buttonArrayQSA1 = [ButtonT1style]
+            textFeld.textContent = '';
+            ButtonT1style.style.display = "none";
+            ButtonT2style.style.display = "none";
+            ButtonQ1.style.display = "none";
+            ButtonT1style.textContent = "";
+            ButtonT2style.textContent = "";
+            insertText("Bitte komm erst wieder, wenn du alles erledigt hast.", true, "Zurück in die Stadt gehen", "", ButtonT1style, ButtonT2style, ...buttonArrayQSA1 )
+          
           }
-        }
-      else if (Quests.StartAdventure === 1){
-        textFeld.textContent = '';
-        ButtonT1style.style.display = "none";
-        ButtonT2style.style.display = "none";
-        ButtonT1style.textContent = "";
-        ButtonT2style.textContent = "";
-        insertText("Bitte komm erst wieder, wenn du alles erledigt hast.", true, "Zurück in die Stadt gehen", "", ButtonT1style, ButtonT2style, ...buttonArray )
-      
+          else if (Quests.StartAdventure === 2 && Quests.Questblock1 === 1){
+
+            insertText("Vielen Dank mein Freund. Es werden jetzt sicher noch mehr Bürger auf dich zukommen. Komm jederzeit wieder und schaue ob Aufgaben für dich da sind.", true, "Zurück in die Stadt gehen", "", ButtonT1style, ButtonT2style )
+            ButtonT1style.style.display = "none";
+            ButtonT2style.style.display = "none";
+            ButtonQ1.style.display = "none";
+            changeQuest("StartAdventure", 3);
+            changeQuest("Questblock1", 3);
+            Taverne();
+          }
+        });
+      } else if (Questblock1 === 3) {
+        
       }
-      else if (Quests.StartAdventure === 2){
-        insertText("Vielen Dank mein Freund. Es werden jetzt sicher noch mehr Bürger auf dich zukommen. Komm jederzeit wieder und schaue ob Aufgaben für dich da sind.", true, "Zurück in die Stadt gehen", "", ButtonT1style, ButtonT2style )
-      }
+
     }
+
     ButtonT1style.addEventListener("click", function () {
         changeStandort("Stadt");
         ButtonT1style.style.display = "none";
