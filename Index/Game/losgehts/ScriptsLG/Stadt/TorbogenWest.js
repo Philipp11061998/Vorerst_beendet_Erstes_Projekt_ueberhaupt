@@ -86,6 +86,7 @@ export function TorbogenWest(){
                 if (Quests.StartAdventure === 1 && Quests.Questblock1 === 1){
                     disableAllButtons();
                     textFeld.textContent = "";
+                    document.getElementById("Wertebutton").style.display = "block";
 
                     //NPC erstellen und dann sliden  
                     NPCtoSlide("Brutus", "Brutus", "/Stadt/westlicherTorbogen/Brutus.png");
@@ -133,6 +134,7 @@ export function TorbogenWest(){
                         document.getElementById("Yes").remove();
                         disableAllButtons();
                         textFeld.textContent = "";
+                        document.getElementById("Wertebutton").style.display = "block";
                         
                         //Quest abgeben
                         var Yes = document.createElement('button');
@@ -245,6 +247,7 @@ export function TorbogenWest(){
 
                     let NPC = document.getElementById("Brutus");
                     disableAllButtons();
+                    document.getElementById("Wertebutton").style.display = "block";
 
                     setTimeout(function () {
                         insertText('Nerv jemand anderen! Unbekannte haben hier nichts zu sagen!', true, ButtonSorry, Buttonempty, "Entschuldigen und gehen..", "", ...buttonArray)

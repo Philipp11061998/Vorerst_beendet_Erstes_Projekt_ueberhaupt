@@ -143,6 +143,9 @@ export function expLS() {
       StartAdventure: Quests.StartAdventure.toString(),
       Questblock1: Quests.Questblock1.toString(),
       Questblock2: Quests.Questblock2.toString()
+    },
+    AdminMode: {
+      Admin: AdminMode.Admin.toString()
     }
     // ... füge hier alle anderen zu exportierenden Werte hinzu ...
   });
@@ -179,6 +182,7 @@ export function impLS(file) {
       localStorage.setItem('StartAdventure', importedData.Quests.StartAdventure);
       localStorage.setItem('Questblock1', importedData.Quests.Questblock1);
       localStorage.setItem('Questblock2', importedData.Quests.Questblock2);
+      localStorage.setItem('Admin', importedData.AdminMode.Admin)
 
       // ... setze hier alle anderen importierten Werte ...
 

@@ -136,9 +136,11 @@ if (Quests.StartAdventure === 3){
 
     function AllQuests(){
       
+      //Erster Questblock
       if (Quests.Questblock1 === 0 || Quests.Questblock1 === 1 || Questblock1 === 2){
         ButtonQ1.style.display = "block";
         
+        //Quest 1 
         document.getElementById("Q1").addEventListener("click", function(){
           if (Quests.StartAdventure === 0 && Quests.Questblock1 === 0){
             textFeld.textContent = '';
@@ -326,6 +328,8 @@ if (Quests.StartAdventure === 3){
             }, 1200);
           }
         });
+
+        // 1. Questblock fertig, aber kein anderer ausgewählt
       } else if (Questblock1 === 3) {
         
       }
