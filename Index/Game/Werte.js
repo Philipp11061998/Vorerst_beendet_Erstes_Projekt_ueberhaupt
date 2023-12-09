@@ -7,7 +7,8 @@ export let AdminMode = {
 export let values = {
   Charisma: parseInt(localStorage.getItem('Charisma')) || 0,
   username: localStorage.getItem('username') || "Fremder",
-  Name_abgefragt: parseInt(localStorage.getItem('Name_abgefragt')) || 0
+  Name_abgefragt: parseInt(localStorage.getItem('Name_abgefragt')) || 0,
+  Geschlecht: parseInt(localStorage.getItem('Geschlecht')) || ""
 };
 
 export function increaseCharisma(increaseBy) {
@@ -32,10 +33,16 @@ export function AbfrageName() {
   localStorage.setItem('Name_abgefragt', values.Name_abgefragt);
 }
 
+export function Geschlechtchange(Geschlecht){
+  values.Geschlecht = Geschlecht;
+  localStorage.setItem('Geschlecht', values.Geschlecht);
+}
+
 export function resetvalues(){
   values.Name_abgefragt = 0;
   values.Charisma = 0;
   values.username = "Fremder";
+  values.Geschlecht = "";
   Standorte.Startpunkt = 0;
   Standorte.Stadt = 0;
   Standorte.Taverne = 0;
@@ -44,10 +51,12 @@ export function resetvalues(){
   Quests.Questblock1 = 0;
   Quests.Questblock2 = 0;
   Admin = 0;
+  
 
   localStorage.setItem('Name_abgefragt', values.Name_abgefragt);
   localStorage.setItem('Charisma', values.Charisma);
   localStorage.setItem('username', values.username);
+  localStorage.setItem('Geschlecht', values.Geschlecht);
   localStorage.setItem('Startpunkt', Standorte.Startpunkt);
   localStorage.setItem('Stadt', Standorte.Stadt);
   localStorage.setItem('Taverne', Standorte.Taverne);
@@ -121,6 +130,7 @@ export function expLS() {
   localStorage.setItem('Charisma', values.Charisma.toString());
   localStorage.setItem('username', values.username);
   localStorage.setItem('Name_abgefragt', values.Name_abgefragt.toString());
+  localStorage.setItem('Geschlecht', values.Geschlecht.toString());
   localStorage.setItem('Startpunkt', Standorte.Startpunkt.toString());
   localStorage.setItem('Stadt', Standorte.Stadt.toString());
   localStorage.setItem('Taverne', Standorte.Taverne.toString());
@@ -131,7 +141,8 @@ export function expLS() {
     values: {
       Charisma: values.Charisma.toString(),
       username: values.username,
-      Name_abgefragt: values.Name_abgefragt.toString()
+      Name_abgefragt: values.Name_abgefragt.toString(),
+      Geschlecht: values.Geschlecht.toString()
     },
     Standorte: {
       Startpunkt: Standorte.Startpunkt.toString(),
@@ -175,6 +186,7 @@ export function impLS(file) {
       localStorage.setItem('Charisma', importedData.values.Charisma);
       localStorage.setItem('username', importedData.values.username);
       localStorage.setItem('Name_abgefragt', importedData.values.Name_abgefragt);
+      localStorage.setItem('Geschlecht', importedData.values.Geschlecht);
       localStorage.setItem('Startpunkt', importedData.Standorte.Startpunkt);
       localStorage.setItem('Stadt', importedData.Standorte.Stadt);
       localStorage.setItem('Taverne', importedData.Standorte.Taverne);

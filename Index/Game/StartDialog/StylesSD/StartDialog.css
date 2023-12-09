@@ -92,3 +92,35 @@ body {
   border: 1px solid #000; /* 1px schwarzer Rand */
   color: #000; /* Schwarze Schriftfarbe */
 }
+
+.MChar{
+  position: fixed;
+  left: 35%;
+  bottom: 10%;
+  height: 30%;
+}
+
+.WChar{
+  position: fixed;
+  left: 51%;
+  bottom: 10%;
+  height: 30%;
+}
+
+.selected{
+  border: 3px solid #fff;
+}
+
+#GeschlechterSchweigen{
+  position: fixed;
+  left: 43%;
+  top: 27%;
+  font-size: 1.2vw;
+}
+
+#GeschlechterName{
+  position: fixed;
+  left: 43%;
+  top: 56%;
+  font-size: 1.2vw;
+}

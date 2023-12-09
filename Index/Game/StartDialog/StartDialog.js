@@ -1,4 +1,4 @@
-import { values, setCharisma, setUsername, AbfrageName, changeStandort } from "../Werte.js";
+import { values, setCharisma, setUsername, AbfrageName, changeStandort, Geschlechtchange } from "../Werte.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   const textFeld = document.getElementById("bewegendesTextfeld");
@@ -44,12 +44,56 @@ document.addEventListener("DOMContentLoaded", function () {
 
   schweigenButton.addEventListener("click", schweigen);
 
+  document.getElementById("MChar").addEventListener("click", function(){
+    const Mchar = document.getElementById("MChar");
+    const Wchar = document.getElementById("WChar");
+
+    if (!Mchar.classList.contains("selected")){
+        if (Wchar.classList.contains("selected")){
+          Wchar.classList.remove("selected");
+        }
+        Mchar.classList.add("selected");
+    } else if (Mchar.classList.contains("selected")){
+      Mchar.classList.remove("selected");
+    }
+
+    const nameInput = nameDiv.querySelector("input");
+    nameInput.focus();
+});
+
+document.getElementById("WChar").addEventListener("click", function(){
+  const Mchar = document.getElementById("MChar");
+  const Wchar = document.getElementById("WChar");
+
+  if (!Wchar.classList.contains("selected")){
+      if (Mchar.classList.contains("selected")){
+        Mchar.classList.remove("selected");
+      }
+      Wchar.classList.add("selected");
+  } else if (Wchar.classList.contains("selected")){
+    Wchar.classList.remove("selected");
+  }
+
+  const nameInput = nameDiv.querySelector("input");
+  nameInput.focus();
+});
+
+
   nameInput.addEventListener("keydown", function(event) {
     if (event.key === "Enter" ) {
       const inputText = nameInput.value.trim();
       if (inputText === "") {
         nameField.textContent = "Bitte gib einen Namen ein.";
-      } else {
+      } else if (!document.getElementById("MChar").classList.contains("selected") && (!document.getElementById("WChar").classList.contains("selected"))){
+        alert("Bitte wähle dein Geschlecht aus.")
+      }
+      
+      else {
+          if (document.getElementById("MChar").classList.contains("selected")){
+            Geschlechtchange("Male");
+          } else if (document.getElementById("WChar").classList.contains("selected")){
+            Geschlechtchange("Female");
+          }
         setUsername(inputText);
         setCharisma(5);
         AbfrageName();
@@ -91,12 +135,39 @@ function namen() {
   
   const nameInput = nameDiv.querySelector("input");
   if (nameInput) {
+    document.getElementById("GeschlechterName").style.display = "block";
     nameInput.focus();
+    document.getElementById("MChar").style.display = "block";
+    document.getElementById("WChar").style.display = "block";
   }
 }
 
 function schweigen() {
   setUsername("Fremder");
-  window.location.href = "../losgehts/Game.html";
-  AbfrageName();
+  const textFeld = document.getElementById("bewegendesTextfeld");
+  const nameButton = document.getElementById("Name");
+  const schweigenButton = document.getElementById("Schweigen");
+  nameButton.style.display = "none";
+  schweigenButton.style.display = "none";
+  textFeld.textContent = '';
+  document.getElementById("GeschlechterSchweigen").style.display = "block";
+
+  document.getElementById("MChar").style.bottom = "38%";
+  document.getElementById("WChar").style.bottom = "38%";
+
+  document.getElementById("MChar").style.display = "block";
+  document.getElementById("WChar").style.display = "block";
+  
+  document.getElementById("MChar").addEventListener("click", function(){
+    Geschlechtchange("Male");
+    window.location.href = "../losgehts/Game.html";
+    AbfrageName();
+  })
+
+  document.getElementById("WChar").addEventListener("click", function(){
+    Geschlechtchange("Female");
+    window.location.href = "../losgehts/Game.html";
+    AbfrageName();
+  })
+ 
 }
