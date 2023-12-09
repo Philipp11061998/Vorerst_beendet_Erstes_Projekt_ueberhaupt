@@ -8,6 +8,7 @@ import { TorbogenWest } from './ScriptsLG/Stadt/TorbogenWest.js';
 document.addEventListener("DOMContentLoaded", function () {
     const Werte = document.getElementById("WerteMenu");
     let Adminfromlocalstorage = localStorage.getItem('Admin');
+    const Geschlechtfromlocalstorage = localStorage.getItem('Geschlecht');
 
     let maxStandort = Object.keys(Standorte).reduce((a, b) => Standorte[a] > Standorte[b] ? a : b);
 
@@ -140,7 +141,12 @@ document.addEventListener("DOMContentLoaded", function () {
         if (Werte.style.display === 'none') {
             updateValuesFromLocalStorage()
             document.getElementsByClassName("CharismaWert")[0].innerHTML = values.Charisma;
-            document.getElementsByClassName("NameWert")[0].innerHTML = values.username;
+            if (Geschlechtfromlocalstorage === "Male"){
+                console.log(Geschlechtfromlocalstorage)
+                document.getElementsByClassName("NameWert")[0].innerHTML = "♂ " + values.username;
+            } else if (Geschlechtfromlocalstorage === "Female"){
+                document.getElementsByClassName("NameWert")[0].innerHTML = "♀ " + values.username;
+            }
 
             if (maxStandort === "TorbogenWest"){
                 Ort = "Westlicher Torbogen";

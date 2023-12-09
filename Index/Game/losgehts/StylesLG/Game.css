@@ -114,6 +114,7 @@ h3 {
 #WerteMenu {
     overflow: hidden;
     position: fixed;
+    font-size: 1.05vw;
     border: 2px solid #fff;
     border-radius: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
     top: 8%;
