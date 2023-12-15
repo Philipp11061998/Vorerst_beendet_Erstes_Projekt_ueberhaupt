@@ -107,7 +107,7 @@ export function StadtOW(){
         }
     }
 
-      document.body.style.backgroundImage = 'url("StylesLG/Orte/Stadt/Overworld/Overworld.jpg")';
+      document.body.style.backgroundImage =  'url("StylesLG/Orte/Stadt/Overworld/Overworld.jpg")';
 
       // Schriftfarbe auf Weiß setzen
       textFeld.style.color = 'white';

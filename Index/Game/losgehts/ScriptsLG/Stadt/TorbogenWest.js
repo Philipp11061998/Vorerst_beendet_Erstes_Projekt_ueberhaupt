@@ -261,7 +261,8 @@ export function TorbogenWest(){
                     }, 1200);
 
                     ButtonSorry.addEventListener("click", function(){
-
+                        ButtonSorry.remove();
+                        Buttonempty.remove();
                         document.getElementById("NPCNames").style.display = "none";
                         NPC.remove();
                         changeStandort("Stadt");

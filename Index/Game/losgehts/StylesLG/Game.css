@@ -12,7 +12,24 @@ body {
     margin: 0;
     background-color: #000;
     height: 100%; /* Füge dies hinzu, um die volle Höhe des Viewports zu verwenden */
+    z-index: 1;
 }
+
+/* wenn breitbild
+#backgroundbody{
+    position: fixed;
+    left: 0%;
+    bottom: 32%;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    height: 68%;
+    min-height: 68%;
+    max-height: 68%;
+    background-position: center;
+    background-size: contain;
+}
+*/
 
 #untererBody{
     position: fixed;

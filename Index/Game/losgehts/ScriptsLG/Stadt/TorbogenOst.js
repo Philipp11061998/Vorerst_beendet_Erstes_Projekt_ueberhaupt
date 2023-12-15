@@ -15,7 +15,7 @@ export function TorbogenOst(){
 
     if (maxStandort === "TorbogenOst") {
 
-        document.body.style.backgroundImage = 'url("StylesLG/Orte/Stadt/ostlicherTorbogen/TorbogenOst.jpg")';
+        document.body.style.backgroundImage =  'url("StylesLG/Orte/Stadt/ostlicherTorbogen/TorbogenOst.jpg")';
 
 
         Admin();
@@ -78,6 +78,9 @@ export function TorbogenOst(){
         insertText(".", true, ButtonTO1, ButtonW2, "Zurück zum Stadteingang", "", ...buttonArray )
 
         ButtonTO1.addEventListener("click", function(){
+            ButtonTO1.remove();
+            ButtonTO2.remove();
+            ButtonW2.remove();
                 changeStandort("Stadt");
                 StadtOW();
         })
