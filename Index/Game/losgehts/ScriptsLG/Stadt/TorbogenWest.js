@@ -92,6 +92,14 @@ export function TorbogenWest(){
                     NPCtoSlide("Brutus", "Brutus", "/Stadt/westlicherTorbogen/Brutus.png");
                     NPCSlideLeft("Brutus");
 
+                    if (!document.getElementById("Brutus")){
+                        NPCtoSlide("Brutus", "Brutus", "/Stadt/westlicherTorbogen/Brutus.png");
+                        }
+                        const Brutus = document.getElementById("Brutus"); 
+                        var positionXPercent = -20;
+                        Brutus.style.left = positionXPercent + '%';
+                        NPCSlideLeft("Brutus");
+
                     //Buttons erstellen: Ja
                     var Yes = document.createElement('button');
                     Yes.classList.add("art1Button");
@@ -132,7 +140,6 @@ export function TorbogenWest(){
                     Yes.addEventListener("click", function(){
                         document.getElementById("No").remove();
                         document.getElementById("Yes").remove();
-                        disableAllButtons();
                         textFeld.textContent = "";
                         document.getElementById("Wertebutton").style.display = "block";
                         

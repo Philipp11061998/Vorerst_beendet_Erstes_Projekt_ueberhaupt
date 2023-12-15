@@ -4,6 +4,7 @@ import { StadtOW } from './ScriptsLG/Stadt/Overworld.js';
 import { Taverne } from './ScriptsLG/Stadt/Taverne.js';
 import { Quests, Questexe } from '../Quests.js';
 import { TorbogenWest } from './ScriptsLG/Stadt/TorbogenWest.js';
+import { TorbogenOst } from './ScriptsLG/Stadt/TorbogenOst.js';
 
 document.addEventListener("DOMContentLoaded", function () {
     const Werte = document.getElementById("WerteMenu");
@@ -36,6 +37,8 @@ document.addEventListener("DOMContentLoaded", function () {
         Button1Funktionen("Taverne");
     } else if (maxStandort === "TorbogenWest"){
         Button1Funktionen("TorbogenWest");
+    } else if (maxStandort === "TorbogenOst"){
+        Button1Funktionen("TorbogenOst");
     }
 
     // Funktion zum Aktualisieren der Werte basierend auf dem LocalStorage
@@ -242,6 +245,8 @@ export function Button1Funktionen(Event){
         Taverne();
     } else if (Event === "TorbogenWest"){
         TorbogenWest();
+    } else if (Event === "TorbogenOst"){
+        TorbogenOst();
     }
 }
 

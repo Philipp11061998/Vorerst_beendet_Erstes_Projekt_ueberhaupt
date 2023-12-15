@@ -14,6 +14,7 @@
   <script type="module" src="./ScriptsLG/Startpunkt/Startpunkt.js"></script>
   <script type="module" src="./ScriptsLG/Stadt/Taverne.js"></script>
   <script type="module" src="./ScriptsLG/Stadt/TorbogenWest.js"></script>
+  <script type="module" src="./ScriptsLG/Stadt/TorbogenOst.js"></script>
 </head>
 <body class="p-3 mb-2 bg-black text-white">
   <div id="untererBody" style="display: block;"></div>
@@ -26,7 +27,7 @@
   <!-- Das Menü ausgeklappt -->
   <div class="collapse" id="collapseExample">
     <div class="card card-body" id="Menüausgeklappt">
-      <b id="Quests" class="btn btn-light mb-2 collapsed" style="display: none;" data-bs-toggle="collapse" href="#Questscollapse" role="button" aria-expanded="false" aria-controls="Questscollapse" aria-pressed="true">
+      <b id="Quests" class="menub btn btn-light mb-2 collapsed" style="display: none;" data-bs-toggle="collapse" href="#Questscollapse" role="button" aria-expanded="false" aria-controls="Questscollapse" aria-pressed="true">
         Quests
       </b>
       <!-- Quests -->
@@ -37,9 +38,9 @@
           <!-- hier per .js die Quests als Button einfügen -->
         </div>
       </div>
-      <button id="Startmenü" class="btn btn-light mb-2">Startmenü</button>
-      <button id="dev" class="btn btn-light mb-2">Devs Insta</button>
-      <b id="AdminTools" class="btn btn-light mb-2 collapsed" style="display: none;" data-bs-toggle="collapse" href="#AdminCollapse" role="button" aria-expanded="false" aria-controls="AdminCollapse" aria-pressed="true">
+      <button id="Startmenü" class="menub btn btn-light mb-2">Startmenü</button>
+      <button id="dev" class="menub btn btn-light mb-2">Devs Insta</button>
+      <b id="AdminTools" class=" menub btn btn-light mb-2 collapsed" style="display: none;" data-bs-toggle="collapse" href="#AdminCollapse" role="button" aria-expanded="false" aria-controls="AdminCollapse" aria-pressed="true">
         Admin Tools
       </b>
       <!-- Admin Tools -->
@@ -61,11 +62,14 @@
 <button type="button" id="Q1" class="btn btn-danger blink" style="display: none;" ></button>
 <div id="NPCNames" style="display: none;">NPC Name</div>
 <h3 id="unbekannt" class="fs-5">???</h3>
-<div id="Gegenstände" class="container">
-      <div id="inhaltBox1" class="p-3 mb-2 bg-black text-white">
-      <div id="inhaltBox2" class="p-3 mb-2 bg-black text-white">
-      <div id="inhaltBox3" class="p-3 mb-2 bg-black text-white">
-    </div>
+<div id="inhaltBox1">
+  <!-- Inhalt von Box 1 -->
+</div>
+<div id="inhaltBox2">
+  <!-- Inhalt von Box 2 -->
+</div>
+<div id="inhaltBox3">
+  <!-- Inhalt von Box 3 -->
 </div>
 <button id="Wertebutton" class="btn btn-dark" data-bs-toggle="button" aria-pressed="true" >Deine Werte</button>
 <div id="WerteMenu" style="display: none" class="list-group-item list-group-item-dark">

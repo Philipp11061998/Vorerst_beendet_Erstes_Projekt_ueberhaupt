@@ -6,6 +6,7 @@ import { Taverne } from "./Taverne.js";
 import { Startpunkt } from "../Startpunkt/Startpunkt.js";
 import { insertText } from "../Startpunkt/Startpunkt.js";
 import { TorbogenWest } from "./TorbogenWest.js";
+import { TorbogenOst } from "./TorbogenOst.js";
 
 export function StadtOW(){
     let textFeld = document.getElementById("bewegendesTextfeld");
@@ -111,7 +112,8 @@ export function StadtOW(){
       // Schriftfarbe auf Weiß setzen
       textFeld.style.color = 'white';
 
-      insertText("Du bist am Stadteingang angekommen. Was möchtest du tun?", true, ButtonSOW1style , ButtonSOW2style, "", "Zurück in den Wald laufen");
+      insertText("Du bist am Stadteingang angekommen. Was möchtest du tun?", true , ButtonSOW2style, "", "Zurück in den Wald laufen");
+      
 
       document.getElementById("buttonT").addEventListener("click", function () {
           changeStandort("Taverne");
@@ -131,6 +133,17 @@ export function StadtOW(){
         ButtonSOW1style.textContent = "";
         ButtonSOW2style.textContent = "";
         TorbogenWest();
+        location.reload();
+
+    });
+
+      document.getElementById("buttonO").addEventListener("click", function () {
+        changeStandort("TorbogenOst");
+        ButtonSOW1style.style.display = "none";
+        ButtonSOW2style.style.display = "none";
+        ButtonSOW1style.textContent = "";
+        ButtonSOW2style.textContent = "";
+        TorbogenOst();
         location.reload();
 
     });

@@ -71,7 +71,8 @@ export let Standorte = {
 Startpunkt: parseInt(localStorage.getItem('Startpunkt')) || 1,
 Stadt: parseInt(localStorage.getItem('Stadt')) || 0,
 Taverne: parseInt(localStorage.getItem('Taverne')) || 0,
-TorbogenWest: parseInt(localStorage.getItem('TorbogenWest')) || 0
+TorbogenWest: parseInt(localStorage.getItem('TorbogenWest')) || 0,
+TorbogenOst: parseInt(localStorage.getItem('TorbogenOst')) || 0
 }
 
 export function changeStandort(Ort) {
@@ -81,40 +82,60 @@ export function changeStandort(Ort) {
     Standorte.Stadt = 0;
     Standorte.Taverne = 0;
     Standorte.TorbogenWest = 0;
+    Standorte.TorbogenOst = 0;
     localStorage.setItem('Startpunkt', Standorte.Startpunkt);
     localStorage.setItem('Stadt', Standorte.Stadt);
     localStorage.setItem('Taverne', Standorte.Taverne);
     localStorage.setItem('TorbogenWest', Standorte.TorbogenWest);
+    localStorage.setItem('TorbogenOst', Standorte.TorbogenOst);
 
   } else if (Ort === "Stadt") {
     Standorte.Startpunkt = 0;
     Standorte.Stadt = 1;
     Standorte.Taverne = 0;
     Standorte.TorbogenWest = 0;
+    Standorte.TorbogenOst = 0;
     localStorage.setItem('Startpunkt', Standorte.Startpunkt);
     localStorage.setItem('Stadt', Standorte.Stadt);
     localStorage.setItem('Taverne', Standorte.Taverne);
     localStorage.setItem('TorbogenWest', Standorte.TorbogenWest);
+    localStorage.setItem('TorbogenOst', Standorte.TorbogenOst);
 
   } else if (Ort === "Taverne") {
     Standorte.Startpunkt = 0;
     Standorte.Stadt = 0;
     Standorte.Taverne = 1;
     Standorte.TorbogenWest = 0;
+    Standorte.TorbogenOst = 0;
     localStorage.setItem('Startpunkt', Standorte.Startpunkt);
     localStorage.setItem('Stadt', Standorte.Stadt);
     localStorage.setItem('Taverne', Standorte.Taverne);
     localStorage.setItem('TorbogenWest', Standorte.TorbogenWest);
+    localStorage.setItem('TorbogenOst', Standorte.TorbogenOst);
     
   } else if (Ort === "TorbogenWest"){
     Standorte.Startpunkt = 0;
     Standorte.Stadt = 0;
     Standorte.Taverne = 0;
     Standorte.TorbogenWest = 1;
+    Standorte.TorbogenOst = 0;
     localStorage.setItem('Startpunkt', Standorte.Startpunkt);
     localStorage.setItem('Stadt', Standorte.Stadt);
     localStorage.setItem('Taverne', Standorte.Taverne);
     localStorage.setItem('TorbogenWest', Standorte.TorbogenWest);
+    localStorage.setItem('TorbogenOst', Standorte.TorbogenOst);
+
+  } else if (Ort === "TorbogenOst"){
+    Standorte.Startpunkt = 0;
+    Standorte.Stadt = 0;
+    Standorte.Taverne = 0;
+    Standorte.TorbogenWest = 0;
+    Standorte.TorbogenOst = 1;
+    localStorage.setItem('Startpunkt', Standorte.Startpunkt);
+    localStorage.setItem('Stadt', Standorte.Stadt);
+    localStorage.setItem('Taverne', Standorte.Taverne);
+    localStorage.setItem('TorbogenWest', Standorte.TorbogenWest);
+    localStorage.setItem('TorbogenOst', Standorte.TorbogenOst);
   } else
   alert("Standort wurde nicht geändert")
 }
@@ -134,6 +155,8 @@ export function expLS() {
   localStorage.setItem('Startpunkt', Standorte.Startpunkt.toString());
   localStorage.setItem('Stadt', Standorte.Stadt.toString());
   localStorage.setItem('Taverne', Standorte.Taverne.toString());
+  localStorage.setItem('TorbogenWest', Standorte.TorbogenWest.toString());
+  localStorage.setItem('TorbogenOst', Standorte.TorbogenOst.toString());
   localStorage.setItem('StartAdventure', Quests.StartAdventure.toString());
 
   // Erstelle ein exportiertes Datenobjekt mit allen Werten als Strings
@@ -148,7 +171,8 @@ export function expLS() {
       Startpunkt: Standorte.Startpunkt.toString(),
       Stadt: Standorte.Stadt.toString(),
       Taverne: Standorte.Taverne.toString(),
-      TorbogenWest: Standorte.TorbogenWest.toString()
+      TorbogenWest: Standorte.TorbogenWest.toString(),
+      TorbogenOst: Standorte.TorbogenOst.toString()
     },
     Quests: {
       StartAdventure: Quests.StartAdventure.toString(),
@@ -191,6 +215,7 @@ export function impLS(file) {
       localStorage.setItem('Stadt', importedData.Standorte.Stadt);
       localStorage.setItem('Taverne', importedData.Standorte.Taverne);
       localStorage.setItem('TorbogenWest', importedData.Standorte.TorbogenWest);
+      localStorage.setItem('TorbogenOst', importedData.Standorte.TorbogenOst);
       localStorage.setItem('StartAdventure', importedData.Quests.StartAdventure);
       localStorage.setItem('Questblock1', importedData.Quests.Questblock1);
       localStorage.setItem('Questblock2', importedData.Quests.Questblock2);
