@@ -3,12 +3,15 @@ import { insertText } from "../Startpunkt/Startpunkt.js";
 import { changeQuest, Questexe, Quests } from "../../../Quests.js";
 import { changeStandort, Standorte } from "../../../Werte.js";
 import { StadtOW } from "../Stadt/Overworld.js";
+import { Sexdefinition } from "./Brutus.js";
 
 export function JohannDialogue(){
     let textFeld = document.getElementById("bewegendesTextfeld");
     let ButtonT1style = document.getElementById("ButtonT1");
     let ButtonT2style = document.getElementById("ButtonT2");
     let ButtonQ1 = document.getElementById("Q1");
+
+    const { derdem, diesedieser } = Sexdefinition(); //Hier alle Variablen einfügen, welche noch dazu kommen
 
     if (Quests.StartAdventure === 0 && Quests.Questblock1 === 0){
         textFeld.textContent = '';

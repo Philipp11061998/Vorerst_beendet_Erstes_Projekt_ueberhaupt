@@ -86,6 +86,7 @@ export function TorbogenOst(){
         })
 
         ButtonW2.addEventListener("click", function (){
+            
             if (!document.getElementById("Argus")){
             NPCtoSlide("Argus", "Argus", "/Stadt/ostlicherTorbogen/Argus.png");
             }
@@ -94,11 +95,12 @@ export function TorbogenOst(){
             Argus.style.left = positionXPercent + '%';
             NPCSlideLeft("Argus");
 
-            ButtonW2.style.display = "none";
-            ButtonTO1.style.display = "none";
-            ButtonTO2.style.display = "none";
-            textFeld.textContent = "";
-            
+            //Hier Code für Argus einbauen
+            //ButtonW2.style.display = "none";
+            //ButtonTO1.style.display = "none";
+            //ButtonTO2.style.display = "none";
+            //textFeld.textContent = "";
+            location.reload();
         })
 
     } else {
