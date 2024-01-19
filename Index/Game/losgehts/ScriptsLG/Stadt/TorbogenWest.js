@@ -13,6 +13,17 @@ export function TorbogenWest(){
     let textFeld = document.getElementById("bewegendesTextfeld");
     const Adminfromlocalstorage = localStorage.getItem('Admin');
     const usernameFromLocalStorage = localStorage.getItem('username');
+    const Sex = localStorage.getItem('Geschlecht');
+    var derdem = "";
+    var diesedieser = "";
+                        
+    if ( Sex === "Female" ){
+        derdem = "der";
+        diesedieser = "diese";
+    } else if ( Sex === "Male") {
+        derdem = "dem";
+        diesedieser = "dieser";
+    }
 
     if (maxStandort === "TorbogenWest") {
 
@@ -134,7 +145,8 @@ export function TorbogenWest(){
 
                     buttonArray = [Yes, No];
                     setTimeout(function () {
-                        insertText('Quest: Der Start in dein neues Abenteuer <br>Hmpf, bist du dieser ' + usernameFromLocalStorage + ' von dem immer alle reden?', true, Yes, No, "Ja der bin ich. Johann schickt mich, ich soll dir die 5 Goldstücke geben.", "Nein.. ich komme ein andermal wieder..", ...buttonArray); 
+                        
+                        insertText('Quest: Der Start in dein neues Abenteuer <br>Hmpf, bist du ' + diesedieser + ' ' + usernameFromLocalStorage + ' von '+ derdem +' immer alle reden?', true, Yes, No, "Ja der bin ich. Johann schickt mich, ich soll dir die 5 Goldstücke geben.", "Nein.. ich komme ein andermal wieder..", ...buttonArray); 
                     }, 1200);
 
                     Yes.addEventListener("click", function(){

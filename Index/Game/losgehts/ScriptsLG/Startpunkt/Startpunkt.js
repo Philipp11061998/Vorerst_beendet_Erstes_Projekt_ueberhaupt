@@ -21,7 +21,7 @@ export function insertText(textToInsert, activateButtons = true, Button1, Button
               Button1.style.display = "block";
               Button2.style.display = "block";
           }
-          }, 1000);
+          }, 1200);
       }
   }
 
