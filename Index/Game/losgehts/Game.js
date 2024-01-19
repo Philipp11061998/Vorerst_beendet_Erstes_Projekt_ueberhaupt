@@ -7,7 +7,7 @@ import { TorbogenWest } from './ScriptsLG/Stadt/TorbogenWest.js';
 import { TorbogenOst } from './ScriptsLG/Stadt/TorbogenOst.js';
 
 document.addEventListener("DOMContentLoaded", function () {
-    const Werte = document.getElementById("WerteMenu");
+    const Werte = $("#WerteMenu");
     let Adminfromlocalstorage = localStorage.getItem('Admin');
     const Geschlechtfromlocalstorage = localStorage.getItem('Geschlecht');
 
@@ -20,11 +20,16 @@ document.addEventListener("DOMContentLoaded", function () {
     Admin();
     
     function Admin(){
-        if (Adminfromlocalstorage === "135792468"){
-        document.getElementById("AdminTools").style.display="block";
-        document.getElementById("LocationSP").style.display="block";
-        document.getElementById("LocationSO").style.display="block";
-        document.getElementById("LocationT").style.display="block";
+        if (Adminfromlocalstorage === "135792468") {
+            $("#AdminTools").css("display", "none");
+            $("#LocationSP").css("display", "none");
+            $("#LocationSO").css("display", "none");
+            $("#LocationT").css("display", "none");
+          } else if (Adminfromlocalstorage != "135792468") {
+            $("#AdminTools").css("display", "block");
+            $("#LocationSP").css("display", "block");
+            $("#LocationSO").css("display", "block");
+            $("#LocationT").css("display", "block");
         }
     }
 
@@ -45,161 +50,162 @@ document.addEventListener("DOMContentLoaded", function () {
     function updateValuesFromLocalStorage() {
         const charismaFromLocalStorage = localStorage.getItem('Charisma');
         const usernameFromLocalStorage = localStorage.getItem('username');
-
+    
         if (charismaFromLocalStorage !== null) {
             values.Charisma = parseInt(charismaFromLocalStorage);
         }
-
+    
         if (usernameFromLocalStorage !== null) {
             values.username = usernameFromLocalStorage;
         }
-
+    
         // Aktualisiere maxStandort
         maxStandort = Object.keys(Standorte).reduce((a, b) => Standorte[a] > Standorte[b] ? a : b);
-
+    
         // Aktualisiere die Anzeige der Werte
-        document.getElementsByClassName("CharismaWert")[0].innerHTML = values.Charisma;
-        document.getElementsByClassName("NameWert")[0].innerHTML = values.username;
-        document.getElementsByClassName("StandortWert")[0].innerHTML = maxStandort;
+        $(".CharismaWert").html(values.Charisma);
+        $(".NameWert").html(values.username);
+        $(".StandortWert").html(maxStandort);
     }
+    
 
-    // Füge einen Event Listener hinzu, um auf Änderungen im LocalStorage zu reagieren
-    window.addEventListener('storage', function (e) {
-        // Überprüfe, ob sich der LocalStorage-Wert geändert hat
-        if (e.key === 'Charisma' || e.key === 'username') {
-            // Aktualisiere die Werte
-            updateValuesFromLocalStorage();
+        $(window).on('storage', function (e) {
+            // Überprüfe, ob sich der LocalStorage-Wert geändert hat
+            if (e.originalEvent.key === 'Charisma' || e.originalEvent.key === 'username') {
+                // Aktualisiere die Werte
+                updateValuesFromLocalStorage();
+            }
+        });
+      
+
+    $("#Menü").click(function(){
+        let collapseQ = $("#Quests");
+        let collapseAdmin = $("#AdminTools");
+
+        if (!$("#collapseQ").hasClass("collapsed")) {
+            $("#collapseQ").click();
         }
-    });   
-
-    document.getElementById("Menü").addEventListener("click", function(){
-        let collapseQ = document.getElementById("Quests");
-        let collapseAdmin = document.getElementById("AdminTools");
-
-        if (!collapseQ.classList.contains("collapsed")){
-            collapseQ.click();
-        }
-        if (!collapseAdmin.classList.contains("collapsed")){
-            collapseAdmin.click();
-        }
-
+        
+        if (!$("#collapseAdmin").hasClass("collapsed")) {
+            $("#collapseAdmin").click();
+        }        
     });
 
-    document.getElementById("Quests").addEventListener("click", function(){
+    $("#Quests").click(function(){
         const Quest1FromLocalStorage = localStorage.getItem('StartAdventure');
-        document.getElementById("QueckedQuests").style.display = "block";
+        $("#QueckedQuests").css("display", "block");
 
         if (Object.values(Quests).some(value => value > 0)) {
             if (Quest1FromLocalStorage === "1" || Quest1FromLocalStorage === "2"){ // Achte darauf, dass der Wert aus dem Local Storage als Zeichenkette verglichen wird
-                if (!document.getElementById("Der Start in dein neues Abenteuer")) {
+                if (!$("#Der Start in dein neues Abenteuer").length) {                    
                     createQuestButton("Der Start in dein neues Abenteuer");
 
                     // Zeige den Button an (du musst den Button nach seiner Erstellung anzeigen)
-                    document.getElementById("Der Start in dein neues Abenteuer").style.display = "block";
+                    $("#Der Start in dein neues Abenteuer").css("display", "block");
 
-                    document.getElementById("Der Start in dein neues Abenteuer").addEventListener("click", function(){
-                        if (!document.getElementById("QuestInfoText")){
+                    $("#Der Start in dein neues Abenteuer").click(function(){
+                        if (!$("#QuestInfoText")){
                             Questexe("QuestInfoText", "QuestMenü");
                         } else {
-                            document.getElementById("QuestInfoText").remove();
+                            $("#QuestInfoText").remove();
                         }
                     })
                 } else if (Quest1FromLocalStorage === "3") {
-                    if (!document.getElementById("Der Start in dein neues Abenteuer")) {
+                    if (!$("#Der Start in dein neues Abenteuer").length) {
                         createQuestButton("Der Start in dein neues Abenteuer");
                 
                         // Zeige den Button an (du musst den Button nach seiner Erstellung anzeigen)
-                        document.getElementById("Der Start in dein neues Abenteuer").style.display = "none";
+                        $("#Der Start in dein neues Abenteuer").css("display", "none");
                     }
                 }
             }
         }
-        document.getElementById("QueckedQuests").addEventListener("click", function(){
-            if (document.getElementById("QueckedQuests").classList.contains("erledigteQuestsChecked")){
+        $("#QueckedQuests").click(function(){
+            if ($("#QueckedQuests").hasClass("erledigteQuestsChecked")){
                 if (Quest1FromLocalStorage === "3"){
-                    if (!document.getElementById("Der Start in dein neues Abenteuer")) {
+                    if (!$("#Der Start in dein neues Abenteuer").length) {
                         createQuestButton("Der Start in dein neues Abenteuer");
                 
                         // Zeige den Button an (du musst den Button nach seiner Erstellung anzeigen)
-                        document.getElementById("Der Start in dein neues Abenteuer").style.display = "none";
+                        $("#Der Start in dein neues Abenteuer").css("display", "none");
                     }
-                document.getElementById("Der Start in dein neues Abenteuer").style.display = "block";
+                $("#Der Start in dein neues Abenteuer").css("display", "block");
                 
-                document.getElementById("Der Start in dein neues Abenteuer").addEventListener("click", function(){
-                    if (!document.getElementById("QuestInfoText")){
+                $("#Der Start in dein neues Abenteuer").click(function(){
+                    if (!$("#QuestInfoText").length){
                         Questexe("QuestInfoText", "QuestMenü");
                     } else {
-                        document.getElementById("QuestInfoText").remove();
+                        $("#QuestInfoText").remove();
                     }
                 })
                 }
             }else if (Quest1FromLocalStorage === "3"){
-                document.getElementById("Der Start in dein neues Abenteuer").style.display = "none";
+                $("#Der Start in dein neues Abenteuer").css("display", "none");
             }
         }) 
     });
 
-    document.getElementById("Wertebutton").addEventListener("click", function () {
+    $("#Wertebutton").click(function () {
         let Ort = "";
-        if (Werte.style.display === 'none') {
-            updateValuesFromLocalStorage()
-            document.getElementsByClassName("CharismaWert")[0].innerHTML = values.Charisma;
-            if (Geschlechtfromlocalstorage === "Male"){
-                console.log(Geschlechtfromlocalstorage)
-                document.getElementsByClassName("NameWert")[0].innerHTML = "♂ " + values.username;
-            } else if (Geschlechtfromlocalstorage === "Female"){
-                document.getElementsByClassName("NameWert")[0].innerHTML = "♀ " + values.username;
+        if ($("#WerteMenu").css("display") === 'none') {
+            updateValuesFromLocalStorage();
+            $(".CharismaWert").html(values.Charisma);
+            if (Geschlechtfromlocalstorage === "Male") {
+                $(".NameWert").html("♂ " + values.username);
+            } else if (Geschlechtfromlocalstorage === "Female") {
+                $(".NameWert").html("♀ " + values.username);
             }
-
-            if (maxStandort === "TorbogenWest"){
+    
+            if (maxStandort === "TorbogenWest") {
                 Ort = "Westlicher Torbogen";
             } else {
                 Ort = maxStandort;
             }
-            document.getElementsByClassName("StandortWert")[0].innerHTML = Ort;
-            Werte.style.display = 'block';
+            $(".StandortWert").html(Ort);
+            $("#WerteMenu").css("display", 'block');
         } else {
-            Werte.style.display = 'none';
+            $("#WerteMenu").css("display", 'none');
         }
-    });    
+    });
+      
 
-    document.getElementById("Startmenü").addEventListener("click", function() {
+    $("#Startmenü").click(function() {
         window.location.href = "../../index.html";
     })
 
-    document.getElementById("dev").addEventListener("click", function() {
+    $("#dev").click(function() {
         window.open("https://www.instagram.com/philippkraut25/", "_blank");
     })
 
-    document.getElementById("LocationSP").addEventListener("click", function(){
+    $("#LocationSP").click(function(){
         let Adminfromlocalstorage = localStorage.getItem('Admin');
 
         if (Adminfromlocalstorage === "135792468"){
-            document.getElementById("AdminTools").click();
-            document.getElementById("Menü").click();
+            $("#AdminTools").click();
+            $("#Menü").click();
             changeStandort("Startpunkt");
             Startpunkt();
         } else {
             alert("Bitte aktiviere den Admin Modus im Startmenü")
-            document.getElementById("AdminTools").click();
-            document.getElementById("Menü").click();
-            document.getElementById("AdminTools").style.display="none";
+            $("#AdminTools").click();
+            $("#Menü").click();
+            $("#AdminTools").style.display="none";
         }
     })
 
-    document.getElementById("LocationSO").addEventListener("click", function(){
+    $("#LocationSO").click(function(){
         let Adminfromlocalstorage = localStorage.getItem('Admin');
 
         if (Adminfromlocalstorage === "135792468"){
-            document.getElementById("AdminTools").click();
-            document.getElementById("Menü").click();
+            $("#AdminTools").click();
+            $("#Menü").click();
             changeStandort("Stadt");
             StadtOW();
         } else {
             alert("Bitte aktiviere zuerst den Admin Modus im Startmenü");
-            document.getElementById("AdminTools").click();
-            document.getElementById("Menü").click();
-            document.getElementById("AdminTools").style.display="none";
+            $("#AdminTools").click();
+            $("#Menü").click();
+            $("#AdminTools").style.display="none";
         }
     })
 
@@ -207,32 +213,30 @@ document.addEventListener("DOMContentLoaded", function () {
         let Adminfromlocalstorage = localStorage.getItem('Admin');
 
         if (Adminfromlocalstorage === "135792468"){
-            document.getElementById("AdminTools").click();
-            document.getElementById("Menü").click();
+            $("#AdminTools").click();
+            $("#Menü").click();
             changeStandort("Taverne");
             Taverne();
         } else {
             alert("Bitte aktiviere den Admin Modus im Startmenü");
-            document.getElementById("AdminTools").click();
-            document.getElementById("Menü").click();
-            document.getElementById("AdminTools").style.display="none";
+            $("#AdminTools").click();
+            $("#Menü").click();
+            $("#AdminTools").style.display="none";
         }
     })
-    function createQuestButton(QuestName){
-        var button = document.createElement('button');
-        var QuestContainer = document.getElementById('Questsausgeklappt');
+    function createQuestButton(QuestName) {
+        var button = $('<button>', {
+            'class': 'btn btn-light mb-2',
+            'text': QuestName,
+            'id': QuestName
+        });
     
-        button.classList.add('btn', 'btn-light', 'mb-2');
-        button.textContent = QuestName;
-        button.id = QuestName;
-    
-        QuestContainer.appendChild(button);
-    }
+        $('#Questsausgeklappt').append(button);
+    }    
 
-    document.getElementById("QueckedQuests").addEventListener("click", function() {
-        let button = document.getElementById("QueckedQuests");
-        button.classList.toggle("erledigteQuestsChecked");
-    });
+    $("#QueckedQuests").click(function() {
+        $(this).toggleClass("erledigteQuestsChecked");
+    });    
 });
 
 export function Button1Funktionen(Event){
@@ -251,22 +255,63 @@ export function Button1Funktionen(Event){
 }
 
 export function disableAllButtons() {
-    // Alle Buttons auswählen
-    var allButtons = document.querySelectorAll('button');
-
-    // Iteriere über alle Buttons und deaktiviere sie
-    allButtons.forEach(function(button) {
-        button.style.display = "none";
-    });
+    // Alle Buttons auswählen und ausblenden
+    $('button').css('display', 'none');
 }
 
 export function enableSpecificButtons(exceptionIds) {
     // Iteriere über die Ausnahmen (Buttons, die aktiviert bleiben sollen)
     exceptionIds.forEach(function(id) {
         // Suche den Button mit der entsprechenden ID und aktiviere ihn
-        var specificButton = document.getElementById(id);
-        if (specificButton) {
-            specificButton.style.display = 'block';
-        }
+        $('#' + id).css('display', 'block');
     });
+}
+
+export function Buttoncreate(HTMLid, Klasse, Textinhalt, angezeigt, leftcss, rightcss, indexz) {
+    var $button = $('<button>', {
+        id: HTMLid,
+        text: Textinhalt,
+        style: angezeigt
+    }).css({
+        left: leftcss,
+        top: rightcss,
+        zIndex: indexz
+    });
+
+    // Füge die Klassen zur classList des Buttons hinzu
+    $button.addClass(Klasse);
+
+    $('body').append($button);
+    
+    return $button; // Das erstellte Button-Element als jQuery-Objekt zurückgeben
+}
+
+export function ButtoncreateohneLocation(HTMLid, Klasse, Textinhalt, angezeigt) {
+    var $button = $('<button>', {
+        id: HTMLid,
+        text: Textinhalt,
+        style: angezeigt
+    });
+
+    // Füge die Klassen zur classList des Buttons hinzu
+    $button.addClass(Klasse);
+
+    $('body').append($button);
+    
+    return $button; // Das erstellte Button-Element als jQuery-Objekt zurückgeben
+}
+
+export function creatediv(id, classes, textContent, display) {
+    var $div = $('<div>', {
+        id: id,
+        text: textContent
+    }).css({
+        display: display
+    });
+
+    $div.addClass(classes);
+
+    $('body').append($div);
+
+    return $div;
 }

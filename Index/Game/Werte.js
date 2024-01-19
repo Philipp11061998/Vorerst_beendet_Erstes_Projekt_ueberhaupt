@@ -140,11 +140,18 @@ export function changeStandort(Ort) {
   alert("Standort wurde nicht geändert")
 }
 
-export function AdminModeChange(){
-  Admin.Admin = 135792468;
-  localStorage.setItem('Admin', Admin.Admin);
-  alert("Admin Modus aktiviert");
+export function AdminModeChange() {
+  if (Admin.Admin !== 135792468) {
+    Admin.Admin = 135792468;
+    localStorage.setItem('Admin', Admin.Admin);
+    alert("Admin Modus aktiviert");
+  } else if (Admin.Admin === 135792468) {
+    Admin.Admin = 0;
+    localStorage.setItem('Admin', Admin.Admin);
+    alert("Admin Modus deaktiviert");
+  }
 }
+
 
 export function expLS() {
   // Setze die Werte im Local Storage

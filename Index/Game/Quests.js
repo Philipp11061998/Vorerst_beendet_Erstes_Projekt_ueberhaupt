@@ -30,45 +30,30 @@ export function changeQuest(welche, Wert){
     localStorage.setItem('Questblock2', Quests.Questblock2);
 } 
 
-export function Questexe(Quest, Position){
-  //Klassen (Position):
-  //QuestMenü für TopLevel Menü
-  //QuestInfo für Taverne
-    var existingQuestText = document.getElementById(Quest);
-              
-    if (existingQuestText) {
-      var computedStyle = window.getComputedStyle(existingQuestText);
-      if (computedStyle.display === "block") {
-        existingQuestText.style.display = "none";
-      } else if (computedStyle.display === "none") {
-        existingQuestText.style.display = "block";
+export function Questexe(Quest, Position) {
+  var existingQuestText = $("#" + Quest);
+
+  if (existingQuestText.length) {
+      if (existingQuestText.css("display") === "block") {
+          existingQuestText.css("display", "none");
+      } else if (existingQuestText.css("display") === "none") {
+          existingQuestText.css("display", "block");
       }
-    } else {
-      //Text Element für Quest Inhalt erstellen
-      var QuestText = document.createElement('div');
-      QuestText.classList.add(Position);
-      QuestText.classList.add("p-3");
-      QuestText.classList.add("mb-2");
-      QuestText.classList.add("bg-black");
-      QuestText.classList.add("text-white");
-      QuestText.classList.add("overflow-auto");
-      QuestText.id = Quest; // Eindeutige ID zuweisen
-  
+  } else {
+      // Text Element für Quest Inhalt erstellen
+      var QuestText = $("<div></div>").addClass(Position + " p-3 mb-2 bg-black text-white overflow-auto").attr("id", Quest);
+
       // Überschrift erstellen
-      var header = document.createElement('h1');
-      header.classList.add("headerQuest");
-      header.id = "HeaderQuest";
-      header.textContent = "Info";
-  
+      var header = $("<h1></h1>").addClass("headerQuest").attr("id", "HeaderQuest").text("Info");
+
       // Text erstellen
-      var textContent = document.createElement('p');
-      textContent.textContent = "Gehe die westliche Straße entlang. Am Ende wirst du der westlichen Stadtwache begegnen. Ich schulde dieser Wache noch Geld. Gib ihm bitte diese 5 Goldstücke für mich und kehre dann wieder zurück.";
-  
+      var textContent = $("<p></p>").text("Gehe die westliche Straße entlang. Am Ende wirst du der westlichen Stadtwache begegnen. Ich schulde dieser Wache noch Geld. Gib ihm bitte diese 5 Goldstücke für mich und kehre dann wieder zurück.");
+
       // Header und Text zu QuestText hinzufügen
-      QuestText.appendChild(header);
-      QuestText.appendChild(textContent);
-  
+      QuestText.append(header, textContent);
+
       // Füge QuestText zum Dokument hinzu
-      document.body.appendChild(QuestText);
-    }
+      $("body").append(QuestText);
+  }
 }
+

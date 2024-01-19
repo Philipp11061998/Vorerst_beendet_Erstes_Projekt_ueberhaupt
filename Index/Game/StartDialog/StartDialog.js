@@ -1,173 +1,173 @@
 import { values, setCharisma, setUsername, AbfrageName, changeStandort, Geschlechtchange } from "../Werte.js";
 
 document.addEventListener("DOMContentLoaded", function () {
-  const textFeld = document.getElementById("bewegendesTextfeld");
-  const schweigenButton = document.getElementById("Schweigen");
-  const nameButton = document.getElementById("Name");
+  $(document).ready(function () { // Warten auf das Laden des Dokuments
+    const textFeld = $("#bewegendesTextfeld");
+    const schweigenButton = $("#Schweigen");
+    const nameButton = $("#Name");
 
-  const nameDiv = document.querySelector(".Name");
-  const nameInput = nameDiv.querySelector("input");
-  nameInput.style.display = "block";
-
-  const charismaFromLocalStorage = localStorage.getItem('Charisma');
-  if (charismaFromLocalStorage !== null) {
-    values.Charisma = parseInt(charismaFromLocalStorage);
-  }
-
-  const usernameFromLocalStorage = localStorage.getItem('username');
-  if (usernameFromLocalStorage !== null) {
-    values.username = usernameFromLocalStorage;
-  }
+    const $nameDiv = $(".Name");
+    const $nameInput = $nameDiv.find("input");
     
-  const textToInsert = "W.... w.. wo bin ich? Wer bin ich?";
+    $nameInput.css("display", "block");
 
-  let currentIndex = 0;
-
-  function insertText() {
-    textFeld.textContent = textToInsert.substring(0, currentIndex);
-    currentIndex++;
-
-    if (currentIndex <= textToInsert.length) {
-      setTimeout(insertText, 30);
-    } else {
-      setTimeout(function () {
-        nameButton.style.display = "block";
-        schweigenButton.style.display = "block";
-        nameButton.focus(); // Fokus auf den "Name"-Button setzen
-      }, 1000);
-    }
-  }
-
-  insertText();
-    
-  nameButton.addEventListener("click", namen); // Ohne ()
-
-  schweigenButton.addEventListener("click", schweigen);
-
-  document.getElementById("MChar").addEventListener("click", function(){
-    const Mchar = document.getElementById("MChar");
-    const Wchar = document.getElementById("WChar");
-
-    if (!Mchar.classList.contains("selected")){
-        if (Wchar.classList.contains("selected")){
-          Wchar.classList.remove("selected");
-        }
-        Mchar.classList.add("selected");
-    } else if (Mchar.classList.contains("selected")){
-      Mchar.classList.remove("selected");
+    const charismaFromLocalStorage = localStorage.getItem('Charisma');
+    if (charismaFromLocalStorage !== null) {
+      values.Charisma = parseInt(charismaFromLocalStorage);
     }
 
-    const nameInput = nameDiv.querySelector("input");
-    nameInput.focus();
-});
-
-document.getElementById("WChar").addEventListener("click", function(){
-  const Mchar = document.getElementById("MChar");
-  const Wchar = document.getElementById("WChar");
-
-  if (!Wchar.classList.contains("selected")){
-      if (Mchar.classList.contains("selected")){
-        Mchar.classList.remove("selected");
-      }
-      Wchar.classList.add("selected");
-  } else if (Wchar.classList.contains("selected")){
-    Wchar.classList.remove("selected");
-  }
-
-  const nameInput = nameDiv.querySelector("input");
-  nameInput.focus();
-});
-
-
-  nameInput.addEventListener("keydown", function(event) {
-    if (event.key === "Enter" ) {
-      const inputText = nameInput.value.trim();
-      if (inputText === "") {
-        nameField.textContent = "Bitte gib einen Namen ein.";
-      } else if (!document.getElementById("MChar").classList.contains("selected") && (!document.getElementById("WChar").classList.contains("selected"))){
-        alert("Bitte wähle dein Geschlecht aus.")
-      }
+    const usernameFromLocalStorage = localStorage.getItem('username');
+    if (usernameFromLocalStorage !== null) {
+      values.username = usernameFromLocalStorage;
+    }
       
-      else {
-          if (document.getElementById("MChar").classList.contains("selected")){
+    const textToInsert = "W.... w.. wo bin ich? Wer bin ich?";
+
+    let currentIndex = 0;
+
+    function insertText() {
+      textFeld.text(textToInsert.substring(0, currentIndex));
+      currentIndex++;
+  
+      if (currentIndex <= textToInsert.length) {
+          setTimeout(insertText, 30);
+      } else {
+          setTimeout(function () {
+              nameButton.css("display", "block");
+              schweigenButton.css("display", "block");
+              nameButton.focus(); // Fokus auf den "Name"-Button setzen
+          }, 1000);
+      }
+  }
+    insertText();
+      
+    nameButton.on("click", namen);
+    schweigenButton.on("click", schweigen);
+
+    $("#MChar").click(function() {
+      const Mchar = $("#MChar");
+      const Wchar = $("#WChar");
+    
+      if (!Mchar.hasClass("selected")) {
+        if (Wchar.hasClass("selected")) {
+          Wchar.removeClass("selected");
+        }
+        Mchar.addClass("selected");
+      } else {
+        Mchar.removeClass("selected");
+      }
+    
+      const nameInput = $(".Name input");
+      nameInput.focus();
+    });
+    
+    
+    $("#WChar").click(function() {
+      const Mchar = $("#MChar");
+      const Wchar = $("#WChar");
+    
+      if (!Wchar.hasClass("selected")) {
+        if (Mchar.hasClass("selected")) {
+          Mchar.removeClass("selected");
+        }
+        Wchar.addClass("selected");
+      } else {
+        Wchar.removeClass("selected");
+      }
+    
+      const nameInput = $(".Name input");
+      nameInput.focus();
+    });
+    
+    $(".Name input").on("keydown", function(event) {
+      if (event.key === "Enter") {
+        const inputText = $(this).val().trim();
+        if (inputText === "") {
+          nameField.text("Bitte gib einen Namen ein.");
+        } else if (!$("#MChar").hasClass("selected") && !$("#WChar").hasClass("selected")) {
+          alert("Bitte wähle dein Geschlecht aus.");
+        } else {
+          if ($("#MChar").hasClass("selected")) {
             Geschlechtchange("Male");
-          } else if (document.getElementById("WChar").classList.contains("selected")){
+          } else if ($("#WChar").hasClass("selected")) {
             Geschlechtchange("Female");
           }
-        setUsername(inputText);
-        setCharisma(5);
-        AbfrageName();
-        changeStandort("Startpunkt");
-        window.location.href = "../losgehts/Game.html";
+          setUsername(inputText);
+          setCharisma(5);
+          AbfrageName();
+          changeStandort("Startpunkt");
+          window.location.href = "../losgehts/Game.html";
+        }
       }
-    }
-  });
+    });
+    
 
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
-      e.preventDefault();
-      if (e.key === 'ArrowUp') {
-        nameButton.focus();
-      } else {
-        schweigenButton.focus();
+    $(document).on('keydown', function(e) {
+      if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (e.key === 'ArrowUp') {
+          $("#Name").focus();
+        } else {
+          $("#Schweigen").focus();
+        }
+      } else if (e.key === 'Enter') {
+        if (document.activeElement === $("#Name")[0]) {
+          namen();
+        } else if (document.activeElement === $("#Schweigen")[0]) {
+          schweigen();
+        }
       }
-    } else if (e.key === 'Enter') {
-      if (document.activeElement === nameButton) {
-        namen();
-      } else if (document.activeElement === schweigenButton) {
-        schweigen();
-      }
-    }
+    });    
   });
 });
 
-function namen() { 
-  const textFeld = document.getElementById("bewegendesTextfeld");
-  const nameButton = document.getElementById("Name");
-  const schweigenButton = document.getElementById("Schweigen");
-      
-  nameButton.style.display = "none";
-  schweigenButton.style.display = "none";
-  textFeld.textContent = '';
-  
-  const nameDiv = document.querySelector(".Name");
-  nameDiv.style.display = "block";
-  
-  const nameInput = nameDiv.querySelector("input");
-  if (nameInput) {
-    document.getElementById("GeschlechterName").style.display = "block";
+function namen() {
+  const textFeld = $("#bewegendesTextfeld");
+  const nameButton = $("#Name");
+  const schweigenButton = $("#Schweigen");
+
+  nameButton.css("display", "none");
+  schweigenButton.css("display", "none");
+  textFeld.text("");
+
+  const nameDiv = $(".Name");
+  nameDiv.css("display", "block");
+
+  const nameInput = nameDiv.find("input");
+  if (nameInput.length) {
+    $("#GeschlechterName").css("display", "block");
     nameInput.focus();
-    document.getElementById("MChar").style.display = "block";
-    document.getElementById("WChar").style.display = "block";
+    $("#MChar").css("display", "block");
+    $("#WChar").css("display", "block");
   }
 }
 
 function schweigen() {
   setUsername("Fremder");
-  const textFeld = document.getElementById("bewegendesTextfeld");
-  const nameButton = document.getElementById("Name");
-  const schweigenButton = document.getElementById("Schweigen");
-  nameButton.style.display = "none";
-  schweigenButton.style.display = "none";
-  textFeld.textContent = '';
-  document.getElementById("GeschlechterSchweigen").style.display = "block";
+  const textFeld = $("#bewegendesTextfeld");
+  const nameButton = $("#Name");
+  const schweigenButton = $("#Schweigen");
 
-  document.getElementById("MChar").style.bottom = "38%";
-  document.getElementById("WChar").style.bottom = "38%";
+  nameButton.css("display", "none");
+  schweigenButton.css("display", "none");
+  textFeld.text("");
+  $("#GeschlechterSchweigen").css("display", "block");
 
-  document.getElementById("MChar").style.display = "block";
-  document.getElementById("WChar").style.display = "block";
-  
-  document.getElementById("MChar").addEventListener("click", function(){
+  $("#MChar").css("bottom", "38%");
+  $("#WChar").css("bottom", "38%");
+
+  $("#MChar").css("display", "block");
+  $("#WChar").css("display", "block");
+
+  $("#MChar").on("click", function() {
     Geschlechtchange("Male");
     window.location.href = "../losgehts/Game.html";
     AbfrageName();
-  })
+  });
 
-  document.getElementById("WChar").addEventListener("click", function(){
+  $("#WChar").on("click", function() {
     Geschlechtchange("Female");
     window.location.href = "../losgehts/Game.html";
     AbfrageName();
-  })
- 
+  });
 }

@@ -1,4 +1,4 @@
-import { disableAllButtons, enableSpecificButtons } from "../../Game.js";
+import { disableAllButtons, enableSpecificButtons, Buttoncreate } from "../../Game.js";
 import { NPCSlideLeft, NPCtoSlide } from "../Stadt/Taverne.js";
 import { insertText } from "../Startpunkt/Startpunkt.js";
 import { changeQuest, Quests } from "../../../Quests.js";
@@ -26,201 +26,123 @@ export function Sexdefinition(){
 }
 
 export function BrutusDialogue(){
+    $(document).ready(function () { // Warten auf das Laden des Dokuments
+        let maxStandort = Object.keys(Standorte).reduce((a, b) => Standorte[a] > Standorte[b] ? a : b);
+        let textFeld = $("#bewegendesTextfeld");
+        const Adminfromlocalstorage = localStorage.getItem('Admin');
+        const usernameFromLocalStorage = localStorage.getItem('username');
+        const { derdem, diesedieser, derdie } = Sexdefinition(); //Hier alle Variablen einfügen, welche noch dazu kommen
 
-    let maxStandort = Object.keys(Standorte).reduce((a, b) => Standorte[a] > Standorte[b] ? a : b);
-    let textFeld = document.getElementById("bewegendesTextfeld");
-    const Adminfromlocalstorage = localStorage.getItem('Admin');
-    const usernameFromLocalStorage = localStorage.getItem('username');
-    const { derdem, diesedieser, derdie } = Sexdefinition(); //Hier alle Variablen einfügen, welche noch dazu kommen
 
 
+        if (Quests.StartAdventure === 1 && Quests.Questblock1 === 1){
+            disableAllButtons();
+            textFeld.text(""); 
+            $("#Wertebutton").css("display", "block");
 
-    if (Quests.StartAdventure === 1 && Quests.Questblock1 === 1){
-        disableAllButtons();
-        textFeld.textContent = "";
-        document.getElementById("Wertebutton").style.display = "block";
-
-        //NPC erstellen und dann sliden  
-        NPCtoSlide("Brutus", "Brutus", "/Stadt/westlicherTorbogen/Brutus.png");
-        NPCSlideLeft("Brutus");
-
-        if (!document.getElementById("Brutus")){
+            //NPC erstellen und dann sliden  
             NPCtoSlide("Brutus", "Brutus", "/Stadt/westlicherTorbogen/Brutus.png");
-            }
-            const Brutus = document.getElementById("Brutus"); 
-            var positionXPercent = -20;
-            Brutus.style.left = positionXPercent + '%';
             NPCSlideLeft("Brutus");
 
-        //Buttons erstellen: Ja
-        var Yes = document.createElement('button');
-        Yes.classList.add("art1Button");
-        Yes.textContent = '';
-        Yes.id = "Yes"; // Eindeutige ID zuweisen
-        Yes.style.display= "none";
-        document.body.appendChild(Yes);
+            if (!$("#Brutus")){
+                NPCtoSlide("Brutus", "Brutus", "/Stadt/westlicherTorbogen/Brutus.png");
+                }
+                const Brutus = $("#Brutus"); 
+                var positionXPercent = -20;
+                Brutus.css("left", positionXPercent + '%');
+                NPCSlideLeft("Brutus");
 
-        // Position in Prozent setzen
-        var positionXPercent = 3;
-        var positionYPercent = 85;
+            // Button Yes erstellen
+            var $Yes = Buttoncreate('Yes', 'art1Button', '', 'display: none;', '3%', '85%', 2);
 
-        Yes.style.left = positionXPercent + '%';
-        Yes.style.top = positionYPercent + '%';
-        Yes.style.zIndex = 2;
-
-        //Buttons erstellen: Nein
-        var No = document.createElement('button');
-        No.classList.add("art1Button");
-        No.textContent = '';
-        No.id = "No"; // Eindeutige ID zuweisen
-        No.style.display= "none";
-        document.body.appendChild(No);
-
-        // Position in Prozent setzen
-        var positionXPercent = 3;
-        var positionYPercent = 90;
-
-        No.style.left = positionXPercent + '%';
-        No.style.top = positionYPercent + '%';
-        No.style.zIndex = 2;
-
-        let buttonArray = [Yes, No];
-        setTimeout(function () {
+            // Button Nein erstellen
+            var $No = Buttoncreate('No', 'art1Button', '', 'display: none;', '3%', '90%', 2 )
 
 
-            insertText('Quest: Der Start in dein neues Abenteuer <br>Hmpf, bist du ' + diesedieser + ' ' + usernameFromLocalStorage + ' von '+ derdem +' immer alle reden?', true, Yes, No, "Ja " + derdie + " bin ich. Johann schickt mich, ich soll dir die 5 Goldstücke geben.", "Nein.. ich komme ein andermal wieder..", ...buttonArray); 
-        }, 1200);
+            let buttonArray = [$Yes, $No];
+            setTimeout(function () {
+                insertText('Quest: Der Start in dein neues Abenteuer <br>Hmpf, bist du ' + diesedieser + ' ' + usernameFromLocalStorage + ' von '+ derdem +' immer alle reden?', true, $Yes, $No, "Ja " + derdie + " bin ich. Johann schickt mich, ich soll dir die 5 Goldstücke geben.", "Nein.. ich komme ein andermal wieder..", ...buttonArray); 
+            }, 1200);
 
-        Yes.addEventListener("click", function(){
-            document.getElementById("No").remove();
-            document.getElementById("Yes").remove();
-            textFeld.textContent = "";
-            document.getElementById("Wertebutton").style.display = "block";
+            $Yes.click(function() {
+                $("#No").remove();
+                $("#Yes").remove();
+                textFeld.text(""); 
+                $("#Wertebutton").css("display", "block");
+                
+                // Quest abgeben
+                var $Yes = Buttoncreate('Yes', 'art1Button', '', 'display: none;', '3%', '85%', 2);
+
+                // Quest nicht abgeben
+                var $No = Buttoncreate('No', 'art1Button', '', 'display: none;', '3%', '90%', 2 )
+
+                buttonArray = [$Yes, $No];
+                insertText('Quest: Der Start in dein neues Abenteuer <br>Ach, hat dieser reudige Hund es endlich geschafft mein Geld aufzutreiben?', true, $Yes, $No, "Zumindest gab er mir diese 5 Goldstücke für dich.   (Quest erledigen)", "Ich glaube ich habe mich in der Person geirrt.   (Quest nicht erledigen)", ...buttonArray); 
+
+                    $Yes.click(function(){
+                            $("#Yes").remove();
+                            $("#No").remove();
+                            insertText('Vielen Dank ' + usernameFromLocalStorage + ' komm jederzeit wieder.', false )
+                        setTimeout(function (){
+                            $("#Brutus").remove();
+                            $("#NPCNames").css("display", "none");
+                            changeQuest("StartAdventure", 2);
+                            changeStandort("Stadt");
+                            StadtOW();
+                            location.reload();
+                        }, 2000);
+                    })
+
+                    $No.click(function(){
+                        $("#Yes").remove();
+                        $("#No").remove();
+                        $("#Brutus").remove();
+                        $("#NPCNames").css("display", "none");
+                        changeStandort("Stadt");
+                        StadtOW();
+                    })
+            })
+            $No.click(function(){
+                $("#Yes").remove();
+                $("#No").remove();
+                $("#Brutus").remove();
+                $("#NPCNames").style.display = "none";
+                changeStandort("Stadt");
+                StadtOW();
+            })
+
+        } else if (Quests.StartAdventure === 0 && Quests.Questblock1 === 0){
+
+            // Button zum Entschuldigen
+            var $Sorry = Buttoncreate('Sorry', 'art1Button', 'Entschuldigen und weggehen..', 'display: none;', '3%', '80%', 2);
+
+            // Leerer Button fürs Layout
+            var $empty = Buttoncreate('empty', 'art1Button', '', 'display: none;', '3%', '90%', 2 )
+
+
+            let buttonArray = [$Sorry, $empty];
+            NPCtoSlide("Brutus", "Brutus", "/Stadt/westlicherTorbogen/Brutus.png");
+            textFeld.text(""); 
             
-            //Quest abgeben
-            var Yes = document.createElement('button');
-            Yes.classList.add("art1Button");
-            Yes.textContent = '';
-            Yes.id = "Yes"; // Eindeutige ID zuweisen
-            Yes.style.display= "none";
-            document.body.appendChild(Yes);
+            NPCSlideLeft("Brutus");
 
-            // Position in Prozent setzen
-            var positionXPercent = 3;
-            var positionYPercent = 85;
+            let NPC = $("#Brutus");
+            disableAllButtons();
+            $("#Wertebutton").css("display", "block");
 
-            Yes.style.left = positionXPercent + '%';
-            Yes.style.top = positionYPercent + '%';
-            Yes.style.zIndex = 2;
 
-            //Quest nicht abgeben
-            var No = document.createElement('button');
-            No.classList.add("art1Button");
-            No.textContent = '';
-            No.id = "No"; // Eindeutige ID zuweisen
-            No.style.display= "none";
-            document.body.appendChild(No);
+            setTimeout(function () {
+                insertText('Nerv jemand anderen! Unbekannte haben hier nichts zu sagen!', true, $Sorry, $empty, "Entschuldigen und gehen..", "", ...buttonArray)
+            }, 1200);
 
-            // Position in Prozent setzen
-            var positionXPercent = 3;
-            var positionYPercent = 90;
-
-            No.style.left = positionXPercent + '%';
-            No.style.top = positionYPercent + '%';
-            No.style.zIndex = 2;
-
-            buttonArray = [Yes, No];
-            insertText('Quest: Der Start in dein neues Abenteuer <br>Ach, hat dieser reudige Hund es endlich geschafft mein Geld aufzutreiben?', true, Yes, No, "Zumindest gab er mir diese 5 Goldstücke für dich.   (Quest erledigen)", "Ich glaube ich habe mich in der Person geirrt.   (Quest nicht erledigen)", ...buttonArray); 
-
-                Yes.addEventListener("click", function(){
-                        document.getElementById("Yes").remove();
-                        document.getElementById("No").remove();
-                        insertText('Vielen Dank ' + usernameFromLocalStorage + ' komm jederzeit wieder.', false )
-                    setTimeout(function (){
-                        document.getElementById("Brutus").remove();
-                        document.getElementById("NPCNames").style.display = "none";
-                        changeQuest("StartAdventure", 2);
-                        TorbogenWest();
-                        location.reload();
-                    }, 2000);
-                })
-
-                No.addEventListener("click", function(){
-                    document.getElementById("Yes").remove();
-                    document.getElementById("No").remove();
-                    document.getElementById("Brutus").remove();
-                    document.getElementById("NPCNames").style.display = "none";
-                    changeStandort("Stadt");
-                    StadtOW();
-                })
-        })
-        No.addEventListener("click", function(){
-            document.getElementById("Yes").remove();
-            document.getElementById("No").remove();
-            document.getElementById("Brutus").remove();
-            document.getElementById("NPCNames").style.display = "none";
-            changeStandort("Stadt");
-            StadtOW();
-        })
-
-    } else if (Quests.StartAdventure === 0 && Quests.Questblock1 === 0){
-
-        //Button zum Entschuldigen
-        var Sorry = document.createElement('button');
-        Sorry.classList.add("art1Button");
-        Sorry.textContent = 'Entschuldigen und weggehen..';
-        Sorry.id = "Sorry"; // Eindeutige ID zuweisen
-        Sorry.style.display= "none";
-        document.body.appendChild(Sorry);
-
-        // Position in Prozent setzen
-        var positionXPercent = 3;
-        var positionYPercent = 80;
-
-        Sorry.style.left = positionXPercent + '%';
-        Sorry.style.top = positionYPercent + '%';
-        Sorry.style.zIndex = 2;
-
-        //Leerer Button fürs Layout
-        var empty = document.createElement('button');
-        empty.classList.add("art1Button");
-        empty.textContent = '';
-        empty.id = "empty"; // Eindeutige ID zuweisen
-        empty.style.display= "none";
-        document.body.appendChild(empty);
-
-        // Position in Prozent setzen
-        var positionXPercent = 3;
-        var positionYPercent = 90;
-
-        empty.style.left = positionXPercent + '%';
-        empty.style.top = positionYPercent + '%';
-        empty.style.zIndex = 2;
-
-        const ButtonSorry = document.getElementById("Sorry");
-        const Buttonempty = document.getElementById("empty");
-
-        let buttonArray = [ButtonSorry, Buttonempty];
-        NPCtoSlide("Brutus", "Brutus", "/Stadt/westlicherTorbogen/Brutus.png");
-        textFeld.textContent = "";
-        
-        NPCSlideLeft("Brutus");
-
-        let NPC = document.getElementById("Brutus");
-        disableAllButtons();
-        document.getElementById("Wertebutton").style.display = "block";
-
-        setTimeout(function () {
-            insertText('Nerv jemand anderen! Unbekannte haben hier nichts zu sagen!', true, ButtonSorry, Buttonempty, "Entschuldigen und gehen..", "", ...buttonArray)
-        }, 1200);
-
-        ButtonSorry.addEventListener("click", function(){
-            ButtonSorry.remove();
-            Buttonempty.remove();
-            document.getElementById("NPCNames").style.display = "none";
-            NPC.remove();
-            changeStandort("Stadt");
-            StadtOW();
-        })
-    }
+            $Sorry.click(function(){
+                $Sorry.remove();
+                $empty.remove();
+                $("#NPCNames").css("display", "none");
+                NPC.remove();
+                changeStandort("Stadt");
+                StadtOW();
+            })
+        }
+    });
 }

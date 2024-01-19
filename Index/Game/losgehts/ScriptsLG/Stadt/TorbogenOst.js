@@ -4,111 +4,85 @@ import { disableAllButtons, enableSpecificButtons } from "../../Game.js";
 import { insertText } from "../Startpunkt/Startpunkt.js";
 import { StadtOW} from "./Overworld.js";
 import { NPCSlideLeft, NPCtoSlide } from "./Taverne.js";
+import { Buttoncreate, ButtoncreateohneLocation } from "../../Game.js";
 
 
 export function TorbogenOst(){
+    $(document).ready(function () { // Warten auf das Laden des Dokuments
+        let maxStandort = Object.keys(Standorte).reduce((a, b) => Standorte[a] > Standorte[b] ? a : b);
+        let textFeld = $("#bewegendesTextfeld");
+        const Adminfromlocalstorage = localStorage.getItem('Admin');
+        const usernameFromLocalStorage = localStorage.getItem('username');
 
-    let maxStandort = Object.keys(Standorte).reduce((a, b) => Standorte[a] > Standorte[b] ? a : b);
-    let textFeld = document.getElementById("bewegendesTextfeld");
-    const Adminfromlocalstorage = localStorage.getItem('Admin');
-    const usernameFromLocalStorage = localStorage.getItem('username');
+        if (maxStandort === "TorbogenOst") {
 
-    if (maxStandort === "TorbogenOst") {
-
-        document.body.style.backgroundImage =  'url("StylesLG/Orte/Stadt/ostlicherTorbogen/TorbogenOst.jpg")';
+            document.body.style.backgroundImage =  'url("StylesLG/Orte/Stadt/ostlicherTorbogen/TorbogenOst.jpg")';
 
 
-        Admin();
+            Admin();
 
-        function Admin() {
-            if (Adminfromlocalstorage === "135792468") {
-                document.getElementById("AdminTools").style.display = "block";
-                document.getElementById("LocationSP").style.display = "block";
-                document.getElementById("LocationSO").style.display = "block";
-                document.getElementById("LocationT").style.display = "block";
-            } else if (Adminfromlocalstorage != "1593572486") {
-                document.getElementById("AdminTools").style.display = "none";
-                document.getElementById("LocationSP").style.display = "none";
-                document.getElementById("LocationSO").style.display = "none";
-                document.getElementById("LocationT").style.display = "none";
+            function Admin() {
+                if (Adminfromlocalstorage === "135792468") {
+                    $("#AdminTools").css("display", "none");
+                    $("#LocationSP").css("display", "none");
+                    $("#LocationSO").css("display", "none");
+                    $("#LocationT").css("display", "none");
+                  } else if (Adminfromlocalstorage != "135792468") {
+                    $("#AdminTools").css("display", "block");
+                    $("#LocationSP").css("display", "block");
+                    $("#LocationSO").css("display", "block");
+                    $("#LocationT").css("display", "block");
+                  }
             }
-        }
+                
+            textFeld.text("");
+
+            // Schriftfarbe auf Weiß setzen
+            $("#bewegendesTextfeld").css("color", "white");
+
+            // Button um zum Stadteingang zurückzukehren
+            var $Stadteingang = ButtoncreateohneLocation('Stadteingang', 'art1Button', 'Zum Stadteingang zurückkehren', 'display: none;');
+
+            // leerer 2. Button
+            var $Second = ButtoncreateohneLocation('SecondTO', 'art1Button', '', 'display: none;');
             
-        textFeld.textContent = '';
+            //Button der Stadtwache
+            var $Wache = Buttoncreate('WacheOst', 'QuestKreis blink', '', 'display: none;', '15.3%', '21%', 2);
 
-        // Schriftfarbe auf Weiß setzen
-        textFeld.style.color = 'white';
+            disableAllButtons();
+            enableSpecificButtons(["Wertebutton", "Menü", "Startmenü", "dev", "Quests"]);
 
-        //Button um zum Stadteingang zurückzukehren
-        var Stadteingang = document.createElement('button'); // Verwende das korrekte HTML-Tag "button"
-        Stadteingang.classList.add("art1Button");
-        Stadteingang.textContent = 'Zum Stadteingang zurückkehren';
-        Stadteingang.id = "Stadteingang"; // Eindeutige ID zuweisen
-        Stadteingang.style.display="none";
-        document.body.appendChild(Stadteingang);
-
-        //leerer 2. Button
-        var Second = document.createElement('button'); // Verwende das korrekte HTML-Tag "button"
-        Second.classList.add("art1Button");
-        Second.textContent = '';
-        Second.id = "SecondTO"; // Eindeutige ID zuweisen
-        Second.style.display="none";
-        document.body.appendChild(Second);
-
-        //Button der Stadtwache
-        var Wache = document.createElement('button');
-        Wache.classList.add("QuestKreis");
-        Wache.classList.add("blink");
-        Wache.id = "WacheOst"; // Eindeutige ID zuweisen
-        Wache.style.display= "none";
-        document.body.appendChild(Wache);
-
-        // Position in Prozent setzen
-        var positionXPercent = 15.3;
-        var positionYPercent = 21;
-
-        Wache.style.left = positionXPercent + '%';
-        Wache.style.top = positionYPercent + '%';
-        Wache.style.zIndex = 2;
-
-        const ButtonTO1 = document.getElementById("Stadteingang");
-        const ButtonTO2 = document.getElementById("SecondTO");
-        const ButtonW2 = document.getElementById("WacheOst");
-
-        disableAllButtons();
-        enableSpecificButtons(["Wertebutton", "Menü", "Startmenü", "dev", "Quests"]);
-
-        let buttonArray = []
-        
-        insertText(".", true, ButtonTO1, ButtonW2, "Zurück zum Stadteingang", "", ...buttonArray )
-
-        ButtonTO1.addEventListener("click", function(){
-            ButtonTO1.remove();
-            ButtonTO2.remove();
-            ButtonW2.remove();
-                changeStandort("Stadt");
-                StadtOW();
-        })
-
-        ButtonW2.addEventListener("click", function (){
+            let buttonArray = []
             
-            if (!document.getElementById("Argus")){
-            NPCtoSlide("Argus", "Argus", "/Stadt/ostlicherTorbogen/Argus.png");
-            }
-            const Argus = document.getElementById("Argus"); 
-            var positionXPercent = -20;
-            Argus.style.left = positionXPercent + '%';
-            NPCSlideLeft("Argus");
+            insertText(".", true, $Stadteingang, $Wache, "Zurück zum Stadteingang", "", ...buttonArray )
 
-            //Hier Code für Argus einbauen
-            //ButtonW2.style.display = "none";
-            //ButtonTO1.style.display = "none";
-            //ButtonTO2.style.display = "none";
-            //textFeld.textContent = "";
+            $Stadteingang.click(function(){
+                $Stadteingang.remove();
+                $Wache.remove();
+                $Second.remove();
+                    changeStandort("Stadt");
+                    StadtOW();
+            })
+
+            $Wache.click(function(){                
+                if (!$("#Argus")){
+                NPCtoSlide("Argus", "Argus", "/Stadt/ostlicherTorbogen/Argus.png");
+                }
+                const Argus = $("#Argus"); 
+                var positionXPercent = -20;
+                Argus.css("left", positionXPercent + "%");
+                NPCSlideLeft("Argus");
+
+                //Hier Code für Argus einbauen
+                //ButtonW2.style.display = "none";
+                //ButtonTO1.style.display = "none";
+                //ButtonTO2.style.display = "none";
+                //textFeld.textContent = "";
+                location.reload();
+            })
+
+        } else {
             location.reload();
-        })
-
-    } else {
-        location.reload();
-    }
+        }
+    });
 }
