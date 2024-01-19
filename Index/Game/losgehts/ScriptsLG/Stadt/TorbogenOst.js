@@ -26,6 +26,11 @@ export function TorbogenOst(){
                 document.getElementById("LocationSP").style.display = "block";
                 document.getElementById("LocationSO").style.display = "block";
                 document.getElementById("LocationT").style.display = "block";
+            } else if (Adminfromlocalstorage != "1593572486") {
+                document.getElementById("AdminTools").style.display = "none";
+                document.getElementById("LocationSP").style.display = "none";
+                document.getElementById("LocationSO").style.display = "none";
+                document.getElementById("LocationT").style.display = "none";
             }
         }
             

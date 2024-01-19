@@ -10,16 +10,19 @@ export function Sexdefinition(){
     const Sex = localStorage.getItem('Geschlecht');
     var derdem = "";
     var diesedieser = "";
+    var derdie = "";
                         
     if ( Sex === "Female" ){
         derdem = "der";
         diesedieser = "diese";
+        derdie = "die";
     } else if ( Sex === "Male") {
         derdem = "dem";
         diesedieser = "dieser";
+        derdie = "der";
     }
 
-    return { derdem, diesedieser }; //Hier alle Variablen einfügen, welche noch dazu kommen
+    return { derdem, diesedieser, derdie }; //Hier alle Variablen einfügen, welche noch dazu kommen
 }
 
 export function BrutusDialogue(){
@@ -28,8 +31,9 @@ export function BrutusDialogue(){
     let textFeld = document.getElementById("bewegendesTextfeld");
     const Adminfromlocalstorage = localStorage.getItem('Admin');
     const usernameFromLocalStorage = localStorage.getItem('username');
-    
-    const { derdem, diesedieser } = Sexdefinition(); //Hier alle Variablen einfügen, welche noch dazu kommen
+    const { derdem, diesedieser, derdie } = Sexdefinition(); //Hier alle Variablen einfügen, welche noch dazu kommen
+
+
 
     if (Quests.StartAdventure === 1 && Quests.Questblock1 === 1){
         disableAllButtons();
@@ -80,9 +84,11 @@ export function BrutusDialogue(){
         No.style.top = positionYPercent + '%';
         No.style.zIndex = 2;
 
-        buttonArray = [Yes, No];
+        let buttonArray = [Yes, No];
         setTimeout(function () {
-            insertText('Quest: Der Start in dein neues Abenteuer <br>Hmpf, bist du ' + diesedieser + ' ' + usernameFromLocalStorage + ' von '+ derdem +' immer alle reden?', true, Yes, No, "Ja der bin ich. Johann schickt mich, ich soll dir die 5 Goldstücke geben.", "Nein.. ich komme ein andermal wieder..", ...buttonArray); 
+
+
+            insertText('Quest: Der Start in dein neues Abenteuer <br>Hmpf, bist du ' + diesedieser + ' ' + usernameFromLocalStorage + ' von '+ derdem +' immer alle reden?', true, Yes, No, "Ja " + derdie + " bin ich. Johann schickt mich, ich soll dir die 5 Goldstücke geben.", "Nein.. ich komme ein andermal wieder..", ...buttonArray); 
         }, 1200);
 
         Yes.addEventListener("click", function(){
