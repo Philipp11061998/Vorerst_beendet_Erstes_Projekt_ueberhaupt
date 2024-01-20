@@ -3,7 +3,7 @@ import { insertText } from "../Startpunkt/Startpunkt.js";
 import { changeQuest, Questexe, Quests } from "../../../Quests.js";
 import { changeStandort, Standorte } from "../../../Werte.js";
 import { StadtOW } from "../Stadt/Overworld.js";
-import { Sexdefinition } from "./Brutus.js";
+import { Sexdefinition } from "../../Game.js";
 import { Buttoncreate } from "../../Game.js";
 
 export function JohannDialogue(){

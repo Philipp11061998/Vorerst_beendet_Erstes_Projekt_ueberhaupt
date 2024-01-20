@@ -5,25 +5,8 @@ import { changeQuest, Quests } from "../../../Quests.js";
 import { TorbogenWest } from "../Stadt/TorbogenWest.js";
 import { changeStandort, Standorte } from "../../../Werte.js";
 import { StadtOW } from "../Stadt/Overworld.js";
+import { Sexdefinition } from "../../Game.js";
 
-export function Sexdefinition(){
-    const Sex = localStorage.getItem('Geschlecht');
-    var derdem = "";
-    var diesedieser = "";
-    var derdie = "";
-                        
-    if ( Sex === "Female" ){
-        derdem = "der";
-        diesedieser = "diese";
-        derdie = "die";
-    } else if ( Sex === "Male") {
-        derdem = "dem";
-        diesedieser = "dieser";
-        derdie = "der";
-    }
-
-    return { derdem, diesedieser, derdie }; //Hier alle Variablen einfügen, welche noch dazu kommen
-}
 
 export function BrutusDialogue(){
     $(document).ready(function () { // Warten auf das Laden des Dokuments

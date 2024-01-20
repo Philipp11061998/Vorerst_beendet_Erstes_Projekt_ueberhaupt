@@ -315,3 +315,22 @@ export function creatediv(id, classes, textContent, display) {
 
     return $div;
 }
+
+export function Sexdefinition(){
+    const Sex = localStorage.getItem('Geschlecht');
+    var derdem = "";
+    var diesedieser = "";
+    var derdie = "";
+                        
+    if ( Sex === "Female" ){
+        derdem = "der";
+        diesedieser = "diese";
+        derdie = "die";
+    } else if ( Sex === "Male") {
+        derdem = "dem";
+        diesedieser = "dieser";
+        derdie = "der";
+    }
+
+    return { derdem, diesedieser, derdie }; //Hier alle Variablen einfügen, welche noch dazu kommen
+}
