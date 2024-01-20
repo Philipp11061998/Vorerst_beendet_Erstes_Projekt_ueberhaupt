@@ -10,7 +10,7 @@ import { Buttoncreate, ButtoncreateohneLocation } from "../../Game.js";
 
 export function TorbogenWest(){
     $(document).ready(function () { // Warten auf das Laden des Dokuments
-        document.body.style.backgroundImage = 'url("StylesLG/Orte/Stadt/westlicherTorbogen/TorbogenWest.jpg")';
+        document.getElementById('background-container').style.backgroundImage = 'url("StylesLG/Orte/Stadt/westlicherTorbogen/TorbogenWest.jpg")';
 
         let maxStandort = Object.keys(Standorte).reduce((a, b) => Standorte[a] > Standorte[b] ? a : b);
         let textFeld = $("#bewegendesTextfeld");
@@ -61,11 +61,11 @@ export function TorbogenWest(){
             var $Second = ButtoncreateohneLocation('SecondTW', 'art1Button', '', 'display: none;');
                         
             //Button der Stadtwache
-            var $Wache = Buttoncreate('WacheWest', 'QuestKreis blink', '', 'display: none;', '25.3%', '27%', 2);
+            var $Wache = Buttoncreate('WacheWest', 'QuestKreis blink', '', 'display: none;', '35%', '42%', 2);
 
             let buttonArray = [$Stadteingang, $Second, $Wache]
 
-            insertText("Du erreichst den Westlichen Torbogen. Vor dir patroulliert die Stadtwache. Geradeaus bleibst du im äußeren Ring und wenn du die Treppe hochgehst, dann erreichst du den inneren Stadtring. Dort leben die gehobeneren Bewohner der Stadt.", true, $Stadteingang, $Wache, "Zurück zum Stadteingang", "", ...buttonArray )
+            insertText("Du erreichst den Westlichen Torbogen. Geradeaus bleibst du im äußeren Ring und wenn du die Treppe hochgehst, dann erreichst du den inneren Stadtring. Dort leben die gehobeneren Bewohner der Stadt.", true, $Stadteingang, $Wache, "Zurück zum Stadteingang", "", ...buttonArray )
 
             $Stadteingang.click(function(){
                 changeStandort("Stadt");
@@ -100,7 +100,7 @@ export function TorbogenWest(){
                             $Wache.remove();
                             TorbogenWest();
                         }, 3000);
-                    }, 3000);
+                    }, 1200);
                     
 
                 }

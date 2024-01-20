@@ -93,19 +93,23 @@ body {
   color: #000; /* Schwarze Schriftfarbe */
 }
 
-.MChar{
+.MChar, .WChar {
   position: fixed;
-  left: 35%;
-  bottom: 10%;
-  height: 30%;
+  bottom: 10%; /* oder einen anderen Wert, je nachdem, wo die Elemente positioniert sein sollen */
+  height: 30vh; /* 30% der Viewporthöhe */
 }
 
-.WChar{
-  position: fixed;
-  left: 51%;
-  bottom: 10%;
-  height: 30%;
+.MChar {
+  left: 35%; /* Positionierung von .MChar */
+  width: 14%; /* Angenommene oder tatsächliche Breite */
 }
+
+.WChar {
+  left: calc(35% + 14% + 1%); /* Positionierung von .WChar, basierend auf der Position und Breite von .MChar plus 1% Abstand */
+  width: 16%; /* Angenommene oder tatsächliche Breite */
+}
+
+
 
 .selected{
   border: 3px solid #fff;

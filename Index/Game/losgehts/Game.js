@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 $("#Der Start in dein neues Abenteuer").css("display", "block");
                 
                 $("#Der Start in dein neues Abenteuer").click(function(){
-                    if (!$("#QuestInfoText").length){
+                    if ($("#QuestInfoText").length !== 0){
                         Questexe("QuestInfoText", "QuestMenü");
                     } else {
                         $("#QuestInfoText").remove();

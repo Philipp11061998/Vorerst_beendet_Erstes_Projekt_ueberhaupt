@@ -5,6 +5,7 @@ import { insertText } from "../Startpunkt/Startpunkt.js";
 import { StadtOW} from "./Overworld.js";
 import { NPCSlideLeft, NPCtoSlide } from "./Taverne.js";
 import { Buttoncreate, ButtoncreateohneLocation } from "../../Game.js";
+import { ArgusDialogues } from "../Dialoge/Argus.js";
 
 
 export function TorbogenOst(){
@@ -15,8 +16,8 @@ export function TorbogenOst(){
         const usernameFromLocalStorage = localStorage.getItem('username');
 
         if (maxStandort === "TorbogenOst") {
-
-            document.body.style.backgroundImage =  'url("StylesLG/Orte/Stadt/ostlicherTorbogen/TorbogenOst.jpg")';
+           
+            document.getElementById('background-container').style.backgroundImage = 'url("StylesLG/Orte/Stadt/ostlicherTorbogen/TorbogenOst.jpg")';
 
 
             Admin();
@@ -47,14 +48,14 @@ export function TorbogenOst(){
             var $Second = ButtoncreateohneLocation('SecondTO', 'art1Button', '', 'display: none;');
             
             //Button der Stadtwache
-            var $Wache = Buttoncreate('WacheOst', 'QuestKreis blink', '', 'display: none;', '15.3%', '21%', 2);
+            var $Wache = Buttoncreate('WacheOst', 'QuestKreis blink', '', 'display: none;', '28.8%', '39%', 2);
 
             disableAllButtons();
             enableSpecificButtons(["Wertebutton", "Menü", "Startmenü", "dev", "Quests"]);
 
             let buttonArray = []
             
-            insertText(".", true, $Stadteingang, $Wache, "Zurück zum Stadteingang", "", ...buttonArray )
+            insertText("Du erreichst den östlichen Torbogen. Dieser führt in den inneren Ring der Stadt.", true, $Stadteingang, $Wache, "Zurück zum Stadteingang", "", ...buttonArray )
 
             $Stadteingang.click(function(){
                 $Stadteingang.remove();
@@ -65,20 +66,12 @@ export function TorbogenOst(){
             })
 
             $Wache.click(function(){                
-                if (!$("#Argus")){
-                NPCtoSlide("Argus", "Argus", "/Stadt/ostlicherTorbogen/Argus.png");
-                }
-                const Argus = $("#Argus"); 
-                var positionXPercent = -20;
-                Argus.css("left", positionXPercent + "%");
-                NPCSlideLeft("Argus");
 
-                //Hier Code für Argus einbauen
-                //ButtonW2.style.display = "none";
-                //ButtonTO1.style.display = "none";
-                //ButtonTO2.style.display = "none";
-                //textFeld.textContent = "";
-                location.reload();
+                $("#Stadteingang").css("display", "none");
+                $("#WacheOst").css("display", "none");
+                $("#SecondTO").css("display", "none");
+                textFeld.text("");
+                ArgusDialogues();
             })
 
         } else {

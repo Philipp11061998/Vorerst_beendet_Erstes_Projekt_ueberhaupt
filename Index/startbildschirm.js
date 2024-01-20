@@ -12,8 +12,6 @@ $(document).ready(function () {
   const startbildschirm = $(".startbildschirm");
   const startmenü = $(".Startmenü");
   const newadventure = $("#NewGame");
-  const Storage = $("#LocalStorage");
-  const StorageShow = $("#LocalStorageShow");
   const weiterspielen = $("#Spielen");
 
   let maxStandort = Object.keys(Standorte).reduce(function (a, b) {
@@ -77,14 +75,5 @@ $(document).ready(function () {
 
   $("#Admin").on("click", function () {
     AdminModeChange();
-  });
-
-  Storage.on("click", function () {
-    resetvalues();
-    location.reload();
-  });
-
-  StorageShow.on("click", function () {
-    alert("Werte: Charisma: " + values.Charisma + " Name: " + values.username + " Name_abgefragt: " + values.Name_abgefragt + " Standort: " + maxStandort);
   });
 });

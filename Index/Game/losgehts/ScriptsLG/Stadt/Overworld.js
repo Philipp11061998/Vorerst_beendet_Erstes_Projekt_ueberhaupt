@@ -22,7 +22,6 @@ export function StadtOW(){
 
     //Taverne
     var $buttonT = ButtoncreateohneLocation('buttonT', 'buttonT noneblink btn btn-danger', '', 'display: block;');
-    
 
     //Text der angezeigt wird
     var $TextTav = creatediv('TavSchild', 'TavSchild', 'Taverne', 'block');
@@ -72,8 +71,7 @@ export function StadtOW(){
         }
     }
 
-      document.body.style.backgroundImage =  'url("StylesLG/Orte/Stadt/Overworld/Overworld.jpg")';
-
+    document.getElementById('background-container').style.backgroundImage = 'url("StylesLG/Orte/Stadt/Overworld/Overworld.jpg")';
       // Schriftfarbe auf Weiß setzen
       textFeld.css('color', 'white');
 
@@ -86,6 +84,12 @@ export function StadtOW(){
           $("#ButtonSOW2").css("display", "none");
           ButtonSOW1style.text("");
           ButtonSOW2style.text("");
+          $("#buttonT").remove();
+          $("#TextTav").remove();
+          $("#buttonW").remove();
+          $("#TextTSW").remove();
+          $("#buttonO").remove();
+          $("#TextTSO").remove();
           Taverne();
           location.reload();
 
@@ -97,6 +101,12 @@ export function StadtOW(){
         $("#ButtonSOW2").css("display", "none");
         ButtonSOW1style.text("");
         ButtonSOW2style.text("");
+        $("#buttonT").remove();
+        $("#TextTav").remove();
+        $("#buttonW").remove();
+        $("#TextTSW").remove();
+        $("#buttonO").remove();
+        $("#TextTSO").remove();
         TorbogenWest();
         location.reload();
 
@@ -108,6 +118,12 @@ export function StadtOW(){
         $("#ButtonSOW2").css("display", "none");
         ButtonSOW1style.text("");
         ButtonSOW2style.text("");
+        $("#buttonT").remove();
+        $("#TextTav").remove();
+        $("#buttonW").remove();
+        $("#TextTSW").remove();
+        $("#buttonO").remove();
+        $("#TextTSO").remove();
         TorbogenOst();
         location.reload();
 
@@ -119,6 +135,12 @@ export function StadtOW(){
         $("#ButtonSOW2").css("display", "none");
         ButtonSOW1style.text("");
         ButtonSOW2style.text("");
+        $("#buttonT").remove();
+        $("#TextTav").remove();
+        $("#buttonW").remove();
+        $("#TextTSW").remove();
+        $("#buttonO").remove();
+        $("#TextTSO").remove();
         Startpunkt();
         location.reload();
     });

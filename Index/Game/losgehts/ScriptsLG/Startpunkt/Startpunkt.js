@@ -120,7 +120,7 @@ export function Startpunkt() {
       
       // Schriftfarbe auf Weiß setzen
       $("bewegendesTextfeld").css("color", "white");
-      document.body.style.backgroundImage = 'url("ScriptsLG/Startpunkt/forest.png")';
+      document.getElementById('background-container').style.backgroundImage = 'url("ScriptsLG/Startpunkt/forest.png")';
       
       insertText("Du erwachst.. Langsam stehst du auf und schaust dich um. Vor dir ein langer Weg. In der Ferne siehst du eine Stadt. Was machst du?", true, ButtonSp1style, ButtonSp2style,  "Schnellstmöglich in die Stadt gehen.", "Langsam gehen und die Umgebung erkunden." );
 

@@ -9,7 +9,7 @@ body {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: #cab999 ;
+  background-color: #c7bdaa !important ;
   text-align: center;
   display: flex;
   align-items: center;
@@ -26,38 +26,38 @@ body {
 
 h1 {
   font-size: 2em;
-  color: #fff;
+  color: #fff !important;
   margin: 0;
   font-family: 'MittelalterlicheSchrift';
 }
 h2 {
   font-size: 2em;
-  color: #fff;
+  color: #fff !important;
   padding-bottom: 10px;
   border-bottom: 1px solid #fff;
 }
 
-button {
+#startButton {
   padding: 10px 20px;
   font-size: 1.2em;
   background-color: #8B4513; /* Farbe für mittelalterliches Flair */
+  border-radius: 5px; /* Abgerundete Ecken für den Button */
+  width: 100%;
   color: #fff;
   border: none;
   cursor: pointer;
-  margin-top: 10px;
 }
 
-button:hover {
-  background-color: #CD853F; /* Helle Variante der Farbe */
+#startButton:hover {
+  background-color: #333; /* Helle Variante der Farbe */
 }
 
 #Startmenü {
   overflow: hidden;
   display: none;
   position: fixed;
-  bottom: 20%;
-  top: 20%;
-  left: 50%;
+  top: 30%; /* Vertikal in der Mitte des Bildschirms */
+  left: 50%; /* Horizontal in der Mitte des Bildschirms */
   transform: translateX(-50%);
   width: 300px;
   background-color: rgba(0, 0, 0, 0.747); /* 50 Prozent transparenter schwarzer Hintergrund */
@@ -74,6 +74,7 @@ button:hover {
   padding: 5px 10px; /* Innenabstand für den Button */
   border-radius: 5px; /* Abgerundete Ecken für den Button */
   cursor: pointer;
+  background-color: #8B4513;
 }
 
 #NewGame:hover {
@@ -102,6 +103,8 @@ button:hover {
   padding: 5px 10px; /* Innenabstand für den Button */
   border-radius: 5px; /* Abgerundete Ecken für den Button */
   cursor: pointer;
+  background-color: #8B4513;
+
 }
 
 .SpielimpLabel {
@@ -124,31 +127,4 @@ button:hover {
   pointer-events: none; /* Verhindert das Klicken und Hovern */
   opacity: 0.6; /* Reduziert die Transparenz für deaktivierte Optik */
   cursor: not-allowed; /* Zeigt den nicht-erlaubten Cursor an */
-}
-
-#LocalStorage {
-  color: #fff; /* Weiße Schriftfarbe */
-  top: 400px;
-  width: 270px;
-  border: none; /* Kein Rahmen */
-  padding: 5px 10px; /* Innenabstand für den Button */
-  border-radius: 5px; /* Abgerundete Ecken für den Button */
-  cursor: pointer;
-}
-
-#LocalStorage:hover {
-  background-color: #333; /* Dunklerer Hintergrund bei Hover */
-}
-#LocalStorageShow {
-  color: #fff; /* Weiße Schriftfarbe */
-  top: 400px;
-  width: 270px;
-  border: none; /* Kein Rahmen */
-  padding: 5px 10px; /* Innenabstand für den Button */
-  border-radius: 5px; /* Abgerundete Ecken für den Button */
-  cursor: pointer;
-}
-
-#LocalStorageShow:hover {
-  background-color: #333; /* Dunklerer Hintergrund bei Hover */
 }

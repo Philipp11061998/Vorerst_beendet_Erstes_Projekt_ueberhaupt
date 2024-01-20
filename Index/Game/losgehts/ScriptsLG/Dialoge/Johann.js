@@ -91,17 +91,16 @@ export function JohannDialogue(){
               $("#QuestInfoText").css("display", "none");
             }
 
-            $("#NPCNames").css("display", "none");
-            Johann.remove();
-            $annehmen.remove();
             $ablehnen.remove();
             $Info.remove();
 
             insertText("Besuche mich jederzeit wieder.", false, "", "", ButtonT1style, ButtonT2style)
             
             setTimeout(function () {
-              ButtonQ1.classList.add("blink");
-              Taverne();
+              $("#NPCNames").css("display", "none");
+              Johann.remove();
+              $annehmen.remove();
+              location.reload();
             }, 1500);
             
 

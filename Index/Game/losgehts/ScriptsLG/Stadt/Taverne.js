@@ -100,7 +100,7 @@ export function NPCSlideLeft(Element) {
         }
     }
 
-      document.body.style.backgroundImage = 'url("StylesLG/Orte/Stadt/Taverne/Taverne.jpeg")';
+    document.getElementById('background-container').style.backgroundImage = 'url("StylesLG/Orte/Stadt/Taverne/Taverne.jpeg")';
 
       // Schriftfarbe auf Weiß setzen
       $("bewegendesTextfeld").css("color", "white");

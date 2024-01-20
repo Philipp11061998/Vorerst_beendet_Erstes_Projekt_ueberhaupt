@@ -27,9 +27,9 @@ export function BrutusDialogue(){
             NPCtoSlide("Brutus", "Brutus", "/Stadt/westlicherTorbogen/Brutus.png");
             NPCSlideLeft("Brutus");
 
-            if (!$("#Brutus")){
+            if ($("#Brutus").length === 0){
                 NPCtoSlide("Brutus", "Brutus", "/Stadt/westlicherTorbogen/Brutus.png");
-                }
+            }
                 const Brutus = $("#Brutus"); 
                 var positionXPercent = -20;
                 Brutus.css("left", positionXPercent + '%');
