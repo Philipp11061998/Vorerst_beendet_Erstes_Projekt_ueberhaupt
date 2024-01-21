@@ -2,6 +2,22 @@ import { values, setCharisma, setUsername, AbfrageName, changeStandort, Geschlec
 
 document.addEventListener("DOMContentLoaded", function () {
   $(document).ready(function () { // Warten auf das Laden des Dokuments
+    alert("Für das beste Erlebnis, schalte am besten den Sound ein :)")
+    //Sound
+    var $audioElement = $('#meinAudio');
+    $audioElement.prop('muted', true); // Startet stummgeschaltet
+    $audioElement.prop('loop', true);
+    $audioElement.prop('volume', 0.1);
+    $audioElement[0].play();
+
+    $('#Sound').click(function() {
+        var $audioElement = $('#meinAudio');
+        $audioElement.prop('muted', !$audioElement.prop('muted'));
+        $("#Sound").toggleClass('SoundOn', !$audioElement.prop('muted'));
+        });
+
+    //Ende
+    
     const textFeld = $("#bewegendesTextfeld");
     const schweigenButton = $("#Schweigen");
     const nameButton = $("#Name");

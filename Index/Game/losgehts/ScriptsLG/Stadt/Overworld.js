@@ -11,6 +11,14 @@ import { Buttoncreate, ButtoncreateohneLocation, creatediv } from "../../Game.js
 
 export function StadtOW(){
   $(document).ready(function () { // Warten auf das Laden des Dokuments
+
+    //Sound
+    $('#meinAudio source').attr('src', '../../Music/backgroundloop.mp3');
+    $('#meinAudio')[0].play(); // Optional: Beginnt die Wiedergabe der neuen Quelle
+    $('#meinAudio').prop('volume', 0.1);
+
+    //Ende
+
     let textFeld = $("#bewegendesTextfeld");
     let ButtonSOW1style = $("#ButtonSOW1");
     let ButtonSOW2style = $("#ButtonSOW2");
@@ -51,7 +59,7 @@ export function StadtOW(){
       textFeld.text("");
 
       disableAllButtons();
-      enableSpecificButtons(["ButtonSOW2", "Wertebutton", "Menü", "Startmenü", "dev", "Quests"]);
+      enableSpecificButtons(["ButtonSOW2", "Wertebutton", "Menü", "Startmenü", "dev", "Quests", "Sound"]);
 
       Admin();
 

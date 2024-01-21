@@ -5,6 +5,14 @@ import { StadtOW } from "../Stadt/Overworld.js";
 
 export function insertText(textToInsert, activateButtons = true, $Button1, $Button2, text1, text2) {
   $(document).ready(function () {
+
+    //Sound
+      $('#meinAudio source').attr('src', './StylesLG/Orte/Startpunkt/SoundSP.mp3');
+      $('#meinAudio')[0].play(); // Optional: Beginnt die Wiedergabe der neuen Quelle
+      $('#meinAudio').prop('volume', 1);
+
+
+    //Ende
     let currentIndex = 0;
     let $textFeld = $("#bewegendesTextfeld");
     let Button1 = $($Button1); // Auswahl eines Elements anhand seiner ID
@@ -96,7 +104,7 @@ export function Startpunkt() {
       textFeld.text('');
 
       disableAllButtons();
-      enableSpecificButtons(["Wertebutton", "ButtonSp2", "ButtonSp1", "Menü", "Startmenü", "dev", "Quests"]);
+      enableSpecificButtons(["Wertebutton", "ButtonSp2", "ButtonSp1", "Menü", "Startmenü", "dev", "Quests", "Sound"]);
 
       Admin();
     

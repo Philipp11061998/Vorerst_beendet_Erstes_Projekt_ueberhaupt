@@ -49,7 +49,7 @@ export function TorbogenWest(){
             textFeld.text("");
 
             disableAllButtons();
-            enableSpecificButtons(["ButtonTW1", "ButtonTW2","Wertebutton", "Menü", "Startmenü", "dev", "Quests"]);
+            enableSpecificButtons(["ButtonTW1", "ButtonTW2","Wertebutton", "Menü", "Startmenü", "dev", "Quests", "Sound"]);
 
             // Schriftfarbe auf Weiß setzen
             $("bewegendesTextfeld").css("color", "white");
@@ -83,7 +83,7 @@ export function TorbogenWest(){
                 } else if ((Quests.Questblock1 === 3 && KeinQuestblock2(Quests))) {                   
                         textFeld.text("");
                         disableAllButtons();
-                        enableSpecificButtons(["Wertebutton"])
+                        enableSpecificButtons(["Menü", "Wertebutton", "Sound"])
 
                     //NPC erstellen und dann sliden  
                     NPCtoSlide("Brutus", "Brutus", "/Stadt/westlicherTorbogen/Brutus.png");

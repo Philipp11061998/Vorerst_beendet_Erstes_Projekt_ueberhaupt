@@ -7,6 +7,23 @@ import { TorbogenWest } from './ScriptsLG/Stadt/TorbogenWest.js';
 import { TorbogenOst } from './ScriptsLG/Stadt/TorbogenOst.js';
 
 document.addEventListener("DOMContentLoaded", function () {
+    $(document).ready(function() {
+        //Sound
+        var $audioElement = $('#meinAudio');
+        $audioElement.prop('muted', true); // Startet stummgeschaltet
+        $audioElement.prop('loop', true);
+        $audioElement.prop('volume', 0.1);
+        $audioElement[0].play();
+
+        $('#Sound').click(function() {
+            var $audioElement = $('#meinAudio');
+            $audioElement.prop('muted', !$audioElement.prop('muted'));
+            $("#Sound").toggleClass('SoundOn', !$audioElement.prop('muted'));
+                    });
+
+        //Ende
+      
+      
     const Werte = $("#WerteMenu");
     let Adminfromlocalstorage = localStorage.getItem('Admin');
     const Geschlechtfromlocalstorage = localStorage.getItem('Geschlecht');
@@ -236,7 +253,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     $("#QueckedQuests").click(function() {
         $(this).toggleClass("erledigteQuestsChecked");
-    });    
+    });  
+  });
 });
 
 export function Button1Funktionen(Event){

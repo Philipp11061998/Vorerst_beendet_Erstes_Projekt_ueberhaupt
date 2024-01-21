@@ -51,7 +51,7 @@ export function TorbogenOst(){
             var $Wache = Buttoncreate('WacheOst', 'QuestKreis blink', '', 'display: none;', '28.8%', '39%', 2);
 
             disableAllButtons();
-            enableSpecificButtons(["Wertebutton", "Menü", "Startmenü", "dev", "Quests"]);
+            enableSpecificButtons(["Wertebutton", "Menü", "Startmenü", "dev", "Quests", "Sound"]);
 
             let buttonArray = []
             

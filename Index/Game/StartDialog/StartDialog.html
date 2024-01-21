@@ -7,8 +7,11 @@
   <link rel="stylesheet" href="StylesSD/StartDialog.css">
   <link rel="icon" href="../losgehts/StylesLG/Icon/favicon.ico" type="image/x-icon">
   <title>Dein Abenteuer</title>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body> 
+  <button id="Sound" class="btn btn-dark"></button>
  <script type="module" src="../Werte.js"></script>
  <script type="module" src="StartDialog.js"></script>
   <div class="text-feld" id="bewegendesTextfeld">
@@ -23,5 +26,9 @@
     </div>
   <button id="Name">Namen eingeben.    (+5 Charisma)</button>
   <button id="Schweigen">Skeptisch schweigen..   (Kein  Charisma)</button>
+  <audio id="meinAudio">
+    <source src="./SoundSD.mp3" type="audio/mpeg">
+    Ihr Browser unterstützt das Audio-Element nicht.
+  </audio>
 </body>
 </html>

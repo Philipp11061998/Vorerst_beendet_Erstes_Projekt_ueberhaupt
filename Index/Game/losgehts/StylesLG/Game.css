@@ -159,6 +159,28 @@ h3 {
     z-index: 100;
 }
 
+#Sound{
+    overflow: hidden;
+    position: fixed;
+    right: 89.5%;
+    top: 1%;
+    height: 5%;
+    width: 2.5%;
+    border-radius: 6vw; /* Feste Pixel für abgerundete Ecken */
+    padding: 0.5%;
+    border: 0.05vw solid #fff;
+    border-radius: 1vw; /* Feste Pixel für abgerundete Ecken */
+    font-size: 0.8vw;
+    background-image: url("./Soundbutton/Mute.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-size: 58%;
+}
+
+.SoundOn{
+    background-image: url("./Soundbutton/Sound_on.png") !important;
+}
 
 #Menü{
     overflow: hidden;
@@ -168,11 +190,7 @@ h3 {
     bottom: 90%;
     left: 2%;
     height: 5%;
-    min-height: 5%;
-    max-height: 5%;
     width: 5.5%;
-    min-width: 5.5%;
-    max-width: 5.5%;
     padding: 0.5%;
     border: 0.05vw solid #fff;
     border-radius: 1vw; /* Feste Pixel für abgerundete Ecken */

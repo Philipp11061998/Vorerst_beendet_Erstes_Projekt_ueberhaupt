@@ -1,10 +1,33 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #000; /* Schwarzer Hintergrund */
+  background-color: #000 !important; /* Schwarzer Hintergrund */
   color: #fff; /* Textfarbe auf Weiß */
   font-family: "Garamond", "Palatino", serif; /* Mittelalterliche Schriftart */
   overflow: hidden; /* Scrollen deaktivieren */
+}
+
+#Sound{
+  overflow: hidden;
+  position: fixed;
+  right: 97%;
+  top: 1%;
+  height: 5%;
+  width: 2.5%;
+  border-radius: 6vw; /* Feste Pixel für abgerundete Ecken */
+  padding: 0.5%;
+  border: 0.05vw solid #fff;
+  border-radius: 1vw; /* Feste Pixel für abgerundete Ecken */
+  font-size: 0.8vw;
+  background-image: url("../../losgehts/StylesLG/Soundbutton/Mute.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 58%;
+}
+
+.SoundOn{
+  background-image: url("../../losgehts/StylesLG/Soundbutton/Sound_on.png") !important;
 }
 
 .text-feld {
@@ -17,6 +40,7 @@ body {
   white-space: nowrap;
   overflow: hidden;
   text-align: left;
+  color: #fff !important;
 }
 
 
@@ -127,4 +151,5 @@ body {
   left: 43%;
   top: 56%;
   font-size: 1.2vw;
+  color: #fff !important;
 }

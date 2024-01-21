@@ -82,7 +82,7 @@ export function NPCSlideLeft(Element) {
 
 
       disableAllButtons();
-      enableSpecificButtons(["ButtonT1", "ButtonT2","Wertebutton", "Menü", "Startmenü", "dev", "Quests"]);
+      enableSpecificButtons(["ButtonT1", "ButtonT2","Wertebutton", "Menü", "Startmenü", "dev", "Quests", "Sound"]);
 
       Admin();
       
