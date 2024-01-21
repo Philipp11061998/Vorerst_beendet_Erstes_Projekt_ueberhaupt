@@ -6,6 +6,7 @@ import { StadtOW } from "./Overworld.js";
 import { insertText } from "../Startpunkt/Startpunkt.js";
 import { changeQuest, Quests, Questexe } from "../../../Quests.js";
 import { JohannDialogue } from "../Dialoge/Johann.js";
+import { Soundset, Soundsetfunction } from "../../../Werte.js";
 
 // NPC erstellen
 export function NPCtoSlide(Name, ID, Location) {
@@ -170,7 +171,6 @@ export function NPCSlideLeft(Element) {
           ButtonT1style.text("");
           ButtonT2style.text("");
           StadtOW();
-          location.reload();
       });
       
       document.addEventListener('keydown', function(e) {

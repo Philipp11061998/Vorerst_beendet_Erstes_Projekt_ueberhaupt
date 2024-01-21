@@ -8,22 +8,15 @@ import { insertText } from "../Startpunkt/Startpunkt.js";
 import { TorbogenWest } from "./TorbogenWest.js";
 import { TorbogenOst } from "./TorbogenOst.js";
 import { Buttoncreate, ButtoncreateohneLocation, creatediv } from "../../Game.js";
+import { Soundset, Soundsetfunction } from "../../../Werte.js";
 
 export function StadtOW(){
   $(document).ready(function () { // Warten auf das Laden des Dokuments
-
-    //Sound
-    $('#meinAudio source').attr('src', '../../Music/backgroundloop.mp3');
-    $('#meinAudio')[0].play(); // Optional: Beginnt die Wiedergabe der neuen Quelle
-    $('#meinAudio').prop('volume', 0.1);
-
-    //Ende
-
     let textFeld = $("#bewegendesTextfeld");
     let ButtonSOW1style = $("#ButtonSOW1");
     let ButtonSOW2style = $("#ButtonSOW2");
     const Adminfromlocalstorage = localStorage.getItem('Admin');
-
+    var $audioElement = $('#meinAudio');
 
     function ButtonRichtungen(){
     //Erscheinen der 3 Richtungen (Taverne, Westen, Osten)
@@ -98,9 +91,8 @@ export function StadtOW(){
           $("#TextTSW").remove();
           $("#buttonO").remove();
           $("#TextTSO").remove();
+          $("#TavSchild").remove();
           Taverne();
-          location.reload();
-
       });
 
       $("#buttonW").click(function () {
@@ -115,9 +107,8 @@ export function StadtOW(){
         $("#TextTSW").remove();
         $("#buttonO").remove();
         $("#TextTSO").remove();
+        $("#TavSchild").remove();
         TorbogenWest();
-        location.reload();
-
     });
 
     $("#buttonO").click(function () {
@@ -132,9 +123,8 @@ export function StadtOW(){
         $("#TextTSW").remove();
         $("#buttonO").remove();
         $("#TextTSO").remove();
+        $("#TavSchild").remove();
         TorbogenOst();
-        location.reload();
-
     });
 
       $("#ButtonSOW2").click(function () {
@@ -145,12 +135,12 @@ export function StadtOW(){
         ButtonSOW2style.text("");
         $("#buttonT").remove();
         $("#TextTav").remove();
+        $("#TavSchild").remove();
         $("#buttonW").remove();
         $("#TextTSW").remove();
         $("#buttonO").remove();
         $("#TextTSO").remove();
         Startpunkt();
-        location.reload();
     });
     } else {
       location.reload();

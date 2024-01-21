@@ -2,17 +2,10 @@ import { changeStandort } from "../../../Werte.js";
 import { values, Standorte } from '../../../Werte.js';
 import { disableAllButtons, enableSpecificButtons } from "../../Game.js";
 import { StadtOW } from "../Stadt/Overworld.js";
+import { Soundset, Soundsetfunction } from "../../../Werte.js";
 
 export function insertText(textToInsert, activateButtons = true, $Button1, $Button2, text1, text2) {
   $(document).ready(function () {
-
-    //Sound
-      $('#meinAudio source').attr('src', './StylesLG/Orte/Startpunkt/SoundSP.mp3');
-      $('#meinAudio')[0].play(); // Optional: Beginnt die Wiedergabe der neuen Quelle
-      $('#meinAudio').prop('volume', 1);
-
-
-    //Ende
     let currentIndex = 0;
     let $textFeld = $("#bewegendesTextfeld");
     let Button1 = $($Button1); // Auswahl eines Elements anhand seiner ID
@@ -98,8 +91,6 @@ export function Startpunkt() {
     let maxStandort = Object.keys(Standorte).reduce((a, b) => Standorte[a] > Standorte[b] ? a : b);
     const Adminfromlocalstorage = localStorage.getItem('Admin');
 
-
-
     if (maxStandort === "Startpunkt"){
       textFeld.text('');
 
@@ -137,11 +128,11 @@ export function Startpunkt() {
           $("#ButtonSp1").css("display", "none");
           $("#ButtonSp2").css("display", "none");
           StadtOW();
-          location.reload();
       });
 
       $("#ButtonSp2").click(function () {
         changeStandort("Stadt");
+        $("#background-container").css("background-image", "none");
         $("#ButtonSp1").css("display", "none");
         $("#ButtonSp2").css("display", "none");
         $("#bewegendesTextfeld").css("display", "none");
@@ -153,6 +144,7 @@ export function Startpunkt() {
         $("#unbekannt").css("display", "none");
         $('body').css('backgroundImage', 'none');
         $("#Menü").css("display", "none");
+        $("#Sound").css("display", "none");
 
         insertCenteredTextWithDelayAndSlowText("Langsam gehst du durch den Wald. Beunruhigt von den Geräuschen schaust du dich um. Du begegnest 3 manngroßen Obelisken mit jeweils einer Öffnung. Ansonsten ist es einfach ein normaler Waldweg. Bald schon erreichst du die Stadt..", function () {
         $("#bewegendesTextfeld").css("display", "block");
@@ -160,7 +152,7 @@ export function Startpunkt() {
         $("#Wertebutton").css("display", "block");
         $("#Gegenstände").css("display", "block");
         StadtOW();
-        location.reload();
+
         });
       })
 

@@ -5,22 +5,39 @@ import { Taverne } from './ScriptsLG/Stadt/Taverne.js';
 import { Quests, Questexe } from '../Quests.js';
 import { TorbogenWest } from './ScriptsLG/Stadt/TorbogenWest.js';
 import { TorbogenOst } from './ScriptsLG/Stadt/TorbogenOst.js';
+import { Soundset, Soundsetfunction } from '../Werte.js';
 
 document.addEventListener("DOMContentLoaded", function () {
     $(document).ready(function() {
+        
         //Sound
         var $audioElement = $('#meinAudio');
-        $audioElement.prop('muted', true); // Startet stummgeschaltet
         $audioElement.prop('loop', true);
         $audioElement.prop('volume', 0.1);
-        $audioElement[0].play();
+
+        // Initialer Zustand basierend auf Soundset.SoundState
+        if (Soundset.SoundState === "on") {
+            $audioElement.prop('muted', false);
+            $("#Sound").click();
+        } else {
+            $audioElement.prop('muted', true);
+        }
 
         $('#Sound').click(function() {
-            var $audioElement = $('#meinAudio');
-            $audioElement.prop('muted', !$audioElement.prop('muted'));
-            $("#Sound").toggleClass('SoundOn', !$audioElement.prop('muted'));
-                    });
-
+            var isMuted = $audioElement.prop('muted');
+            $audioElement.prop('muted', !isMuted);
+            
+            if (isMuted) {
+                // War vorher stummgeschaltet, jetzt nicht mehr stummgeschaltet
+                Soundsetfunction("on");
+                $("#Sound").addClass("SoundOn");
+                $audioElement[0].play();
+            } else {
+                // War vorher nicht stummgeschaltet, jetzt stummgeschaltet
+                Soundsetfunction("off");
+                $("#Sound").removeClass("SoundOn");
+            }
+        });
         //Ende
       
       

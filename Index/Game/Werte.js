@@ -1,5 +1,14 @@
 import { Quests } from "./Quests.js";
 
+export let Soundset = {
+  SoundState: localStorage.getItem('SoundState') || "off"
+}
+
+export function Soundsetfunction(State) {
+  Soundset.SoundState = State;
+  localStorage.setItem('SoundState', Soundset.SoundState);
+}
+
 export let AdminMode = {
   Admin: parseInt(localStorage.getItem('Admin')) || 0
 }
@@ -51,6 +60,7 @@ export function resetvalues(){
   Quests.Questblock1 = 0;
   Quests.Questblock2 = 0;
   Admin = 0;
+  Soundset.SoundState = "off";
   
 
   localStorage.setItem('Name_abgefragt', values.Name_abgefragt);
@@ -64,7 +74,8 @@ export function resetvalues(){
   localStorage.setItem('StartAdventure', Quests.StartAdventure);
   localStorage.setItem('Questblock1', Quests.Questblock1);
   localStorage.setItem('Questblock2', Quests.Questblock2);
-  localStorage.setItem('Admin', AdminMode.Admin)
+  localStorage.setItem('Admin', AdminMode.Admin);
+  localStorage.setItem('SoundState', Soundset.SoundState);
 
 }
 export let Standorte = { 
@@ -165,6 +176,11 @@ export function expLS() {
   localStorage.setItem('TorbogenWest', Standorte.TorbogenWest.toString());
   localStorage.setItem('TorbogenOst', Standorte.TorbogenOst.toString());
   localStorage.setItem('StartAdventure', Quests.StartAdventure.toString());
+  localStorage.setItem('Questblock1', Quests.Questblock1.toString());
+  localStorage.setItem('Questblock2', Quests.Questblock1.toString());
+  localStorage.setItem('SoundState', Soundset.SoundState);
+  localStorage.setItem('Admin', AdminMode.Admin.toString());
+
 
   // Erstelle ein exportiertes Datenobjekt mit allen Werten als Strings
   var exportedData = JSON.stringify({
@@ -188,8 +204,10 @@ export function expLS() {
     },
     AdminMode: {
       Admin: AdminMode.Admin.toString()
+    },
+    Soundset: {
+      SoundState: Soundset.SoundState.toString()
     }
-    // ... füge hier alle anderen zu exportierenden Werte hinzu ...
   });
 
   // Erstelle einen Blob und einen Download-Link
@@ -226,7 +244,8 @@ export function impLS(file) {
       localStorage.setItem('StartAdventure', importedData.Quests.StartAdventure);
       localStorage.setItem('Questblock1', importedData.Quests.Questblock1);
       localStorage.setItem('Questblock2', importedData.Quests.Questblock2);
-      localStorage.setItem('Admin', importedData.AdminMode.Admin)
+      localStorage.setItem('Admin', importedData.AdminMode.Admin);
+      localStorage.setItem('SoundState', importedData.Soundset.SoundState);
 
       // ... setze hier alle anderen importierten Werte ...
 

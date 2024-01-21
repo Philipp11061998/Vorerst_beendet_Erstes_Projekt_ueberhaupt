@@ -1,20 +1,49 @@
 import { values, setCharisma, setUsername, AbfrageName, changeStandort, Geschlechtchange } from "../Werte.js";
+import { Soundset, Soundsetfunction } from "../Werte.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   $(document).ready(function () { // Warten auf das Laden des Dokuments
     alert("Für das beste Erlebnis, schalte am besten den Sound ein :)")
+    
     //Sound
     var $audioElement = $('#meinAudio');
     $audioElement.prop('muted', true); // Startet stummgeschaltet
     $audioElement.prop('loop', true);
-    $audioElement.prop('volume', 0.1);
-    $audioElement[0].play();
+    $audioElement.prop('volume', 0.7);
+    
+
+    if (Soundset.SoundState === "on"){
+      $audioElement.prop('muted', false);
+      $audioElement.prop('loop', true);
+      $audioElement.prop('volume', 0.7);
+      $audioElement[0].play();
+      
+    } else if (Soundset.SoundState === "off"){
+      $audioElement.prop('muted', true);
+      $audioElement.prop('loop', true);
+    }
+
+    
 
     $('#Sound').click(function() {
-        var $audioElement = $('#meinAudio');
-        $audioElement.prop('muted', !$audioElement.prop('muted'));
-        $("#Sound").toggleClass('SoundOn', !$audioElement.prop('muted'));
-        });
+      $audioElement.prop('muted', !$audioElement.prop('muted'));
+      $("#Sound").toggleClass('SoundOn', !$audioElement.prop('muted'));
+
+      // Prüfen, ob der Ton jetzt gemuted ist
+      if ($audioElement.prop('muted')) {
+          Soundsetfunction("off"); // Ton ist ausgeschaltet
+      } else {
+          Soundsetfunction("on"); // Ton ist eingeschaltet
+          }
+      if (Soundset.SoundState === "on"){
+        $audioElement.prop('muted', false);
+        $audioElement.prop('loop', true);
+        $audioElement.prop('volume', 0.7);
+      } else if (Soundset.SoundState === "off"){
+        $audioElement.prop('muted', true);
+        $audioElement.prop('loop', true);
+      }
+    });
 
     //Ende
     
