@@ -79,16 +79,17 @@ h3 {
     position: fixed;
     right: 1.3%; /* Nutzt relative Einheit statt fester Pixelwerte */
     bottom: 19%; /* Nutzt relative Einheit statt fester Pixelwerte */
-    height:7.5%;
+    height:8.4%;
     width: 4.2%; /* Nutzt relative Einheit statt fester Pixelwerte */
-    max-height: 7.5%;
-    min-height:7.5%;
-    max-width: 4.2%;
-    min-width: 4.2%;
     color: #fff;
     border:  0.05vw solid #fff;
-    max-width: 4.2%; 
     z-index: 100;
+    z-index: 300; /* Hinter anderen Inhalten */
+    
+}
+
+.inhaltBoxhover{
+    cursor: pointer;
 }
 
 #inhaltBox2{
@@ -96,32 +97,28 @@ h3 {
     position: fixed;
     right: 1.3%; /* Nutzt relative Einheit statt fester Pixelwerte */
     bottom: 10%; /* Nutzt relative Einheit statt fester Pixelwerte */
-    height:7.5%;
-    max-height:7.5%;
-    min-height:7.5%;
+    height:8.4%;
     width: 4.2%; /* Nutzt relative Einheit statt fester Pixelwerte */
-    max-width: 4.2%;
-    min-width: 4.2%;
     color: #fff;
-    border: 0.05vw solid #fff;
+    border:  0.05vw solid #fff;
     max-width: 4.2%; 
     z-index: 100;
+    background-size: cover;
+    z-index: 300; /* Hinter anderen Inhalten */
 }
 #inhaltBox3 {
     overflow: hidden;
     position: fixed;
     right: 1.3%; /* Nutzt relative Einheit statt fester Pixelwerte */
     bottom: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
-    height:7.5%;
-    max-height:7.5%;
-    min-height:7.5%;
+    height:8.4%;
     width: 4.2%; /* Nutzt relative Einheit statt fester Pixelwerte */
-    max-width: 4.2%;
-    min-width: 4.2%;
     color: #fff;
-    border: 0.05vw solid #fff;
+    border:  0.05vw solid #fff;
     max-width: 4.2%; 
     z-index: 100;
+    background-size: cover;
+    z-index: 300; /* Hinter anderen Inhalten */
 }
 
 #Wertebutton {

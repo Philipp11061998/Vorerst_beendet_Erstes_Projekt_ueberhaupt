@@ -2,7 +2,6 @@ import { changeStandort } from "../../../Werte.js";
 import { values, Standorte } from '../../../Werte.js';
 import { disableAllButtons, enableSpecificButtons } from "../../Game.js";
 import { StadtOW } from "../Stadt/Overworld.js";
-import { Soundset, Soundsetfunction } from "../../../Werte.js";
 import { Buttoncreate, ButtoncreateohneLocation } from "../../Game.js";
 
 export function insertText(textToInsert, activateButtons = true, $Button1, $Button2, text1, text2) {

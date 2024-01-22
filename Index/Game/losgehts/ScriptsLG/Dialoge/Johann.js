@@ -5,6 +5,8 @@ import { changeStandort, Standorte } from "../../../Werte.js";
 import { StadtOW } from "../Stadt/Overworld.js";
 import { Sexdefinition } from "../../Game.js";
 import { Buttoncreate } from "../../Game.js";
+import { setInhaltBoxes,  } from "../../../Werte.js";
+import { Inhaltboxenaktivieren } from "../../Game.js";
 
 export function JohannDialogue(){
   $(document).ready(function () { // Warten auf das Laden des Dokuments
@@ -144,22 +146,24 @@ export function JohannDialogue(){
         
         NPCSlideLeft("Johann");
 
-        setTimeout(function () {
-          insertText("Vielen Dank. Es werden jetzt sicher noch mehr Bürger auf dich zukommen. Komm jederzeit wieder und schau ob Aufgaben für dich da sind.", true, "Zurück in die Stadt gehen", "Zurück in die Stadt gehen", ButtonT1style, ButtonT1style )
+        insertText("Vielen Dank. Es werden jetzt sicher noch mehr Bürger auf dich zukommen. Komm jederzeit wieder und schau ob Aufgaben für dich da sind.", true, "Zurück in die Stadt gehen", "Zurück in die Stadt gehen", ButtonT1style, ButtonT1style )
+        $("#ButtonT1").remove();
+        $("#Q1").remove();
+        changeQuest("StartAdventure", 3);
+        changeQuest("Questblock1", 3);
+        setInhaltBoxes("Box1");
+        
+        setTimeout(function (){
+          Inhaltboxenaktivieren();
+          $("#NPCNames").css("display", "none")
+          Johann.remove();
+          textFeld.text("");
           $("#ButtonT1").remove();
           $("#Q1").remove();
-          changeQuest("StartAdventure", 3);
-          changeQuest("Questblock1", 3);
-          
-          setTimeout(function(){
-            $("#NPCNames").css("display", "none")
-            Johann.remove();
-            textFeld.text("");
-            alert("Vielen Dank, dass du bis hier gespielt hast. Leider gibt es aktuell nicht mehr zu entdecken. Schau dich aber gerne noch ein wenig um. :)")
-            changeStandort("Stadt");
-            StadtOW();
-          }, 4000);
-        }, 1200);
+          changeStandort("Stadt");
+          StadtOW();
+          alert("Vielen Dank fürs Spielen. Leider gibt es aktuell nicht mehr zu tun. Schau dich aber gerne noch ein wenig um :)")
+        }, 3000)
       }
     });
 }

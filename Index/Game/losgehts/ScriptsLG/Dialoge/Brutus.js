@@ -22,6 +22,7 @@ export function BrutusDialogue(){
             disableAllButtons();
             textFeld.text(""); 
             $("#Wertebutton").css("display", "block");
+            $("#Sound").css("display", "block");
 
             //NPC erstellen und dann sliden  
             NPCtoSlide("Brutus", "Brutus", "/Stadt/westlicherTorbogen/Brutus.png");
@@ -30,10 +31,10 @@ export function BrutusDialogue(){
             if ($("#Brutus").length === 0){
                 NPCtoSlide("Brutus", "Brutus", "/Stadt/westlicherTorbogen/Brutus.png");
             }
-                const Brutus = $("#Brutus"); 
-                var positionXPercent = -20;
-                Brutus.css("left", positionXPercent + '%');
-                NPCSlideLeft("Brutus");
+            const Brutus = $("#Brutus"); 
+            var positionXPercent = -20;
+            Brutus.css("left", positionXPercent + '%');
+            NPCSlideLeft("Brutus");
 
             // Button Yes erstellen
             var $Yes = Buttoncreate('Yes', 'art1Button', '', 'display: none;', '3%', '85%', 2);

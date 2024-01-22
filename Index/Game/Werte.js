@@ -1,14 +1,5 @@
 import { Quests } from "./Quests.js";
 
-export let Soundset = {
-  SoundState: localStorage.getItem('SoundState') || "off"
-}
-
-export function Soundsetfunction(State) {
-  Soundset.SoundState = State;
-  localStorage.setItem('SoundState', Soundset.SoundState);
-}
-
 export let AdminMode = {
   Admin: parseInt(localStorage.getItem('Admin')) || 0
 }
@@ -60,8 +51,9 @@ export function resetvalues(){
   Quests.Questblock1 = 0;
   Quests.Questblock2 = 0;
   Admin = 0;
-  Soundset.SoundState = "off";
-  
+  InhaltBoxes.Box1 = 0;
+  InhaltBoxes.Box2 = 0;
+  InhaltBoxes.Box3 = 0;  
 
   localStorage.setItem('Name_abgefragt', values.Name_abgefragt);
   localStorage.setItem('Charisma', values.Charisma);
@@ -75,8 +67,9 @@ export function resetvalues(){
   localStorage.setItem('Questblock1', Quests.Questblock1);
   localStorage.setItem('Questblock2', Quests.Questblock2);
   localStorage.setItem('Admin', AdminMode.Admin);
-  localStorage.setItem('SoundState', Soundset.SoundState);
-
+  localStorage.setItem('Box1', InhaltBoxes.Box1);
+  localStorage.setItem('Box2', InhaltBoxes.Box2);
+  localStorage.setItem('Box3', InhaltBoxes.Box3);
 }
 export let Standorte = { 
 Startpunkt: parseInt(localStorage.getItem('Startpunkt')) || 1,
@@ -163,6 +156,24 @@ export function AdminModeChange() {
   }
 }
 
+export let InhaltBoxes = {
+  Box1: parseInt(localStorage.getItem('Box1')) || 0,
+  Box2: parseInt(localStorage.getItem('Box2')) || 0,
+  Box3: parseInt(localStorage.getItem('Box3')) || 0
+}
+
+export function setInhaltBoxes(whichBox){
+  if (whichBox === "Box1"){
+  InhaltBoxes.Box1 = 1
+  localStorage.setItem('Box1', InhaltBoxes.Box1);
+  } else if (whichBox === "Box2"){
+    InhaltBoxes.Box2 = 1
+    localStorage.setItem('Box2', InhaltBoxes.Box2);
+  } else if (whichBox === "Box3"){
+    InhaltBoxes.Box3 = 1
+    localStorage.setItem('Box3', InhaltBoxes.Box3);
+  }
+}
 
 export function expLS() {
   // Setze die Werte im Local Storage
@@ -205,8 +216,10 @@ export function expLS() {
     AdminMode: {
       Admin: AdminMode.Admin.toString()
     },
-    Soundset: {
-      SoundState: Soundset.SoundState.toString()
+    InhaltBoxes: {
+      Box1: InhaltBoxes.Box1.toString(),
+      Box2: InhaltBoxes.Box1.toString(),
+      Box3: InhaltBoxes.Box1.toString()
     }
   });
 
@@ -246,6 +259,9 @@ export function impLS(file) {
       localStorage.setItem('Questblock2', importedData.Quests.Questblock2);
       localStorage.setItem('Admin', importedData.AdminMode.Admin);
       localStorage.setItem('SoundState', importedData.Soundset.SoundState);
+      localStorage.setItem('Box1', importedData.InhaltBoxes.Box1);
+      localStorage.setItem('Box2', importedData.InhaltBoxes.Box2);
+      localStorage.setItem('Box3', importedData.InhaltBoxes.Box3);
 
       // ... setze hier alle anderen importierten Werte ...
 

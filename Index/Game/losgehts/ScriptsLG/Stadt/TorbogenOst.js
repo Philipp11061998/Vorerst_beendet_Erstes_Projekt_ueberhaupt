@@ -63,7 +63,6 @@ export function TorbogenOst(){
                 $Second.remove();
                 changeStandort("Stadt");
                 StadtOW();
-                location.reload();
             })
 
             $Wache.click(function(){                
@@ -75,8 +74,6 @@ export function TorbogenOst(){
                 ArgusDialogues();
             })
 
-        } else {
-            location.reload();
         }
     });
 }

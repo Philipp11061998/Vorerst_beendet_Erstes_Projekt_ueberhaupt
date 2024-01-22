@@ -5,10 +5,37 @@ import { Taverne } from './ScriptsLG/Stadt/Taverne.js';
 import { Quests, Questexe } from '../Quests.js';
 import { TorbogenWest } from './ScriptsLG/Stadt/TorbogenWest.js';
 import { TorbogenOst } from './ScriptsLG/Stadt/TorbogenOst.js';
-import { Soundset, Soundsetfunction } from '../Werte.js';
+import { InhaltBoxes } from '../Werte.js';
+
+export function Inhaltboxenaktivieren(){
+    
+    if (InhaltBoxes.Box1 ===1){
+        $("#inhaltBox1").css("background", "url('./StylesLG/Inhaltboxen/InhaltBox1.png') center center");
+        $("#inhaltBox1").css("background-size", "150%");
+        $("#inhaltBox1").css("background-position", "center center");
+        $("#inhaltBox1").css("background-repeat", "no-repeat");
+        $("#inhaltBox1").addClass("inhaltBoxhover");
+    }
+    if (InhaltBoxes.Box2 === 1){
+        $("#inhaltBox2").css("background", "url('./StylesLG/Inhaltboxen/InhaltBox2.png') center center");
+        $("#inhaltBox2").css("background-size", "150%");
+        $("#inhaltBox2").css("background-position", "center center");
+        $("#inhaltBox2").css("background-repeat", "no-repeat");
+        $("#inhaltBox2").addClass("inhaltBoxhover");
+    }
+    if (InhaltBoxes.Box3 === 1){
+        $("#inhaltBox3").css("background", "url('./StylesLG/Inhaltboxen/InhaltBox3.png') center center");
+        $("#inhaltBox3").css("background-size", "150%");
+        $("#inhaltBox3").css("background-position", "center center");
+        $("#inhaltBox3").css("background-repeat", "no-repeat");
+        $("#inhaltBox3").addClass("inhaltBoxhover");
+    }
+}
 
 document.addEventListener("DOMContentLoaded", function () {
     $(document).ready(function() {
+
+        Inhaltboxenaktivieren();
         
         //Sound
         var $audioElement = $('#meinAudio');
@@ -22,12 +49,10 @@ document.addEventListener("DOMContentLoaded", function () {
             
             if (isMuted) {
                 // War vorher stummgeschaltet, jetzt nicht mehr stummgeschaltet
-                Soundsetfunction("on");
                 $("#Sound").addClass("SoundOn");
                 $audioElement[0].play();
             } else {
                 // War vorher nicht stummgeschaltet, jetzt stummgeschaltet
-                Soundsetfunction("off");
                 $("#Sound").removeClass("SoundOn");
             }
         });
@@ -62,39 +87,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (maxStandort === 'Startpunkt') {
         Button1Funktionen("Startpunkt");
-        if (Soundset.SoundState === "on"){
-            Soundsetfunction("on");
-          } else if (Soundset.SoundState === "off"){
-            Soundsetfunction("off");
-            }
     } else if (maxStandort === "Stadt") {
         Button1Funktionen("Stadt");
-        if (Soundset.SoundState === "on"){
-            Soundsetfunction("on");
-          } else if (Soundset.SoundState === "off"){
-            Soundsetfunction("off");
-            }
     } else if (maxStandort === "Taverne") {
         Button1Funktionen("Taverne");
-        if (Soundset.SoundState === "on"){
-            Soundsetfunction("on");
-          } else if (Soundset.SoundState === "off"){
-            Soundsetfunction("off");
-            }
     } else if (maxStandort === "TorbogenWest"){
         Button1Funktionen("TorbogenWest");
-        if (Soundset.SoundState === "on"){
-            Soundsetfunction("on");
-          } else if (Soundset.SoundState === "off"){
-            Soundsetfunction("off");
-            }
     } else if (maxStandort === "TorbogenOst"){
         Button1Funktionen("TorbogenOst");
-        if (Soundset.SoundState === "on"){
-            Soundsetfunction("on");
-          } else if (Soundset.SoundState === "off"){
-            Soundsetfunction("off");
-            }
     }
 
     // Funktion zum Aktualisieren der Werte basierend auf dem LocalStorage
@@ -275,6 +275,7 @@ document.addEventListener("DOMContentLoaded", function () {
             $("#AdminTools").style.display="none";
         }
     })
+
     function createQuestButton(QuestName) {
         var button = $('<button>', {
             'class': 'btn btn-light mb-2',
@@ -288,6 +289,22 @@ document.addEventListener("DOMContentLoaded", function () {
     $("#QueckedQuests").click(function() {
         $(this).toggleClass("erledigteQuestsChecked");
     });  
+
+    $("#inhaltBox1").click(function(){
+        if ($("#inhaltBox1").hasClass("inhaltBoxhover")){
+            //Hier Erklärung zu dem Gegenstand einblenden
+        }
+    })
+    $("#inhaltBox2").click(function(){
+        if ($("#inhaltBox2").hasClass("inhaltBoxhover")){
+            //Hier Erklärung zu dem Gegenstand einblenden
+        }
+    })
+    $("#inhaltBox3").click(function(){
+        if ($("#inhaltBox3").hasClass("inhaltBoxhover")){
+            //Hier Erklärung zu dem Gegenstand einblenden
+        }
+    })
   });
 });
 
@@ -386,3 +403,4 @@ export function Sexdefinition(){
 
     return { derdem, diesedieser, derdie }; //Hier alle Variablen einfügen, welche noch dazu kommen
 }
+

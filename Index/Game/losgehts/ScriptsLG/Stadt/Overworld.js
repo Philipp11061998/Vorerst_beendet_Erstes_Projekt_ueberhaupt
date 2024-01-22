@@ -8,7 +8,6 @@ import { insertText } from "../Startpunkt/Startpunkt.js";
 import { TorbogenWest } from "./TorbogenWest.js";
 import { TorbogenOst } from "./TorbogenOst.js";
 import { Buttoncreate, ButtoncreateohneLocation, creatediv } from "../../Game.js";
-import { Soundset, Soundsetfunction } from "../../../Werte.js";
 
 export function StadtOW(){
   $(document).ready(function () { // Warten auf das Laden des Dokuments
@@ -18,19 +17,6 @@ export function StadtOW(){
     let ButtonSOW2style = $("#ButtonSOW2");
 
     const Adminfromlocalstorage = localStorage.getItem('Admin');
-    var $audioElement = $('#meinAudio');
-    var $soundButton = $('#Sound');
-
-    //Sound
-    if (Soundset.SoundState === "on") {
-      while (!$soundButton.hasClass('SoundOn')) {
-        $soundButton.click(); // Versuche, den Button zu "drücken"
-    }
-    } else {
-        $audioElement.prop('muted', true);
-        $("#Sound").removeClass("SoundOn");
-    }
-    //Ende
 
     function ButtonRichtungen(){
     //Erscheinen der 3 Richtungen (Taverne, Westen, Osten)

@@ -1,5 +1,4 @@
 import { values, setCharisma, setUsername, AbfrageName, changeStandort, Geschlechtchange } from "../Werte.js";
-import { Soundset, Soundsetfunction } from "../Werte.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   $(document).ready(function () { // Warten auf das Laden des Dokuments
@@ -17,12 +16,10 @@ document.addEventListener("DOMContentLoaded", function () {
         
         if (isMuted) {
             // War vorher stummgeschaltet, jetzt nicht mehr stummgeschaltet
-            Soundsetfunction("on");
             $("#Sound").addClass("SoundOn");
             $audioElement[0].play();
         } else {
             // War vorher nicht stummgeschaltet, jetzt stummgeschaltet
-            Soundsetfunction("off");
             $("#Sound").removeClass("SoundOn");
         }
     });
