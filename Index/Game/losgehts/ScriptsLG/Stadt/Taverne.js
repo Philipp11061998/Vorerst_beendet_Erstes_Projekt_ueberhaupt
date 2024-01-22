@@ -171,6 +171,8 @@ export function NPCSlideLeft(Element) {
           ButtonT1style.text("");
           ButtonT2style.text("");
           StadtOW();
+
+          
       });
       
       document.addEventListener('keydown', function(e) {

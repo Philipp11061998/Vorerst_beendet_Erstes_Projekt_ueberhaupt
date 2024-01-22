@@ -158,6 +158,7 @@ export function JohannDialogue(){
             $("#NPCNames").css("display", "none")
             Johann.remove();
             textFeld.text("");
+            alert("Vielen Dank, dass du bis hier gespielt hast. Leider gibt es aktuell nicht mehr zu entdecken. Schau dich aber gerne noch ein wenig um. :)")
             changeStandort("Stadt");
             StadtOW();
           }, 4000);

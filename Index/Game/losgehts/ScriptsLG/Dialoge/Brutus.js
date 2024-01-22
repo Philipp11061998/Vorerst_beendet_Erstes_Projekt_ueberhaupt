@@ -65,7 +65,7 @@ export function BrutusDialogue(){
                     $Yes.click(function(){
                             $("#Yes").remove();
                             $("#No").remove();
-                            insertText('Vielen Dank ' + usernameFromLocalStorage + ' komm jederzeit wieder.', false )
+                            insertText('Vielen Dank ' + usernameFromLocalStorage + ' komm jederzeit wieder. Und nun, geh zu Johann und richte ihm meinen Dank aus.', false )
                         setTimeout(function (){
                             $("#Brutus").remove();
                             $("#NPCNames").css("display", "none");
@@ -73,7 +73,7 @@ export function BrutusDialogue(){
                             changeStandort("Stadt");
                             StadtOW();
                             location.reload();
-                        }, 2000);
+                        }, 3000);
                     })
 
                     $No.click(function(){
