@@ -3,7 +3,7 @@ import { Soundset, Soundsetfunction } from "../Werte.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   $(document).ready(function () { // Warten auf das Laden des Dokuments
-    alert("Für das beste Erlebnis, schalte am besten den Sound ein :)")
+    alert("Für das beste Erlebnis, schalte am besten den Sound ein :) (Aktuell gibt es Herausforderungen. Der Ton muss beim Location Wechsel erneut aktiviert weren. Ich arbeite daran :D)")
     
     //Sound
     var $audioElement = $('#meinAudio');

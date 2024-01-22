@@ -15,14 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
         $audioElement.prop('loop', true);
         $audioElement.prop('volume', 0.1);
 
-        // Initialer Zustand basierend auf Soundset.SoundState
-        if (Soundset.SoundState === "on") {
-            $audioElement.prop('muted', false);
-            $("#Sound").click();
-        } else {
-            $audioElement.prop('muted', true);
-        }
-
         $('#Sound').click(function() {
             var isMuted = $audioElement.prop('muted');
             $audioElement.prop('muted', !isMuted);
@@ -69,15 +61,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (maxStandort === 'Startpunkt') {
         Button1Funktionen("Startpunkt");
-        
+        if (Soundset.SoundState === "on"){
+            Soundsetfunction("on");
+          } else if (Soundset.SoundState === "off"){
+            Soundsetfunction("off");
+            }
     } else if (maxStandort === "Stadt") {
         Button1Funktionen("Stadt");
+        if (Soundset.SoundState === "on"){
+            Soundsetfunction("on");
+          } else if (Soundset.SoundState === "off"){
+            Soundsetfunction("off");
+            }
     } else if (maxStandort === "Taverne") {
         Button1Funktionen("Taverne");
+        if (Soundset.SoundState === "on"){
+            Soundsetfunction("on");
+          } else if (Soundset.SoundState === "off"){
+            Soundsetfunction("off");
+            }
     } else if (maxStandort === "TorbogenWest"){
         Button1Funktionen("TorbogenWest");
+        if (Soundset.SoundState === "on"){
+            Soundsetfunction("on");
+          } else if (Soundset.SoundState === "off"){
+            Soundsetfunction("off");
+            }
     } else if (maxStandort === "TorbogenOst"){
         Button1Funktionen("TorbogenOst");
+        if (Soundset.SoundState === "on"){
+            Soundsetfunction("on");
+          } else if (Soundset.SoundState === "off"){
+            Soundsetfunction("off");
+            }
     }
 
     // Funktion zum Aktualisieren der Werte basierend auf dem LocalStorage
@@ -302,14 +318,14 @@ export function enableSpecificButtons(exceptionIds) {
     });
 }
 
-export function Buttoncreate(HTMLid, Klasse, Textinhalt, angezeigt, leftcss, rightcss, indexz) {
+export function Buttoncreate(HTMLid, Klasse, Textinhalt, angezeigt, leftcss, topcss, indexz) {
     var $button = $('<button>', {
         id: HTMLid,
         text: Textinhalt,
         style: angezeigt
     }).css({
         left: leftcss,
-        top: rightcss,
+        top: topcss,
         zIndex: indexz
     });
 

@@ -42,7 +42,7 @@ export function ArgusDialogues(){
                 //Erstmal nur, damit man noch etwas machen kann 
                 else {
                     // Button zum Entschuldigen
-                    var $Sorry = Buttoncreate('Sorry', 'art1Button', 'Entschuldigen und weggehen..', 'display: none;', '3%', '80%', 2);
+                    var $Sorry = Buttoncreate('Sorry', 'art1Button', '', 'display: none;', '3%', '80%', 2);
 
                     // Leerer Button fürs Layout
                     var $empty = Buttoncreate('empty', 'art1Button', '', 'display: none;', '3%', '90%', 2 )
@@ -63,6 +63,7 @@ export function ArgusDialogues(){
                         $("#Argus").remove();
                         changeStandort("Stadt");
                         StadtOW();
+                        location.reload();
                     })
                 }
 
@@ -70,7 +71,7 @@ export function ArgusDialogues(){
         } // noch nichts angeklickt, was eine Quest sein könnte, also am Anfang des Spiels 
         else {
             // Button zum Entschuldigen
-            var $Sorry = Buttoncreate('Sorry', 'art1Button', 'Entschuldigen und weggehen..', 'display: none;', '3%', '80%', 2);
+            var $Sorry = Buttoncreate('Sorry', 'art1Button', '', 'display: none;', '3%', '80%', 2);
 
             // Leerer Button fürs Layout
             var $empty = Buttoncreate('empty', 'art1Button', '', 'display: none;', '3%', '90%', 2 )
@@ -91,6 +92,7 @@ export function ArgusDialogues(){
                 NPC.remove();
                 changeStandort("Stadt");
                 StadtOW();
+                location.reload();
             })
 
 

@@ -49,7 +49,7 @@ export function TorbogenWest(){
             textFeld.text("");
 
             disableAllButtons();
-            enableSpecificButtons(["ButtonTW1", "ButtonTW2","Wertebutton", "Menü", "Startmenü", "dev", "Quests", "Sound"]);
+            enableSpecificButtons(["Wertebutton", "Menü", "Startmenü", "dev", "Quests", "Sound"]);
 
             // Schriftfarbe auf Weiß setzen
             $("bewegendesTextfeld").css("color", "white");
@@ -73,6 +73,7 @@ export function TorbogenWest(){
                 $Second.remove();
                 $Wache.remove();
                 StadtOW();
+                location.reload();
             });
 
             $Wache.click(function(){
@@ -99,6 +100,7 @@ export function TorbogenWest(){
                             $Second.remove();
                             $Wache.remove();
                             TorbogenWest();
+                            location.reload();
                         }, 3000);
                     }, 1200);
                     

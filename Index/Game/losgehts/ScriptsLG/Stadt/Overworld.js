@@ -13,10 +13,24 @@ import { Soundset, Soundsetfunction } from "../../../Werte.js";
 export function StadtOW(){
   $(document).ready(function () { // Warten auf das Laden des Dokuments
     let textFeld = $("#bewegendesTextfeld");
-    let ButtonSOW1style = $("#ButtonSOW1");
+
+    ButtoncreateohneLocation("ButtonSOW2", "art2Button", "Zurück in den Wald laufen", "display: none;" )
     let ButtonSOW2style = $("#ButtonSOW2");
+
     const Adminfromlocalstorage = localStorage.getItem('Admin');
     var $audioElement = $('#meinAudio');
+    var $soundButton = $('#Sound');
+
+    //Sound
+    if (Soundset.SoundState === "on") {
+      while (!$soundButton.hasClass('SoundOn')) {
+        $soundButton.click(); // Versuche, den Button zu "drücken"
+    }
+    } else {
+        $audioElement.prop('muted', true);
+        $("#Sound").removeClass("SoundOn");
+    }
+    //Ende
 
     function ButtonRichtungen(){
     //Erscheinen der 3 Richtungen (Taverne, Westen, Osten)
@@ -44,7 +58,6 @@ export function StadtOW(){
 
     textFeld.text(""); // Text zunächst leeren
 
-    $("#ButtonSOW1").css("display", "none");
     $("#ButtonSOW2").css("display", "none");
 
     if (maxStandort === "Stadt"){
@@ -52,7 +65,7 @@ export function StadtOW(){
       textFeld.text("");
 
       disableAllButtons();
-      enableSpecificButtons(["ButtonSOW2", "Wertebutton", "Menü", "Startmenü", "dev", "Quests", "Sound"]);
+      enableSpecificButtons([ "Wertebutton", "Menü", "Startmenü", "dev", "Quests", "Sound"]);
 
       Admin();
 
@@ -81,10 +94,7 @@ export function StadtOW(){
 
       $("#buttonT").click(function () {
           changeStandort("Taverne");
-          $("#ButtonSOW1").css("display", "none");
-          $("#ButtonSOW2").css("display", "none");
-          ButtonSOW1style.text("");
-          ButtonSOW2style.text("");
+          $("#ButtonSOW2").remove();
           $("#buttonT").remove();
           $("#TextTav").remove();
           $("#buttonW").remove();
@@ -93,14 +103,12 @@ export function StadtOW(){
           $("#TextTSO").remove();
           $("#TavSchild").remove();
           Taverne();
+          location.reload();
       });
 
       $("#buttonW").click(function () {
         changeStandort("TorbogenWest");
-        $("#ButtonSOW1").css("display", "none");
-        $("#ButtonSOW2").css("display", "none");
-        ButtonSOW1style.text("");
-        ButtonSOW2style.text("");
+        $("#ButtonSOW2").remove();
         $("#buttonT").remove();
         $("#TextTav").remove();
         $("#buttonW").remove();
@@ -109,14 +117,12 @@ export function StadtOW(){
         $("#TextTSO").remove();
         $("#TavSchild").remove();
         TorbogenWest();
+        location.reload();
     });
 
     $("#buttonO").click(function () {
         changeStandort("TorbogenOst");
-        $("#ButtonSOW1").css("display", "none");
-        $("#ButtonSOW2").css("display", "none");
-        ButtonSOW1style.text("");
-        ButtonSOW2style.text("");
+        $("#ButtonSOW2").remove();
         $("#buttonT").remove();
         $("#TextTav").remove();
         $("#buttonW").remove();
@@ -125,14 +131,12 @@ export function StadtOW(){
         $("#TextTSO").remove();
         $("#TavSchild").remove();
         TorbogenOst();
+        location.reload();
     });
 
       $("#ButtonSOW2").click(function () {
         changeStandort("Startpunkt");
-        $("#ButtonSOW1").css("display", "none");
-        $("#ButtonSOW2").css("display", "none");
-        ButtonSOW1style.text("");
-        ButtonSOW2style.text("");
+        $("#ButtonSOW2").remove();
         $("#buttonT").remove();
         $("#TextTav").remove();
         $("#TavSchild").remove();
@@ -141,6 +145,7 @@ export function StadtOW(){
         $("#buttonO").remove();
         $("#TextTSO").remove();
         Startpunkt();
+        location.reload();
     });
     } else {
       location.reload();

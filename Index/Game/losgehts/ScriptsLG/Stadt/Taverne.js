@@ -1,6 +1,6 @@
 import { changeStandort } from "../../../Werte.js";
 import { values, Standorte } from '../../../Werte.js';
-import { disableAllButtons } from "../../Game.js";
+import { Buttoncreate, ButtoncreateohneLocation, disableAllButtons } from "../../Game.js";
 import { enableSpecificButtons } from "../../Game.js";
 import { StadtOW } from "./Overworld.js";
 import { insertText } from "../Startpunkt/Startpunkt.js";
@@ -65,11 +65,9 @@ export function NPCSlideLeft(Element) {
         }
     });
       let textFeld = $("#bewegendesTextfeld");
+      ButtoncreateohneLocation("ButtonT1", "art1Button", "Zurück in die Stadt gehen", "display: none;")
       let ButtonT1style = $("#ButtonT1");
-      let ButtonT2style = $("#ButtonT2");
-      let ButtonQ1 = $("#Q1");
       const Adminfromlocalstorage = localStorage.getItem('Admin');
-
       const usernameFromLocalStorage = localStorage.getItem('username');
 
       let maxStandort = Object.keys(Standorte).reduce((a, b) => Standorte[a] > Standorte[b] ? a : b);
@@ -79,11 +77,10 @@ export function NPCSlideLeft(Element) {
       textFeld.text("");
 
       $("#ButtonT1").css("display", "none")
-      $("#ButtonT2").css("display", "none")
 
 
       disableAllButtons();
-      enableSpecificButtons(["ButtonT1", "ButtonT2","Wertebutton", "Menü", "Startmenü", "dev", "Quests", "Sound"]);
+      enableSpecificButtons(["Wertebutton", "Menü", "Startmenü", "dev", "Quests", "Sound"]);
 
       Admin();
       
@@ -113,6 +110,7 @@ export function NPCSlideLeft(Element) {
       function addText() {
         textFeld.html(textToInsert.substring(0, currentIndex));
         currentIndex++;
+        buttonArray = buttonsactivate;
     
         if (currentIndex <= textToInsert.length) {
             setTimeout(addText, 1);
@@ -133,28 +131,27 @@ export function NPCSlideLeft(Element) {
     
     addText();
   }//Array erweitern und Filter setzen, wenn mehr QuestButton im Spiel vorhanden sind
-  var buttonArray = [$("#ButtonT1"), $("#ButtonT2"), $("#Q1")]
-  if (Quests.StartAdventure === 3){
-    buttonArray = buttonArray.filter(button => button.attr("id") !== "Q1");
-  }
+  var buttonArray = [$("#ButtonT1")]
 
 
-    insertText("Du bist in der Taverne angekommen. Schaue dich in Ruhe um, vielleicht möchte jemand etwas von dir.", true, "Zurück in die Stadt gehen", "", ButtonT1style, ButtonT2style, ...buttonArray);
+    insertText("Du bist in der Taverne angekommen. Schaue dich in Ruhe um, vielleicht möchte jemand etwas von dir.", true, "Zurück in die Stadt gehen", "Zurück in die Stadt gehen", ButtonT1style, ButtonT1style, ...buttonArray);
     
     setTimeout(function(){
       AllQuests();
-    }, 2600)
+    }, 1500)
 
 
       function AllQuests(){
         
         //Erster Questblock
         if (Quests.Questblock1 === 0 || Quests.Questblock1 === 1 || Quests.Questblock1 === 2){
+          Buttoncreate("Q1", "btn btn-danger blink", "", "display: none;", "73.5%", "44%", 2)
           $("#Q1").css("display", "block");
 
           //Quest 1 
           $("#Q1").click(function(){
             JohannDialogue();
+            $("#ButtonT1").remove();
           });
 
           // 1. Questblock fertig, aber kein anderer ausgewählt
@@ -166,25 +163,13 @@ export function NPCSlideLeft(Element) {
 
       $("#ButtonT1").click(function () {
           changeStandort("Stadt");
-          $("#ButtonT1").css("display", "none")
-          $("#ButtonT2").css("display", "none")
+          $("#ButtonT1").remove();
           ButtonT1style.text("");
-          ButtonT2style.text("");
           StadtOW();
+          location.reload();
 
           
       });
-      
-      document.addEventListener('keydown', function(e) {
-          if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
-            e.preventDefault();
-            if (e.key === 'ArrowUp') {
-              ButtonT1style.focus();
-            } else {
-              ButtonT2style.focus();
-            }
-          } 
-        });
       } else {
         location.reload();
       }

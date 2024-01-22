@@ -61,8 +61,9 @@ export function TorbogenOst(){
                 $Stadteingang.remove();
                 $Wache.remove();
                 $Second.remove();
-                    changeStandort("Stadt");
-                    StadtOW();
+                changeStandort("Stadt");
+                StadtOW();
+                location.reload();
             })
 
             $Wache.click(function(){                

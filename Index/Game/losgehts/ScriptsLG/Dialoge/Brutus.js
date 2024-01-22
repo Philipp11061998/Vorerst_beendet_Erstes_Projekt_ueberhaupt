@@ -83,6 +83,7 @@ export function BrutusDialogue(){
                         $("#NPCNames").css("display", "none");
                         changeStandort("Stadt");
                         StadtOW();
+                        location.reload();
                     })
             })
             $No.click(function(){
@@ -92,6 +93,7 @@ export function BrutusDialogue(){
                 $("#NPCNames").style.display = "none";
                 changeStandort("Stadt");
                 StadtOW();
+                location.reload();
             })
 
         } else if (Quests.StartAdventure === 0 && Quests.Questblock1 === 0){
@@ -125,6 +127,7 @@ export function BrutusDialogue(){
                 NPC.remove();
                 changeStandort("Stadt");
                 StadtOW();
+                location.reload();
             })
         }
     });

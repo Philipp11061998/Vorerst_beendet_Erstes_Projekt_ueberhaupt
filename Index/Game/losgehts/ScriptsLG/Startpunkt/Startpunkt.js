@@ -3,6 +3,7 @@ import { values, Standorte } from '../../../Werte.js';
 import { disableAllButtons, enableSpecificButtons } from "../../Game.js";
 import { StadtOW } from "../Stadt/Overworld.js";
 import { Soundset, Soundsetfunction } from "../../../Werte.js";
+import { Buttoncreate, ButtoncreateohneLocation } from "../../Game.js";
 
 export function insertText(textToInsert, activateButtons = true, $Button1, $Button2, text1, text2) {
   $(document).ready(function () {
@@ -84,6 +85,11 @@ function insertCenteredTextWithDelayAndSlowText(textToInsert, callback) {
 export function Startpunkt() {
   $(document).ready(function () { // Warten auf das Laden des Dokuments
     let textFeld = $("#bewegendesTextfeld");
+
+    
+    ButtoncreateohneLocation("ButtonSp1", "art1Button", "Schnellstmöglich in die Stadt gehen", "display: block;");
+    ButtoncreateohneLocation("ButtonSp2", "art2Button", "Langsam gehen und die Umgebung erkunden.", "display: block;")
+
     let ButtonSp1style = $("#ButtonSp1");
     let ButtonSp2style = $("#ButtonSp2");
     let FragezeichenKästchen = $("#Gegenstände");
@@ -128,6 +134,12 @@ export function Startpunkt() {
           $("#ButtonSp1").css("display", "none");
           $("#ButtonSp2").css("display", "none");
           StadtOW();
+          if (Soundset.SoundState === "on"){
+            Soundsetfunction("on");
+          } else if (Soundset.SoundState === "off"){
+            Soundsetfunction("off");
+          }
+          location.reload();
       });
 
       $("#ButtonSp2").click(function () {
@@ -152,7 +164,7 @@ export function Startpunkt() {
         $("#Wertebutton").css("display", "block");
         $("#Gegenstände").css("display", "block");
         StadtOW();
-
+        location.reload();
         });
       })
 
