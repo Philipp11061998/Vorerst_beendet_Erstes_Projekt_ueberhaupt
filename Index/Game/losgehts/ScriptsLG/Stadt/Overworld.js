@@ -103,7 +103,6 @@ export function StadtOW(){
           $("#TextTSO").remove();
           $("#TavSchild").remove();
           Taverne();
-          location.reload();
       });
 
       $("#buttonW").click(function () {
@@ -117,7 +116,6 @@ export function StadtOW(){
         $("#TextTSO").remove();
         $("#TavSchild").remove();
         TorbogenWest();
-        location.reload();
     });
 
     $("#buttonO").click(function () {
@@ -131,7 +129,6 @@ export function StadtOW(){
         $("#TextTSO").remove();
         $("#TavSchild").remove();
         TorbogenOst();
-        location.reload();
     });
 
       $("#ButtonSOW2").click(function () {
@@ -145,10 +142,7 @@ export function StadtOW(){
         $("#buttonO").remove();
         $("#TextTSO").remove();
         Startpunkt();
-        location.reload();
     });
-    } else {
-      location.reload();
     }
   });
 }

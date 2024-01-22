@@ -165,13 +165,8 @@ export function NPCSlideLeft(Element) {
           changeStandort("Stadt");
           $("#ButtonT1").remove();
           ButtonT1style.text("");
-          StadtOW();
-          location.reload();
-
-          
+          StadtOW();          
       });
-      } else {
-        location.reload();
-      }
-    });
+    }
+  });
 }

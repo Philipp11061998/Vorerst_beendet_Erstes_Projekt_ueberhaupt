@@ -73,7 +73,6 @@ export function TorbogenWest(){
                 $Second.remove();
                 $Wache.remove();
                 StadtOW();
-                location.reload();
             });
 
             $Wache.click(function(){
@@ -100,7 +99,6 @@ export function TorbogenWest(){
                             $Second.remove();
                             $Wache.remove();
                             TorbogenWest();
-                            location.reload();
                         }, 3000);
                     }, 1200);
                     

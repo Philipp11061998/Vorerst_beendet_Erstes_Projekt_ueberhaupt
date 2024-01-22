@@ -3,48 +3,29 @@ import { Soundset, Soundsetfunction } from "../Werte.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   $(document).ready(function () { // Warten auf das Laden des Dokuments
-    alert("Für das beste Erlebnis, schalte am besten den Sound ein :) (Aktuell gibt es Herausforderungen. Der Ton muss beim Location Wechsel erneut aktiviert weren. Ich arbeite daran :D)")
+    alert("Für das beste Erlebnis, schalte am besten den Sound ein :) (Aktuell gibt es Herausforderungen. Der Ton muss hier nach und beim Wechsel in die Stadt erneut aktiviert werden. Ich arbeite daran :D)")
     
     //Sound
     var $audioElement = $('#meinAudio');
-    $audioElement.prop('muted', true); // Startet stummgeschaltet
     $audioElement.prop('loop', true);
-    $audioElement.prop('volume', 0.7);
-    
+    $audioElement.prop('volume', 0.1);
 
-    if (Soundset.SoundState === "on"){
-      $audioElement.prop('muted', false);
-      $audioElement.prop('loop', true);
-      $audioElement.prop('volume', 0.7);
-      $audioElement[0].play();
-      
-    } else if (Soundset.SoundState === "off"){
-      $audioElement.prop('muted', true);
-      $audioElement.prop('loop', true);
-    }
-
-    
 
     $('#Sound').click(function() {
-      $audioElement.prop('muted', !$audioElement.prop('muted'));
-      $("#Sound").toggleClass('SoundOn', !$audioElement.prop('muted'));
-
-      // Prüfen, ob der Ton jetzt gemuted ist
-      if ($audioElement.prop('muted')) {
-          Soundsetfunction("off"); // Ton ist ausgeschaltet
-      } else {
-          Soundsetfunction("on"); // Ton ist eingeschaltet
-          }
-      if (Soundset.SoundState === "on"){
-        $audioElement.prop('muted', false);
-        $audioElement.prop('loop', true);
-        $audioElement.prop('volume', 0.7);
-      } else if (Soundset.SoundState === "off"){
-        $audioElement.prop('muted', true);
-        $audioElement.prop('loop', true);
-      }
+        var isMuted = $audioElement.prop('muted');
+        $audioElement.prop('muted', !isMuted);
+        
+        if (isMuted) {
+            // War vorher stummgeschaltet, jetzt nicht mehr stummgeschaltet
+            Soundsetfunction("on");
+            $("#Sound").addClass("SoundOn");
+            $audioElement[0].play();
+        } else {
+            // War vorher nicht stummgeschaltet, jetzt stummgeschaltet
+            Soundsetfunction("off");
+            $("#Sound").removeClass("SoundOn");
+        }
     });
-
     //Ende
     
     const textFeld = $("#bewegendesTextfeld");

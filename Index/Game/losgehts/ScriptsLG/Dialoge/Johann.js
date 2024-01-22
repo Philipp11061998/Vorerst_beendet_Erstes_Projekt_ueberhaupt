@@ -10,7 +10,6 @@ export function JohannDialogue(){
   $(document).ready(function () { // Warten auf das Laden des Dokuments
     let textFeld = $("#bewegendesTextfeld");
     let ButtonT1style = $("#ButtonT1");
-    let ButtonT2style = $("#ButtonT2");
     let ButtonQ1 = $("#Q1");
 
     const { derdem, diesedieser, derdie } = Sexdefinition();
@@ -20,9 +19,7 @@ export function JohannDialogue(){
         ButtonQ1.removeClass("blink"); // Entfernen der CSS-Klasse "blink"
         $("#Q1").css("display", "none");
         $("#ButtonT1").css("display", "none");
-        $("#ButtonT2").css("display", "none");
         $("#ButtonT1").text(""); // Setzen des Textinhalts auf einen leeren String
-        $("#ButtonT2").text("");
 
         const usernameFromLocalStorage = localStorage.getItem('username');
     
@@ -91,6 +88,7 @@ export function JohannDialogue(){
               $("#QuestInfoText").css("display", "none");
             }
 
+            $annehmen.remove();
             $ablehnen.remove();
             $Info.remove();
 
@@ -99,8 +97,7 @@ export function JohannDialogue(){
             setTimeout(function () {
               $("#NPCNames").css("display", "none");
               Johann.remove();
-              $annehmen.remove();
-              location.reload();
+              Taverne();
             }, 1500);
             
 
@@ -115,10 +112,8 @@ export function JohannDialogue(){
         let buttonArrayQSA1 = [ButtonT1style]
         textFeld.text("");
         $("#ButtonT1").css("display", "none")
-        $("#ButtonT2").css("display", "none")
         $("#Q1").css("display", "none")
         ButtonT1style.text("");
-        ButtonT2style.text("");
 
         //NPC erstellen
         NPCtoSlide("Johann", "Johann", "/Stadt/Taverne/Johann.png");
@@ -126,9 +121,14 @@ export function JohannDialogue(){
         NPCSlideLeft("Johann");
 
         setTimeout(function () {
-          insertText("Bitte komm erst wieder, wenn du alles erledigt hast.", true, "Zurück in die Stadt gehen", "", ButtonT1style, ButtonT2style, ...buttonArrayQSA1 )
+          insertText("Bitte komm erst wieder, wenn du alles erledigt hast.", true, "Zurück in die Stadt gehen", "Zurück in die Stadt gehen", ButtonT1style, ButtonT1style, ...buttonArrayQSA1 )
           setTimeout(function () {
-            location.reload();
+            $("#NPCNames").css("display", "none")
+            Johann.remove();
+            textFeld.text("");
+            $("#ButtonT1").remove();
+            $("#Q1").remove();
+            Taverne();
         }, 2000);
         },1200);
 
@@ -136,10 +136,8 @@ export function JohannDialogue(){
       else if (Quests.StartAdventure === 2 && Quests.Questblock1 === 1){
         textFeld.text("");
         $("#ButtonT1").css("display", "none")
-        $("#ButtonT2").css("display", "none")
         $("#Q1").css("display", "none")
         ButtonT1style.text("");
-        ButtonT2style.text("");
 
         //NPC erstellen
         NPCtoSlide("Johann", "Johann", "/Stadt/Taverne/Johann.png");
@@ -147,10 +145,9 @@ export function JohannDialogue(){
         NPCSlideLeft("Johann");
 
         setTimeout(function () {
-          insertText("Vielen Dank. Es werden jetzt sicher noch mehr Bürger auf dich zukommen. Komm jederzeit wieder und schaue ob Aufgaben für dich da sind.", true, "Zurück in die Stadt gehen", "", ButtonT1style, ButtonT2style )
-          $("#ButtonT1").css("display", "none")
-          $("#ButtonT2").css("display", "none")
-          $("#Q1").css("display", "none")
+          insertText("Vielen Dank. Es werden jetzt sicher noch mehr Bürger auf dich zukommen. Komm jederzeit wieder und schau ob Aufgaben für dich da sind.", true, "Zurück in die Stadt gehen", "Zurück in die Stadt gehen", ButtonT1style, ButtonT1style )
+          $("#ButtonT1").remove();
+          $("#Q1").remove();
           changeQuest("StartAdventure", 3);
           changeQuest("Questblock1", 3);
           

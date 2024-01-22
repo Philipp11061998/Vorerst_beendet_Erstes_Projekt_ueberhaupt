@@ -63,7 +63,6 @@ export function ArgusDialogues(){
                         $("#Argus").remove();
                         changeStandort("Stadt");
                         StadtOW();
-                        location.reload();
                     })
                 }
 
@@ -92,7 +91,6 @@ export function ArgusDialogues(){
                 NPC.remove();
                 changeStandort("Stadt");
                 StadtOW();
-                location.reload();
             })
 
 

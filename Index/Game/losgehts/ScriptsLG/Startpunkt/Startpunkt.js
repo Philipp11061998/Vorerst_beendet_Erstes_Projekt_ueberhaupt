@@ -87,8 +87,8 @@ export function Startpunkt() {
     let textFeld = $("#bewegendesTextfeld");
 
     
-    ButtoncreateohneLocation("ButtonSp1", "art1Button", "Schnellstmöglich in die Stadt gehen", "display: block;");
-    ButtoncreateohneLocation("ButtonSp2", "art2Button", "Langsam gehen und die Umgebung erkunden.", "display: block;")
+    ButtoncreateohneLocation("ButtonSp1", "art1Button", "Schnellstmöglich in die Stadt gehen", "display: none;");
+    ButtoncreateohneLocation("ButtonSp2", "art2Button", "Langsam gehen und die Umgebung erkunden.", "display: none;")
 
     let ButtonSp1style = $("#ButtonSp1");
     let ButtonSp2style = $("#ButtonSp2");
@@ -134,11 +134,6 @@ export function Startpunkt() {
           $("#ButtonSp1").css("display", "none");
           $("#ButtonSp2").css("display", "none");
           StadtOW();
-          if (Soundset.SoundState === "on"){
-            Soundsetfunction("on");
-          } else if (Soundset.SoundState === "off"){
-            Soundsetfunction("off");
-          }
           location.reload();
       });
 

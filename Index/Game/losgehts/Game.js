@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
         $audioElement.prop('loop', true);
         $audioElement.prop('volume', 0.1);
 
+
         $('#Sound').click(function() {
             var isMuted = $audioElement.prop('muted');
             $audioElement.prop('muted', !isMuted);
