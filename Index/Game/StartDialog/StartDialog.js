@@ -1,4 +1,4 @@
-import { values, setCharisma, setUsername, AbfrageName, changeStandort, Geschlechtchange } from "../Werte.js";
+import { values, setCharisma, setUsername, AbfrageName, changeStandort, Geschlechtchange, Soundset, SetSoundState  } from "../Werte.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   $(document).ready(function () { // Warten auf das Laden des Dokuments
@@ -6,8 +6,15 @@ document.addEventListener("DOMContentLoaded", function () {
     
     //Sound
     var $audioElement = $('#meinAudio');
+    $audioElement.prop('muted', true);
     $audioElement.prop('loop', true);
     $audioElement.prop('volume', 0.1);
+    
+    if (!$('#Sound').hasClass("SoundOn") && Soundset.SoundState === "on"){
+        $("#Sound").addClass("SoundOn");
+    } else if ($('#Sound').hasClass("SoundOn") && Soundset.SoundState === "off") {
+        $("#Sound").removeClass("SoundOn");
+    }
 
 
     $('#Sound').click(function() {
@@ -18,9 +25,11 @@ document.addEventListener("DOMContentLoaded", function () {
             // War vorher stummgeschaltet, jetzt nicht mehr stummgeschaltet
             $("#Sound").addClass("SoundOn");
             $audioElement[0].play();
+            SetSoundState("on");
         } else {
             // War vorher nicht stummgeschaltet, jetzt stummgeschaltet
             $("#Sound").removeClass("SoundOn");
+            SetSoundState("off");
         }
     });
     //Ende

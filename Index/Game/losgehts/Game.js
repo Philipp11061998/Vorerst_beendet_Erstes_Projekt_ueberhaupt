@@ -1,11 +1,10 @@
-import { values, Standorte, changeStandort } from '../Werte.js';
+import { values, Standorte, changeStandort, SetSoundState, InhaltBoxes, Soundset } from '../Werte.js';
 import { Startpunkt } from './ScriptsLG/Startpunkt/Startpunkt.js';
 import { StadtOW } from './ScriptsLG/Stadt/Overworld.js';
 import { Taverne } from './ScriptsLG/Stadt/Taverne.js';
 import { Quests, Questexe } from '../Quests.js';
 import { TorbogenWest } from './ScriptsLG/Stadt/TorbogenWest.js';
 import { TorbogenOst } from './ScriptsLG/Stadt/TorbogenOst.js';
-import { InhaltBoxes } from '../Werte.js';
 
 export function Inhaltboxenaktivieren(){
     
@@ -39,8 +38,15 @@ document.addEventListener("DOMContentLoaded", function () {
         
         //Sound
         var $audioElement = $('#meinAudio');
+        $audioElement.prop('muted', true);
         $audioElement.prop('loop', true);
         $audioElement.prop('volume', 0.1);
+        
+        if (!$('#Sound').hasClass("SoundOn") && Soundset.SoundState === "on"){
+            $("#Sound").addClass("SoundOn");
+        } else if ($('#Sound').hasClass("SoundOn") && Soundset.SoundState === "off") {
+            $("#Sound").removeClass("SoundOn");
+        }
 
 
         $('#Sound').click(function() {
@@ -51,9 +57,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 // War vorher stummgeschaltet, jetzt nicht mehr stummgeschaltet
                 $("#Sound").addClass("SoundOn");
                 $audioElement[0].play();
+                SetSoundState("on");
             } else {
                 // War vorher nicht stummgeschaltet, jetzt stummgeschaltet
                 $("#Sound").removeClass("SoundOn");
+                SetSoundState("off");
             }
         });
         //Ende

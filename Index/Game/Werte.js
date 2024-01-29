@@ -4,6 +4,15 @@ export let AdminMode = {
   Admin: parseInt(localStorage.getItem('Admin')) || 0
 }
 
+export let Soundset = {
+  SoundState: localStorage.getItem('SoundState') || "off"
+}
+
+export function SetSoundState(newState){
+  Soundset.SoundState = newState;
+  localStorage.setItem('SoundState', Soundset.SoundState);
+}
+
 export let values = {
   Charisma: parseInt(localStorage.getItem('Charisma')) || 0,
   username: localStorage.getItem('username') || "Fremder",
@@ -53,7 +62,8 @@ export function resetvalues(){
   Admin = 0;
   InhaltBoxes.Box1 = 0;
   InhaltBoxes.Box2 = 0;
-  InhaltBoxes.Box3 = 0;  
+  InhaltBoxes.Box3 = 0; 
+  Soundset.SoundState = "off";
 
   localStorage.setItem('Name_abgefragt', values.Name_abgefragt);
   localStorage.setItem('Charisma', values.Charisma);
@@ -70,6 +80,7 @@ export function resetvalues(){
   localStorage.setItem('Box1', InhaltBoxes.Box1);
   localStorage.setItem('Box2', InhaltBoxes.Box2);
   localStorage.setItem('Box3', InhaltBoxes.Box3);
+  localStorage.setItem('SoundState', Soundset.SoundState);
 }
 export let Standorte = { 
 Startpunkt: parseInt(localStorage.getItem('Startpunkt')) || 1,
@@ -220,6 +231,9 @@ export function expLS() {
       Box1: InhaltBoxes.Box1.toString(),
       Box2: InhaltBoxes.Box1.toString(),
       Box3: InhaltBoxes.Box1.toString()
+    },
+    Soundset: {
+      SoundState: Soundset.SoundState
     }
   });
 
