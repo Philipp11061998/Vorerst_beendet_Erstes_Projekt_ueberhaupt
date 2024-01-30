@@ -201,16 +201,11 @@ h3 {
     left: 2%;
     top: 8%;
     width: 12%;
-    max-width: 12%;
-    min-width: 12%;
-    height: 23%;
-    min-height: 23%;
-    max-height: 23%;
     background-color: grey;
-    padding-bottom: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
-    padding-left: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
-    padding-right: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
-    padding-top: 1%;
+    padding-bottom: 0.2%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    padding-left: 0.75%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    padding-right: 0.75%; /* Nutzt relative Einheit statt fester Pixelwerte */
+    padding-top: 0.5%;
     color: #fff;
     background-color: #000;
     border: 0.05vw solid #fff;

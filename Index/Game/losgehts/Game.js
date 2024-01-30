@@ -77,22 +77,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     updateValuesFromLocalStorage()
 
-    Admin();
-    
-    function Admin(){
-        if (Adminfromlocalstorage === "135792468") {
-            $("#AdminTools").css("display", "block");
-            $("#LocationSP").css("display", "block");
-            $("#LocationSO").css("display", "block");
-            $("#LocationT").css("display", "block");
-          } else if (Adminfromlocalstorage != "135792468") {
-            $("#AdminTools").css("display", "none");
-            $("#LocationSP").css("display", "none");
-            $("#LocationSO").css("display", "none");
-            $("#LocationT").css("display", "none");
-        }
-    }
-
     if (maxStandort === 'Startpunkt') {
         Button1Funktionen("Startpunkt");
     } else if (maxStandort === "Stadt") {
@@ -139,15 +123,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     $("#Menü").click(function(){
         let collapseQ = $("#Quests");
-        let collapseAdmin = $("#AdminTools");
 
         if (!$("#collapseQ").hasClass("collapsed")) {
             $("#collapseQ").click();
-        }
-        
-        if (!$("#collapseAdmin").hasClass("collapsed")) {
-            $("#collapseAdmin").click();
-        }        
+        }  
     });
 
     $("#Quests").click(function(){
@@ -234,54 +213,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     $("#dev").click(function() {
         window.open("https://www.instagram.com/philippkraut25/", "_blank");
-    })
-
-    $("#LocationSP").click(function(){
-        let Adminfromlocalstorage = localStorage.getItem('Admin');
-
-        if (Adminfromlocalstorage === "135792468"){
-            $("#AdminTools").click();
-            $("#Menü").click();
-            changeStandort("Startpunkt");
-            Startpunkt();
-        } else {
-            alert("Bitte aktiviere den Admin Modus im Startmenü")
-            $("#AdminTools").click();
-            $("#Menü").click();
-            $("#AdminTools").style.display="none";
-        }
-    })
-
-    $("#LocationSO").click(function(){
-        let Adminfromlocalstorage = localStorage.getItem('Admin');
-
-        if (Adminfromlocalstorage === "135792468"){
-            $("#AdminTools").click();
-            $("#Menü").click();
-            changeStandort("Stadt");
-            StadtOW();
-        } else {
-            alert("Bitte aktiviere zuerst den Admin Modus im Startmenü");
-            $("#AdminTools").click();
-            $("#Menü").click();
-            $("#AdminTools").style.display="none";
-        }
-    })
-
-    document.getElementById("LocationT").addEventListener("click", function(){
-        let Adminfromlocalstorage = localStorage.getItem('Admin');
-
-        if (Adminfromlocalstorage === "135792468"){
-            $("#AdminTools").click();
-            $("#Menü").click();
-            changeStandort("Taverne");
-            Taverne();
-        } else {
-            alert("Bitte aktiviere den Admin Modus im Startmenü");
-            $("#AdminTools").click();
-            $("#Menü").click();
-            $("#AdminTools").style.display="none";
-        }
     })
 
     function createQuestButton(QuestName) {
