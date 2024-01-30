@@ -81,15 +81,15 @@ document.addEventListener("DOMContentLoaded", function () {
     
     function Admin(){
         if (Adminfromlocalstorage === "135792468") {
-            $("#AdminTools").css("display", "none");
-            $("#LocationSP").css("display", "none");
-            $("#LocationSO").css("display", "none");
-            $("#LocationT").css("display", "none");
-          } else if (Adminfromlocalstorage != "135792468") {
             $("#AdminTools").css("display", "block");
             $("#LocationSP").css("display", "block");
             $("#LocationSO").css("display", "block");
             $("#LocationT").css("display", "block");
+          } else if (Adminfromlocalstorage != "135792468") {
+            $("#AdminTools").css("display", "none");
+            $("#LocationSP").css("display", "none");
+            $("#LocationSO").css("display", "none");
+            $("#LocationT").css("display", "none");
         }
     }
 
