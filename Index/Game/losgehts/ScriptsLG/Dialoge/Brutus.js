@@ -1,11 +1,9 @@
-import { disableAllButtons, enableSpecificButtons, Buttoncreate } from "../../Game.js";
+import { disableAllButtons, enableSpecificButtons, Buttoncreate, Sexdefinition } from "../../Game.js";
 import { NPCSlideLeft, NPCtoSlide } from "../Stadt/Taverne.js";
 import { insertText } from "../Startpunkt/Startpunkt.js";
 import { changeQuest, Quests } from "../../../Quests.js";
-import { TorbogenWest } from "../Stadt/TorbogenWest.js";
 import { changeStandort, Standorte } from "../../../Werte.js";
 import { StadtOW } from "../Stadt/Overworld.js";
-import { Sexdefinition } from "../../Game.js";
 
 
 export function BrutusDialogue(){

@@ -1,12 +1,9 @@
 import { NPCtoSlide, NPCSlideLeft, Taverne } from "../Stadt/Taverne.js";
 import { insertText } from "../Startpunkt/Startpunkt.js";
 import { changeQuest, Questexe, Quests } from "../../../Quests.js";
-import { changeStandort, Standorte } from "../../../Werte.js";
+import { changeStandort, Standorte, setInhaltBoxes } from "../../../Werte.js";
 import { StadtOW } from "../Stadt/Overworld.js";
-import { Sexdefinition } from "../../Game.js";
-import { Buttoncreate } from "../../Game.js";
-import { setInhaltBoxes,  } from "../../../Werte.js";
-import { Inhaltboxenaktivieren } from "../../Game.js";
+import { Sexdefinition, Buttoncreate, Inhaltboxenaktivieren } from "../../Game.js";
 
 export function JohannDialogue(){
   $(document).ready(function () { // Warten auf das Laden des Dokuments

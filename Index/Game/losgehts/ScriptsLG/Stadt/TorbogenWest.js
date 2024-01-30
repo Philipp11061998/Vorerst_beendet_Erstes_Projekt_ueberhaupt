@@ -1,11 +1,10 @@
 import { Quests, changeQuest } from "../../../Quests.js";
 import { Standorte, changeStandort } from "../../../Werte.js";
-import { disableAllButtons, enableSpecificButtons } from "../../Game.js";
+import { disableAllButtons, enableSpecificButtons, Buttoncreate, ButtoncreateohneLocation } from "../../Game.js";
 import { insertText } from "../Startpunkt/Startpunkt.js";
 import { StadtOW } from "./Overworld.js";
 import { NPCSlideLeft, NPCtoSlide } from "./Taverne.js";
 import { BrutusDialogue } from "../Dialoge/Brutus.js";
-import { Buttoncreate, ButtoncreateohneLocation } from "../../Game.js";
 
 
 export function TorbogenWest(){

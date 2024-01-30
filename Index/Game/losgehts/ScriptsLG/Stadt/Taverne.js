@@ -1,7 +1,5 @@
-import { changeStandort } from "../../../Werte.js";
-import { values, Standorte } from '../../../Werte.js';
-import { Buttoncreate, ButtoncreateohneLocation, disableAllButtons } from "../../Game.js";
-import { enableSpecificButtons } from "../../Game.js";
+import { changeStandort, values, Standorte } from "../../../Werte.js";
+import { Buttoncreate, ButtoncreateohneLocation, disableAllButtons, enableSpecificButtons } from "../../Game.js";
 import { StadtOW } from "./Overworld.js";
 import { insertText } from "../Startpunkt/Startpunkt.js";
 import { changeQuest, Quests, Questexe } from "../../../Quests.js";

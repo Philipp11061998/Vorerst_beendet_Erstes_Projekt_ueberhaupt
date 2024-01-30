@@ -1,8 +1,6 @@
-import { changeStandort } from "../../../Werte.js";
-import { values, Standorte } from '../../../Werte.js';
-import { disableAllButtons, enableSpecificButtons } from "../../Game.js";
+import { changeStandort, values, Standorte } from "../../../Werte.js";
+import { disableAllButtons, enableSpecificButtons, Buttoncreate, ButtoncreateohneLocation } from "../../Game.js";
 import { StadtOW } from "../Stadt/Overworld.js";
-import { Buttoncreate, ButtoncreateohneLocation } from "../../Game.js";
 
 export function insertText(textToInsert, activateButtons = true, $Button1, $Button2, text1, text2) {
   $(document).ready(function () {

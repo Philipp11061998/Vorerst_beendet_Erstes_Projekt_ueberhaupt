@@ -1,12 +1,9 @@
-import { Standorte } from "../../../Werte.js";
-import { Sexdefinition } from "../../Game.js";
+import { Standorte, changeStandort } from "../../../Werte.js";
+import { Sexdefinition, Buttoncreate, enableSpecificButtons, disableAllButtons } from "../../Game.js";
 import { insertText } from "../Startpunkt/Startpunkt.js";
 import { NPCSlideLeft, NPCtoSlide } from "../Stadt/Taverne.js";
 import { Quests } from "../../../Quests.js";
-import { Buttoncreate } from "../../Game.js";
-import { enableSpecificButtons, disableAllButtons } from "../../Game.js";
 import { TorbogenOst } from "../Stadt/TorbogenOst.js";
-import { changeStandort } from "../../../Werte.js";
 import { StadtOW } from "../Stadt/Overworld.js";
 
 export function ArgusDialogues(){

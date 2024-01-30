@@ -1,13 +1,9 @@
-import { changeStandort } from "../../../Werte.js";
-import { values, Standorte } from '../../../Werte.js';
-import { disableAllButtons } from "../../Game.js";
-import { enableSpecificButtons } from "../../Game.js";
+import { changeStandort, values, Standorte } from "../../../Werte.js";
+import { disableAllButtons, enableSpecificButtons, Buttoncreate, ButtoncreateohneLocation, creatediv } from "../../Game.js";
 import { Taverne } from "./Taverne.js";
-import { Startpunkt } from "../Startpunkt/Startpunkt.js";
-import { insertText } from "../Startpunkt/Startpunkt.js";
+import { Startpunkt, insertText } from "../Startpunkt/Startpunkt.js";
 import { TorbogenWest } from "./TorbogenWest.js";
 import { TorbogenOst } from "./TorbogenOst.js";
-import { Buttoncreate, ButtoncreateohneLocation, creatediv } from "../../Game.js";
 
 export function StadtOW(){
   $(document).ready(function () { // Warten auf das Laden des Dokuments

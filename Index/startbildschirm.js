@@ -1,7 +1,4 @@
-import { values, resetvalues, Standorte } from './Game/Werte.js';
-import { impLS } from './Game/Werte.js';
-import { expLS } from './Game/Werte.js';
-import { AdminModeChange } from './Game/Werte.js';
+import { values, resetvalues, Standorte, impLS, expLS, AdminModeChange } from './Game/Werte.js';
 
 $(document).ready(function () {
   values.Charisma = parseInt(localStorage.getItem('Charisma')) || 0;
