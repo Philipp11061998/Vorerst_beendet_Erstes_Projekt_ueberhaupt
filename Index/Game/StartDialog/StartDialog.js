@@ -124,11 +124,15 @@ document.addEventListener("DOMContentLoaded", function () {
           } else if ($("#WChar").hasClass("selected")) {
             Geschlechtchange("Female");
           }
-          setUsername(inputText);
-          setCharisma(5);
-          AbfrageName();
-          changeStandort("Startpunkt");
-          window.location.href = "../losgehts/Game.html";
+          if ($('.Name input').val().match(/[^a-zA-Z]/g)) {
+            alert("Bitte gib nur Buchstaben ein.")
+          } else {
+              setUsername(inputText);
+              setCharisma(5);
+              AbfrageName();
+              changeStandort("Startpunkt");
+              window.location.href = "../losgehts/Game.html";
+            }
         }
       }
     });

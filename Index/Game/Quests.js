@@ -40,20 +40,23 @@ export function Questexe(Quest, Position) {
           existingQuestText.css("display", "block");
       }
   } else {
-      // Text Element für Quest Inhalt erstellen
-      var QuestText = $("<div></div>").addClass(Position + " p-3 mb-2 bg-black text-white overflow-auto").attr("id", Quest);
 
-      // Überschrift erstellen
-      var header = $("<h1></h1>").addClass("headerQuest").attr("id", "HeaderQuest").text("Info");
+        if (Quest.StartAdventure === 0){
+            // Text Element für Quest Inhalt erstellen
+            var QuestText = $("<div></div>").addClass(Position + " p-3 mb-2 bg-black text-white overflow-auto").attr("id", Quest);
 
-      // Text erstellen
-      var textContent = $("<p></p>").text("Gehe die westliche Straße entlang. Am Ende wirst du der westlichen Stadtwache begegnen. Ich schulde dieser Wache noch Geld. Gib ihm bitte diese 5 Goldstücke für mich und kehre dann wieder zurück.");
+            // Überschrift erstellen
+            var header = $("<h1></h1>").addClass("headerQuest").attr("id", "HeaderQuest").text("Info");
 
-      // Header und Text zu QuestText hinzufügen
-      QuestText.append(header, textContent);
+            // Text erstellen
+            var textContent = $("<p></p>").text("Gehe die westliche Straße entlang. Am Ende wirst du der westlichen Stadtwache begegnen. Ich schulde dieser Wache noch Geld. Gib ihm bitte diese 5 Goldstücke für mich und kehre dann wieder zurück.");
 
-      // Füge QuestText zum Dokument hinzu
-      $("body").append(QuestText);
+            // Header und Text zu QuestText hinzufügen
+            QuestText.append(header, textContent);
+
+            // Füge QuestText zum Dokument hinzu
+            $("body").append(QuestText);
+        }
   }
 }
 
