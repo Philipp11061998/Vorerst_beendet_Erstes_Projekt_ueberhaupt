@@ -33,16 +33,14 @@ export function changeQuest(welche, Wert){
 export function Questexe(Quest, Position) {
   var existingQuestText = $("#" + Quest);
 
-  if (existingQuestText.length) {
-      if (existingQuestText.css("display") === "block") {
-          existingQuestText.css("display", "none");
-      } else if (existingQuestText.css("display") === "none") {
-          existingQuestText.css("display", "block");
-      }
-  } else {
-
-        if (Quest === "Der Start in dein neues Abenteuer"){
-            alert("Ich werde ausgeführt");
+    if (Quest === "DerStartInDeinNeuesAbenteuer"){
+        if (existingQuestText.length) {
+            if (existingQuestText.css("display") === "block") {
+                existingQuestText.css("display", "none");
+            } else if (existingQuestText.css("display") === "none") {
+                existingQuestText.css("display", "block");
+            }
+        } else {
             // Text Element für Quest Inhalt erstellen
             var QuestText = $("<div></div>").addClass(Position + " p-3 mb-2 bg-black text-white overflow-auto").attr("id", Quest);
 
@@ -56,9 +54,10 @@ export function Questexe(Quest, Position) {
             QuestText.append(header, textContent);
 
             // Füge QuestText zum Dokument hinzu
-            $("body").append(QuestText);
+            $("#collapseExample").append(QuestText);
             existingQuestText.css("display", "block");
         }
-  }
+    }
 }
+
 

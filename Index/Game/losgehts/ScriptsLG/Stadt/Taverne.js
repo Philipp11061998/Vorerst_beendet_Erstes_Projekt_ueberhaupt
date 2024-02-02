@@ -60,7 +60,8 @@ export function NPCSlideLeft(Element) {
                 existingQuestText.remove();
             }
         }
-    });
+      });
+
       let textFeld = $("#bewegendesTextfeld");
       ButtoncreateohneLocation("ButtonT1", "art1Button", "Zurück in die Stadt gehen", "display: none;")
       let ButtonT1style = $("#ButtonT1");
@@ -162,6 +163,7 @@ export function NPCSlideLeft(Element) {
           changeStandort("Stadt");
           $("#ButtonT1").remove();
           ButtonT1style.text("");
+          
           StadtOW();          
       });
     }

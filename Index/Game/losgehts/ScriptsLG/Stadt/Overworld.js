@@ -84,6 +84,7 @@ export function StadtOW(){
           $("#buttonO").remove();
           $("#TextTSO").remove();
           $("#TavSchild").remove();
+          
           Taverne();
       });
 
@@ -97,6 +98,7 @@ export function StadtOW(){
         $("#buttonO").remove();
         $("#TextTSO").remove();
         $("#TavSchild").remove();
+        
         TorbogenWest();
     });
 
@@ -110,6 +112,7 @@ export function StadtOW(){
         $("#buttonO").remove();
         $("#TextTSO").remove();
         $("#TavSchild").remove();
+        
         TorbogenOst();
     });
 
@@ -123,6 +126,7 @@ export function StadtOW(){
         $("#TextTSW").remove();
         $("#buttonO").remove();
         $("#TextTSO").remove();
+        
         Startpunkt();
     });
     }

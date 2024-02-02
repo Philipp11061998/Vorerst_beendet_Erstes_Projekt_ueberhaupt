@@ -33,7 +33,7 @@ export function Inhaltboxenaktivieren(){
 
 document.addEventListener("DOMContentLoaded", function () {
     $(document).ready(function() {
-
+          
         Inhaltboxenaktivieren();
         
         //Sound
@@ -131,56 +131,76 @@ document.addEventListener("DOMContentLoaded", function () {
 
     $("#Quests").click(function(){
         const Quest1FromLocalStorage = localStorage.getItem('StartAdventure');
+        var container = $("#collapseExample");
+        var questMenüElement = container.find(".QuestMenü");
+
+
         $("#QueckedQuests").css("display", "block");
 
         if (Object.values(Quests).some(value => value > 0)) {
+            //Hier die Quests einbauen
+            
             if (Quest1FromLocalStorage === "1" || Quest1FromLocalStorage === "2"){ // Achte darauf, dass der Wert aus dem Local Storage als Zeichenkette verglichen wird
-                if (!$("#Der Start in dein neues Abenteuer").length) {                    
-                    createQuestButton("Der Start in dein neues Abenteuer");
+                var Quest1Var = $("#" + "Quest1");
+
+                if (!Quest1Var.length) {                    
+                    createQuestButton("Quest1", "Der Start in dein neues Abenteuer");
 
                     // Zeige den Button an (du musst den Button nach seiner Erstellung anzeigen)
-                    $("#Der Start in dein neues Abenteuer").css("display", "block");
+                    $("#Quest1").css("display", "block");
 
-                    $("#Der Start in dein neues Abenteuer").click(function(){
-                        if (!$("#QuestInfoText")){
-                            Questexe("QuestInfoText", "QuestMenü");
-                        } else {
-                            $("#QuestInfoText").remove();
-                        }
-                    })
                 } else if (Quest1FromLocalStorage === "3") {
-                    if (!$("#Der Start in dein neues Abenteuer").length) {
-                        createQuestButton("Der Start in dein neues Abenteuer");
+                    if (!Quest1Var.length) {
+                        createQuestButton("Quest1");
                 
                         // Zeige den Button an (du musst den Button nach seiner Erstellung anzeigen)
-                        $("#Der Start in dein neues Abenteuer").css("display", "none");
+                        $("#Quest1").css("display", "none");
                     }
                 }
+
+                
+                $("#Quest1").click(function(){
+                    if (!Quest1Var.length){
+                        Questexe("DerStartInDeinNeuesAbenteuer", "QuestMenü");
+                    } else {
+                        $("#DerStartInDeinNeuesAbenteuer").remove();
+                    }
+                })
             }
         }
         $("#QueckedQuests").click(function(){
             if ($("#QueckedQuests").hasClass("erledigteQuestsChecked")){
+                //Hier die einzelnen Quests einbauen
                 if (Quest1FromLocalStorage === "3"){
-                    if (!$("#Der Start in dein neues Abenteuer").length) {
-                        createQuestButton("Der Start in dein neues Abenteuer");
+                    var Quest1Var = $("#" + "Quest1");
+                    
+                    if (!Quest1Var.length) {
+                        createQuestButton("Quest1", "Der Start in dein neues Abenteuer");
                 
                         // Zeige den Button an (du musst den Button nach seiner Erstellung anzeigen)
-                        $("#Der Start in dein neues Abenteuer").css("display", "none");
+                        $("#Quest1").css("display", "none");
                     }
-                $("#Der Start in dein neues Abenteuer").css("display", "block");
-                
-                $("#Der Start in dein neues Abenteuer").click(function(){
-                    if ($("#QuestInfoText").length !== 0){
-                        Questexe("QuestInfoText", "QuestMenü");
-                    } else {
-                        $("#QuestInfoText").remove();
-                    }
-                })
+                    $("#Quest1").css("display", "block");
+                    
+                    $("#Quest1").click(function(){
+                        if (!Quest1Var.length){
+                            Questexe("DerStartInDeinNeuesAbenteuer", "QuestMenü");
+                        } else {
+                            $("#DerStartInDeinNeuesAbenteuer").remove();
+                        }
+                    })
                 }
-            }else if (Quest1FromLocalStorage === "3"){
-                $("#Der Start in dein neues Abenteuer").css("display", "none");
+
+            } //Hier die Quests wieder ausblenden
+            else if ((Quest1FromLocalStorage === "3") && $("#DerStartInDeinNeuesAbenteuer").css("display", "block")) {
+                $("#Quest1").remove();
+                $("#DerStartInDeinNeuesAbenteuer").remove();
             }
         }) 
+
+        if (questMenüElement.length > 0) {
+            questMenüElement.css("display", "none");
+        }
     });
 
     $("#Wertebutton").click(function () {
@@ -215,10 +235,10 @@ document.addEventListener("DOMContentLoaded", function () {
         window.open("https://www.instagram.com/philippkraut25/", "_blank");
     })
 
-    function createQuestButton(QuestName) {
+    function createQuestButton(QuestName, QuestAnzeigetext) {
         var button = $('<button>', {
             'class': 'btn btn-light mb-2',
-            'text': QuestName,
+            'text': QuestAnzeigetext,
             'id': QuestName
         });
     

@@ -71,6 +71,7 @@ export function TorbogenWest(){
                 $Stadteingang.remove();
                 $Second.remove();
                 $Wache.remove();
+                menüEinklappen();
                 StadtOW();
             });
 
@@ -97,11 +98,10 @@ export function TorbogenWest(){
                             $Stadteingang.remove();
                             $Second.remove();
                             $Wache.remove();
+                            menüEinklappen();
                             TorbogenWest();
                         }, 3000);
                     }, 1200);
-                    
-
                 }
             })
         }

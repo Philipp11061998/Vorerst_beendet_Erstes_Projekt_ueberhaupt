@@ -61,6 +61,7 @@ export function TorbogenOst(){
                 $Wache.remove();
                 $Second.remove();
                 changeStandort("Stadt");
+                menüEinklappen();
                 StadtOW();
             })
 

@@ -78,24 +78,26 @@ export function JohannDialogue(){
             changeQuest("StartAdventure", 1);
             changeQuest("Questblock1", 1);
             changeStandort("Stadt");
+            
             StadtOW();
           });
 
           $ablehnen.click(function(){
-            var questInfoText = $("#QuestInfoText");
-            if (questInfoText.length > 0 && questInfoText.css("display") === "block") {
-              $("#QuestInfoText").css("display", "none");
-            }
-
             $annehmen.remove();
             $ablehnen.remove();
             $Info.remove();
+            $("#QuestInfoText").remove();
 
-            insertText("Besuche mich jederzeit wieder.", false, "", "", ButtonT1style, ButtonT2style)
+            if ($("#DerStartInDeinNeuesAbenteuer").length){
+              $("#DerStartInDeinNeuesAbenteuer").remove();
+            }
+
+            insertText("Besuche mich jederzeit wieder.", false, "", "", ButtonT1style, ButtonT1style)
             
             setTimeout(function () {
               $("#NPCNames").css("display", "none");
               Johann.remove();
+              
               Taverne();
             }, 1500);
             
@@ -103,7 +105,7 @@ export function JohannDialogue(){
           });
 
           $("#Infos").click(function() {
-            Questexe("Der Start in dein neues Abenteuer", "QuestInfoLocation");
+            Questexe("DerStartInDeinNeuesAbenteuer", "QuestInfoLocation");
           });              
         }, 4500);
         }
@@ -127,6 +129,7 @@ export function JohannDialogue(){
             textFeld.text("");
             $("#ButtonT1").remove();
             $("#Q1").remove();
+            
             Taverne();
         }, 2000);
         },1200);
@@ -158,6 +161,7 @@ export function JohannDialogue(){
           $("#ButtonT1").remove();
           $("#Q1").remove();
           changeStandort("Stadt");
+          
           StadtOW();
           alert("Vielen Dank fürs Spielen. Leider gibt es aktuell nicht mehr zu tun. Schau dich aber gerne noch ein wenig um :)")
         }, 3000)

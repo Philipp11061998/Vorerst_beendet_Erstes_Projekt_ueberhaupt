@@ -1,5 +1,5 @@
 import { Standorte, changeStandort } from "../../../Werte.js";
-import { Sexdefinition, Buttoncreate, enableSpecificButtons, disableAllButtons } from "../../Game.js";
+import { Sexdefinition, Buttoncreate, enableSpecificButtons, disableAllButtons  } from "../../Game.js";
 import { insertText } from "../Startpunkt/Startpunkt.js";
 import { NPCSlideLeft, NPCtoSlide } from "../Stadt/Taverne.js";
 import { Quests } from "../../../Quests.js";

@@ -70,6 +70,7 @@ export function BrutusDialogue(){
                             $("#NPCNames").css("display", "none");
                             changeQuest("StartAdventure", 2);
                             changeStandort("Stadt");
+                            
                             StadtOW();
                         }, 3000);
                     })
@@ -80,6 +81,7 @@ export function BrutusDialogue(){
                         $("#Brutus").remove();
                         $("#NPCNames").css("display", "none");
                         changeStandort("Stadt");
+                        
                         StadtOW();
                     })
             })
@@ -122,6 +124,7 @@ export function BrutusDialogue(){
                 $("#NPCNames").css("display", "none");
                 NPC.remove();
                 changeStandort("Stadt");
+                
                 StadtOW();
             })
         }
