@@ -41,7 +41,8 @@ export function Questexe(Quest, Position) {
       }
   } else {
 
-        if (Quest.StartAdventure === 0){
+        if (Quest === "Der Start in dein neues Abenteuer"){
+            alert("Ich werde ausgeführt");
             // Text Element für Quest Inhalt erstellen
             var QuestText = $("<div></div>").addClass(Position + " p-3 mb-2 bg-black text-white overflow-auto").attr("id", Quest);
 
@@ -56,6 +57,7 @@ export function Questexe(Quest, Position) {
 
             // Füge QuestText zum Dokument hinzu
             $("body").append(QuestText);
+            existingQuestText.css("display", "block");
         }
   }
 }

@@ -528,8 +528,9 @@ h3 {
     position: fixed;
     border: 2px solid #fff;
     border-radius: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */
-    top: 36.1%;
+    bottom: 31.2%;
     left: 24%;
+    max-width: 15%;
     padding-bottom: 2%; /* Nutzt relative Einheit statt fester Pixelwerte */
     padding-left: 4%; /* Nutzt relative Einheit statt fester Pixelwerte */
     padding-right: 4%; /* Nutzt relative Einheit statt fester Pixelwerte */
@@ -538,8 +539,6 @@ h3 {
     background-color: #000;
     border: 1px solid #fff;
     border-radius: 15px; /* Feste Pixel für abgerundete Ecken */
-    min-height: 31.9%;
-    max-width: 15%; 
     z-index: 2;
 }
 

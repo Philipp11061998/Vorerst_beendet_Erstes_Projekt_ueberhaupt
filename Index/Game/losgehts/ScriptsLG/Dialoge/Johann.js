@@ -102,8 +102,8 @@ export function JohannDialogue(){
 
           });
 
-          $Info.click(function() {
-            Questexe("QuestInfoText", "QuestInfoLocation");
+          $("#Infos").click(function() {
+            Questexe("Der Start in dein neues Abenteuer", "QuestInfoLocation");
           });              
         }, 4500);
         }
