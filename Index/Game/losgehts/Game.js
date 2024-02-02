@@ -251,7 +251,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     $("#inhaltBox1").click(function(){
         if ($("#inhaltBox1").hasClass("inhaltBoxhover")){
-            //Hier Erklärung zu dem Gegenstand einblenden
+            if (!$("#InfoKey1").length){
+                creatediv("InfoKey1", "InfoKey1", "Diesen seltsamen Schlüssel habe ich von Johann erhalten. Was hat es damit nur auf sich? \n \nAn der Spitze ist etwas eingraviert. Es sieht fast aus wie eine... eine 1. Brauche ich vielleicht mehrere davon? \n\nHieraus werde ich gerade wohl nicht schlau...", "block");
+                //Hier Erklärung zu dem Gegenstand einblenden
+            } else {
+                $("#InfoKey1").remove();
+            }
         }
     })
     $("#inhaltBox2").click(function(){
@@ -330,19 +335,29 @@ export function ButtoncreateohneLocation(HTMLid, Klasse, Textinhalt, angezeigt) 
 }
 
 export function creatediv(id, classes, textContent, display) {
+    var paragraphs = textContent.split('\n'); // Den Text nach Zeilenumbrüchen aufteilen
+
     var $div = $('<div>', {
-        id: id,
-        text: textContent
+        id: id
     }).css({
         display: display
     });
 
     $div.addClass(classes);
 
+    // Für jede Zeile einen Absatz erstellen und hinzufügen
+    paragraphs.forEach(function(paragraphText) {
+        var $paragraph = $('<p>', {
+            text: paragraphText
+        });
+        $div.append($paragraph);
+    });
+
     $('body').append($div);
 
     return $div;
 }
+
 
 export function Sexdefinition(){
     const Sex = localStorage.getItem('Geschlecht');

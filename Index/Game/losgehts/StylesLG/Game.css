@@ -606,3 +606,17 @@ h3 {
     width: 25%;
     z-index: 2;
 }
+
+.InfoKey1{
+    overflow: hidden;
+    position: fixed;
+    right: 6%;    
+    background-color: grey;
+    top: 60%;
+    max-width: 10%;
+    color: #000;
+    text-align: center;
+    border: 3.5px solid #fff;
+    border-radius: 1%; /* Nutzt relative Einheit statt fester Pixelwerte */  
+    z-index: 3;  
+}
